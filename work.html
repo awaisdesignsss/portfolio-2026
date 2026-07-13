@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — M. Awais, UX/UI & Product Designer</title>
+  <meta name="description" content="Selected product and UX work by M. Awais across fintech, healthcare, commerce, SaaS, and banking.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200;400;500;600;700&family=Kolker+Brush&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ═══ FIXED NAV ═══ -->
+  <nav class="nav">
+    <a class="nav__logo" href="index.html" aria-label="M. Awais, home"><span class="brandmark" role="img" aria-label="Awais"></span></a>
+    <div class="nav__menu">
+      <a href="index.html" class="nav__link">Home</a>
+      <a href="work.html" class="nav__link" aria-current="page">Work</a>
+      <a href="about.html" class="nav__link">About</a>
+      <a href="contact.html" class="nav__link">Contact</a>
+    </div>
+    <a href="mailto:hello@awais.design" class="nav__cta">Email me</a>
+    <button class="nav__toggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main>
+
+    <!-- ═══ PAGE HEAD ═══ -->
+    <section class="pagehead">
+      <span class="pagehead__eyebrow">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" stroke-width="1.4"/></svg>
+        Selected Work
+      </span>
+      <h1 class="pagehead__title">Products built to be understood.</h1>
+      <p class="pagehead__lead">Six projects across fintech, healthcare, commerce, and SaaS. Each one started with a tangled problem and ended with an interface that gets out of the way.</p>
+    </section>
+
+    <!-- ═══ WORK INDEX ═══ -->
+    <section class="section workindex section--light">
+      <div class="workfilter" role="group" aria-label="Filter projects by industry">
+        <button class="workfilter__chip" data-filter="all" aria-pressed="true">All</button>
+        <button class="workfilter__chip" data-filter="fintech" aria-pressed="false">Fintech</button>
+        <button class="workfilter__chip" data-filter="healthcare" aria-pressed="false">Healthcare</button>
+        <button class="workfilter__chip" data-filter="ecommerce" aria-pressed="false">E-commerce</button>
+        <button class="workfilter__chip" data-filter="saas" aria-pressed="false">SaaS</button>
+        <button class="workfilter__chip" data-filter="banking" aria-pressed="false">Banking</button>
+        <button class="workfilter__chip" data-filter="food" aria-pressed="false">Food &amp; Drink</button>
+      </div>
+
+      <div class="workindex__grid">
+
+        <a class="workcard reveal" href="work/paywise-dashboard.html" data-niche="fintech" aria-label="Paywise Dashboard, fintech case study">
+          <div class="workcard__cover">
+            <div class="workcard__media" style="background: radial-gradient(120% 120% at 70% 20%, #2a3a5a 0%, #1a2233 55%, #0d1320 100%);"></div>
+            <div class="workcard__scrim"></div>
+            <span class="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="workcard__meta">
+              <span><span class="workcard__niche">Fintech</span><span class="workcard__name">Paywise Dashboard</span></span>
+              <span class="workcard__year">2024</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="workcard reveal" href="work/medflow.html" data-niche="healthcare" aria-label="MedFlow, healthcare case study">
+          <div class="workcard__cover">
+            <div class="workcard__media" style="background: radial-gradient(120% 120% at 70% 20%, #1a5a52 0%, #103b38 55%, #07201d 100%);"></div>
+            <div class="workcard__scrim"></div>
+            <span class="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="workcard__meta">
+              <span><span class="workcard__niche">Healthcare</span><span class="workcard__name">MedFlow</span></span>
+              <span class="workcard__year">2024</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="workcard reveal" href="work/luxe-marketplace.html" data-niche="ecommerce" aria-label="Luxe Marketplace, e-commerce case study">
+          <div class="workcard__cover">
+            <div class="workcard__media" style="background: radial-gradient(120% 120% at 70% 20%, #b3702f 0%, #5a3010 55%, #2a1606 100%);"></div>
+            <div class="workcard__scrim"></div>
+            <span class="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="workcard__meta">
+              <span><span class="workcard__niche">E-commerce</span><span class="workcard__name">Luxe Marketplace</span></span>
+              <span class="workcard__year">2023</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="workcard reveal" href="work/datapulse.html" data-niche="saas" aria-label="DataPulse, SaaS case study">
+          <div class="workcard__cover">
+            <div class="workcard__media" style="background: radial-gradient(120% 120% at 70% 20%, #3a3a6e 0%, #1f1f44 55%, #0c0c20 100%);"></div>
+            <div class="workcard__scrim"></div>
+            <span class="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="workcard__meta">
+              <span><span class="workcard__niche">SaaS</span><span class="workcard__name">DataPulse</span></span>
+              <span class="workcard__year">2023</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="workcard reveal" href="work/zenith-digital.html" data-niche="banking" aria-label="Zenith Digital, banking case study">
+          <div class="workcard__cover">
+            <div class="workcard__media" style="background: radial-gradient(120% 120% at 70% 20%, #5a2a55 0%, #34203a 55%, #170c1a 100%);"></div>
+            <div class="workcard__scrim"></div>
+            <span class="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="workcard__meta">
+              <span><span class="workcard__niche">Banking</span><span class="workcard__name">Zenith Digital</span></span>
+              <span class="workcard__year">2022</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="workcard reveal" href="work/foodhub.html" data-niche="food" aria-label="FoodHub, food and drink case study">
+          <div class="workcard__cover">
+            <div class="workcard__media" style="background: radial-gradient(120% 120% at 70% 20%, #b58a2f 0%, #5a3a0a 55%, #2a1c04 100%);"></div>
+            <div class="workcard__scrim"></div>
+            <span class="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="workcard__meta">
+              <span><span class="workcard__niche">Food &amp; Drink</span><span class="workcard__name">FoodHub</span></span>
+              <span class="workcard__year">2022</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <p class="workindex__empty" hidden>No projects in that industry yet.</p>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer section--dark">
+    <div class="footer__contact">
+      <div class="footer__contact-head">
+        <span class="footer__eyebrow">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" stroke-width="1.4"/></svg>
+          Contact
+        </span>
+        <svg class="footer__arrowdown" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v10M2.5 7.5L7 12l4.5-4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="footer__contact-title">
+        <h2 class="footer__cta-heading">Get in touch</h2>
+        <a href="contact.html" class="btn footer__cta-btn">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Let's talk
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__plus-grid" aria-hidden="true">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 0v13M0 6.5h13" stroke="currentColor" stroke-width="1.2"/></svg>
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 0v13M0 6.5h13" stroke="currentColor" stroke-width="1.2"/></svg>
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 0v13M0 6.5h13" stroke="currentColor" stroke-width="1.2"/></svg>
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 0v13M0 6.5h13" stroke="currentColor" stroke-width="1.2"/></svg>
+    </div>
+
+    <div class="footer__main">
+      <div class="footer__left">
+        <h3 class="footer__tagline">Strategic design for brands that matter.</h3>
+        <div class="footer__contacts">
+          <a href="mailto:hello@awais.design" class="footer__contact-link">
+            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            hello@awais.design
+          </a>
+          <div class="footer__contact-row">
+            <a href="tel:+923417039563" class="footer__contact-link">
+              <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              +92 341 7039563
+            </a>
+            <span class="footer__copy">© 2026 M. Awais</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="footer__links">
+        <a href="index.html" class="footer__link"><span class="footer__link-text">Home</span><span class="footer__link-num">01</span></a>
+        <a href="work.html" class="footer__link"><span class="footer__link-text">Work</span><span class="footer__link-num">02</span></a>
+        <a href="about.html" class="footer__link"><span class="footer__link-text">About</span><span class="footer__link-num">03</span></a>
+        <a href="contact.html" class="footer__link"><span class="footer__link-text">Contact</span><span class="footer__link-num">04</span></a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add('js');
+    // Mobile nav toggle
+    const toggle = document.querySelector('.nav__toggle');
+    const nav = document.querySelector('.nav');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', nav.classList.contains('is-open'));
+      });
+    }
+    // Reveal on scroll
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -10% 0px' });
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    }
+    // Industry filter
+    (function () {
+      const chips = Array.prototype.slice.call(document.querySelectorAll('.workfilter__chip'));
+      const cards = Array.prototype.slice.call(document.querySelectorAll('.workcard'));
+      const empty = document.querySelector('.workindex__empty');
+      if (!chips.length) return;
+      chips.forEach((chip) => {
+        chip.addEventListener('click', () => {
+          const filter = chip.dataset.filter;
+          chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+          let shown = 0;
+          cards.forEach((card) => {
+            const match = filter === 'all' || card.dataset.niche === filter;
+            card.classList.toggle('is-hidden', !match);
+            if (match) shown++;
+          });
+          if (empty) empty.hidden = shown !== 0;
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
