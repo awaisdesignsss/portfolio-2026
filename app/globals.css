@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+/* Class-based dark mode (site is dark-first) */
+@custom-variant dark (&:is(.dark *));
+
+/* Brand tokens carried over from the static portfolio (styles.css :root) */
+@theme {
+  --color-brand: #c4722a;        /* --brand-amber */
+  --color-brand-ink: #1e1e1e;    /* --brand-ink */
+  --color-brand-black: #0a0a0a;  /* --brand-black */
+  --color-brand-off: #f5f2ee;    /* --brand-off-white */
+
+  --font-sans: "Urbanist", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --background: #f5f2ee;
+  --foreground: #1e1e1e;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}

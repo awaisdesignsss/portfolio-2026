@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Define — framing and structure">
+  <defs>
+    <radialGradient id="d2-field" cx="62%" cy="40%" r="90%">
+      <stop offset="0%" stop-color="#13403c"/>
+      <stop offset="50%" stop-color="#0c2b29"/>
+      <stop offset="100%" stop-color="#06160f"/>
+    </radialGradient>
+    <linearGradient id="d2-frame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7fe3c4"/>
+      <stop offset="100%" stop-color="#2f8f74"/>
+    </linearGradient>
+    <linearGradient id="d2-sheen" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="d2-soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="1000" fill="url(#d2-field)"/>
+  <rect width="800" height="1000" fill="url(#d2-sheen)"/>
+
+  <!-- faint construction grid -->
+  <g stroke="#7fe3c4" stroke-opacity="0.07" stroke-width="1">
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="0" y1="600" x2="800" y2="600"/>
+    <line x1="0" y1="800" x2="800" y2="800"/>
+    <line x1="160" y1="0" x2="160" y2="1000"/>
+    <line x1="400" y1="0" x2="400" y2="1000"/>
+    <line x1="640" y1="0" x2="640" y2="1000"/>
+  </g>
+
+  <!-- glow behind frame -->
+  <rect x="240" y="320" width="320" height="380" rx="10" fill="#2f8f74" opacity="0.45" filter="url(#d2-soft)"/>
+
+  <!-- defined frame -->
+  <rect x="250" y="330" width="300" height="360" rx="6" fill="none" stroke="url(#d2-frame)" stroke-width="2.5"/>
+  <rect x="280" y="360" width="240" height="300" rx="4" fill="none" stroke="#7fe3c4" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="4 10"/>
+
+  <!-- corner brackets -->
+  <g stroke="#d9fff2" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M210 300 L210 250 L260 250"/>
+    <path d="M590 300 L590 250 L540 250"/>
+    <path d="M210 720 L210 770 L260 770"/>
+    <path d="M590 720 L590 770 L540 770"/>
+  </g>
+
+  <!-- golden ratio arc -->
+  <path d="M400 510 m0 -130 a130 130 0 0 1 130 130" fill="none" stroke="#f0a84e" stroke-opacity="0.7" stroke-width="2"/>
+  <path d="M530 510 a80 80 0 0 1 -80 80" fill="none" stroke="#f0a84e" stroke-opacity="0.45" stroke-width="1.5"/>
+
+  <!-- anchor points -->
+  <g fill="#d9fff2">
+    <rect x="246" y="326" width="8" height="8"/>
+    <rect x="546" y="326" width="8" height="8"/>
+    <rect x="246" y="686" width="8" height="8"/>
+    <rect x="546" y="686" width="8" height="8"/>
+  </g>
+  <circle cx="400" cy="510" r="5" fill="#f0a84e"/>
+
+  <!-- baseline -->
+  <ellipse cx="400" cy="1000" rx="500" ry="170" fill="#1a5a4e" opacity="0.3" filter="url(#d2-soft)"/>
+</svg>

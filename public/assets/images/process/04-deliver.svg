@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Deliver — launch and handoff">
+  <defs>
+    <radialGradient id="d4-field" cx="50%" cy="30%" r="95%">
+      <stop offset="0%" stop-color="#2c2a55"/>
+      <stop offset="48%" stop-color="#191734"/>
+      <stop offset="100%" stop-color="#08070f"/>
+    </radialGradient>
+    <radialGradient id="d4-orb" cx="42%" cy="38%" r="62%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#ffd9a8"/>
+      <stop offset="70%" stop-color="#e08a36"/>
+      <stop offset="100%" stop-color="#9a4f1c"/>
+    </radialGradient>
+    <radialGradient id="d4-burst" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe6c4" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ffe6c4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="d4-sheen" x1="0" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="d4-soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="1000" fill="url(#d4-field)"/>
+  <rect width="800" height="1000" fill="url(#d4-sheen)"/>
+
+  <!-- ascending trajectory beams -->
+  <g stroke-linecap="round" fill="none">
+    <path d="M120 880 C 320 720, 420 560, 470 330" stroke="#8f9bff" stroke-opacity="0.30" stroke-width="2"/>
+    <path d="M210 900 C 380 760, 460 580, 500 350" stroke="#8f9bff" stroke-opacity="0.18" stroke-width="1.5"/>
+    <path d="M60 840 C 240 700, 360 540, 440 320" stroke="#8f9bff" stroke-opacity="0.14" stroke-width="1.5"/>
+  </g>
+
+  <!-- motion dashes following trajectory -->
+  <path d="M150 870 C 340 720, 430 560, 480 330" fill="none" stroke="#ffd9a8" stroke-opacity="0.55" stroke-width="2" stroke-dasharray="2 18"/>
+
+  <!-- light burst behind orb -->
+  <circle cx="485" cy="305" r="230" fill="url(#d4-burst)" filter="url(#d4-soft)"/>
+
+  <!-- delivered orb / product -->
+  <circle cx="485" cy="305" r="92" fill="url(#d4-orb)"/>
+  <ellipse cx="455" cy="275" rx="34" ry="22" fill="#ffffff" opacity="0.55"/>
+  <circle cx="485" cy="305" r="92" fill="none" stroke="#fff4e3" stroke-opacity="0.5" stroke-width="1.5"/>
+
+  <!-- orbiting ring -->
+  <ellipse cx="485" cy="305" rx="150" ry="48" fill="none" stroke="#cdd4ff" stroke-opacity="0.4" stroke-width="1.5" transform="rotate(-24 485 305)"/>
+  <circle cx="612" cy="248" r="5" fill="#ffd9a8"/>
+
+  <!-- spark particles rising -->
+  <g fill="#ffe6c4">
+    <circle cx="360" cy="560" r="3" opacity="0.8"/>
+    <circle cx="300" cy="660" r="2.5" opacity="0.6"/>
+    <circle cx="420" cy="640" r="2" opacity="0.5"/>
+    <circle cx="250" cy="760" r="2.5" opacity="0.45"/>
+    <circle cx="540" cy="520" r="2.5" opacity="0.6"/>
+  </g>
+
+  <!-- launch base glow -->
+  <ellipse cx="320" cy="980" rx="360" ry="150" fill="#3a3a7a" opacity="0.4" filter="url(#d4-soft)"/>
+</svg>

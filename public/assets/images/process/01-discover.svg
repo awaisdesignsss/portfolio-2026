@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Discover — research and exploration">
+  <defs>
+    <radialGradient id="d1-field" cx="38%" cy="34%" r="85%">
+      <stop offset="0%" stop-color="#22335c"/>
+      <stop offset="45%" stop-color="#16213f"/>
+      <stop offset="100%" stop-color="#0a0f1f"/>
+    </radialGradient>
+    <radialGradient id="d1-core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd9a8"/>
+      <stop offset="35%" stop-color="#f0a84e"/>
+      <stop offset="70%" stop-color="#c4722a"/>
+      <stop offset="100%" stop-color="#c4722a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="d1-sheen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="d1-soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="1000" fill="url(#d1-field)"/>
+  <rect width="800" height="1000" fill="url(#d1-sheen)"/>
+
+  <!-- concentric discovery rings -->
+  <g fill="none" stroke="#9fb4e0" stroke-opacity="0.18">
+    <circle cx="305" cy="360" r="120"/>
+    <circle cx="305" cy="360" r="200" stroke-opacity="0.13"/>
+    <circle cx="305" cy="360" r="290" stroke-opacity="0.09"/>
+    <circle cx="305" cy="360" r="390" stroke-opacity="0.06"/>
+  </g>
+
+  <!-- dashed orbit -->
+  <circle cx="305" cy="360" r="245" fill="none" stroke="#f0a84e" stroke-opacity="0.35" stroke-width="1.5" stroke-dasharray="2 16"/>
+
+  <!-- glow + core -->
+  <circle cx="305" cy="360" r="180" fill="url(#d1-core)" filter="url(#d1-soft)" opacity="0.9"/>
+  <circle cx="305" cy="360" r="13" fill="#fff4e3"/>
+  <circle cx="305" cy="360" r="26" fill="none" stroke="#ffd9a8" stroke-opacity="0.6"/>
+
+  <!-- scattered data nodes -->
+  <g fill="#cdd9f2">
+    <circle cx="525" cy="250" r="3.5" opacity="0.8"/>
+    <circle cx="150" cy="500" r="2.5" opacity="0.6"/>
+    <circle cx="470" cy="560" r="4" opacity="0.7"/>
+    <circle cx="600" cy="430" r="2" opacity="0.5"/>
+    <circle cx="240" cy="180" r="2.5" opacity="0.55"/>
+    <circle cx="560" cy="640" r="3" opacity="0.5"/>
+  </g>
+  <g fill="#f0a84e">
+    <circle cx="505" cy="360" r="5"/>
+    <circle cx="305" cy="115" r="4" opacity="0.85"/>
+  </g>
+
+  <!-- crosshair lens -->
+  <g stroke="#fff4e3" stroke-opacity="0.5" stroke-width="1.5">
+    <line x1="305" y1="300" x2="305" y2="330"/>
+    <line x1="305" y1="390" x2="305" y2="420"/>
+    <line x1="245" y1="360" x2="275" y2="360"/>
+    <line x1="335" y1="360" x2="365" y2="360"/>
+  </g>
+
+  <!-- baseline horizon glow -->
+  <ellipse cx="400" cy="1000" rx="520" ry="180" fill="#2a3f6e" opacity="0.35" filter="url(#d1-soft)"/>
+</svg>
