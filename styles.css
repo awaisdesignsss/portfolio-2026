@@ -2208,8 +2208,8 @@ img {
   width: 100%;
   height: 100%;
   background-color: currentColor;
-  -webkit-mask: url(assets/images/logo.svg) no-repeat center / contain;
-  mask: url(assets/images/logo.svg) no-repeat center / contain;
+  -webkit-mask: url(/assets/images/logo.svg) no-repeat center / contain;
+  mask: url(/assets/images/logo.svg) no-repeat center / contain;
 }
 
 .nav__logo { display: block; }
