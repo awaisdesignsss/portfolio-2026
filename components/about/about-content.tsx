@@ -88,6 +88,145 @@ export default function AboutContent() {
       document.querySelectorAll<HTMLElement>("[data-wordfx]").forEach(wrap);
     })();
 
+    // ── Experience roadmap: cinematic center-focus carousel ──
+    (() => {
+      const root = document.querySelector<HTMLElement>("[data-roadmap]");
+      if (!root) return;
+      const viewport = root.querySelector<HTMLElement>(".roadmap__viewport");
+      const track = root.querySelector<HTMLElement>(".roadmap__track");
+      const stops = Array.from(root.querySelectorAll<HTMLElement>(".roadmap__stop"));
+      if (!viewport || !track || !stops.length) return;
+      const cards = stops.map((s) => s.querySelector<HTMLElement>(".roadmap__card"));
+      const railFill = root.querySelector<HTMLElement>(".roadmap__rail-fill");
+      const countCur = root.querySelector<HTMLElement>(".roadmap__count-cur");
+      const btnPrev = root.querySelector<HTMLButtonElement>('[data-dir="prev"]');
+      const btnNext = root.querySelector<HTMLButtonElement>('[data-dir="next"]');
+      const n = stops.length;
+      const clamp01 = (x: number) => (x < 0 ? 0 : x > 1 ? 1 : x);
+      let active = 0;
+      let target = 0;
+      let programmatic = false;
+      let progTimer: ReturnType<typeof setTimeout> | undefined;
+      let ticking = false;
+
+      function apply() {
+        ticking = false;
+        const vp = viewport!.getBoundingClientRect();
+        const center = vp.left + vp.width / 2;
+        const step =
+          n > 1 ? Math.abs(stops[1].offsetLeft - stops[0].offsetLeft) || vp.width : vp.width;
+        let best = 0;
+        let bestDist = Infinity;
+        for (let i = 0; i < n; i++) {
+          const r = stops[i].getBoundingClientRect();
+          const dist = Math.abs(r.left + r.width / 2 - center);
+          if (dist < bestDist) { bestDist = dist; best = i; }
+          const card = cards[i];
+          if (card && !reduceMotion) {
+            const e = clamp01(dist / step);
+            card.style.transform = `scale(${(1 - e * 0.12).toFixed(4)})`;
+            card.style.opacity = (1 - e * 0.5).toFixed(3);
+            card.style.filter = e > 0.01 ? `blur(${(e * 3).toFixed(2)}px)` : "none";
+          }
+        }
+        if (best !== active) {
+          active = best;
+          for (let i = 0; i < n; i++) {
+            stops[i].dataset.state = i < active ? "past" : i === active ? "active" : "future";
+          }
+          if (countCur) countCur.textContent = String(active + 1).padStart(2, "0");
+        }
+        // While the user scrolls/drags manually, keep the button target in sync;
+        // during a programmatic scroll, leave it so rapid clicks can queue ahead.
+        if (!programmatic) target = active;
+        // Progress normalized to the first→last "centered" scroll range so the
+        // rail reads 0% on the first card and a full 100% on the last.
+        const firstC = stops[0].offsetLeft - (vp.width - stops[0].offsetWidth) / 2;
+        const lastC =
+          stops[n - 1].offsetLeft - (vp.width - stops[n - 1].offsetWidth) / 2;
+        const denom = lastC - firstC;
+        const prog = denom > 0 ? clamp01((viewport!.scrollLeft - firstC) / denom) : 0;
+        if (railFill) railFill.style.transform = `scaleX(${prog.toFixed(4)})`;
+        if (btnPrev) btnPrev.disabled = active === 0;
+        if (btnNext) btnNext.disabled = active === n - 1;
+      }
+
+      const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(apply); } };
+      viewport.addEventListener("scroll", onScroll, { passive: true });
+      cleanups.push(() => viewport.removeEventListener("scroll", onScroll));
+
+      const scrollToIndex = (i: number) => {
+        target = Math.max(0, Math.min(n - 1, i));
+        const stop = stops[target];
+        const left = stop.offsetLeft - (viewport.clientWidth - stop.offsetWidth) / 2;
+        programmatic = true;
+        if (progTimer) clearTimeout(progTimer);
+        progTimer = setTimeout(() => { programmatic = false; }, 700);
+        viewport.scrollTo({ left, behavior: reduceMotion ? "auto" : "smooth" });
+      };
+      const onPrev = () => scrollToIndex(target - 1);
+      const onNext = () => scrollToIndex(target + 1);
+      btnPrev?.addEventListener("click", onPrev);
+      btnNext?.addEventListener("click", onNext);
+      cleanups.push(() => btnPrev?.removeEventListener("click", onPrev));
+      cleanups.push(() => btnNext?.removeEventListener("click", onNext));
+      cleanups.push(() => { if (progTimer) clearTimeout(progTimer); });
+
+      const onKey = (e: KeyboardEvent) => {
+        if (e.key === "ArrowRight") { e.preventDefault(); scrollToIndex(target + 1); }
+        else if (e.key === "ArrowLeft") { e.preventDefault(); scrollToIndex(target - 1); }
+      };
+      viewport.addEventListener("keydown", onKey);
+      cleanups.push(() => viewport.removeEventListener("keydown", onKey));
+
+      // Mouse drag to scroll (touch keeps native swipe + snap)
+      let dragging = false;
+      let startX = 0;
+      let startScroll = 0;
+      const onDown = (e: PointerEvent) => {
+        if (e.pointerType !== "mouse") return;
+        dragging = true;
+        startX = e.clientX;
+        startScroll = viewport.scrollLeft;
+        root.dataset.dragging = "true";
+      };
+      const onMove = (e: PointerEvent) => {
+        if (!dragging) return;
+        viewport.scrollLeft = startScroll - (e.clientX - startX);
+      };
+      const onUp = () => {
+        if (!dragging) return;
+        dragging = false;
+        delete root.dataset.dragging;
+      };
+      viewport.addEventListener("pointerdown", onDown);
+      window.addEventListener("pointermove", onMove);
+      window.addEventListener("pointerup", onUp);
+      cleanups.push(() => viewport.removeEventListener("pointerdown", onDown));
+      cleanups.push(() => window.removeEventListener("pointermove", onMove));
+      cleanups.push(() => window.removeEventListener("pointerup", onUp));
+
+      // Edge spacers = (viewport - card) / 2 so the first & last card can center.
+      const measure = () => {
+        const edge = Math.max(0, (viewport.clientWidth - stops[0].offsetWidth) / 2);
+        track.style.setProperty("--edge", `${edge}px`);
+      };
+      const onResize = () => { measure(); apply(); };
+      window.addEventListener("resize", onResize);
+      cleanups.push(() => window.removeEventListener("resize", onResize));
+
+      measure();
+      requestAnimationFrame(() => {
+        // center the first card without animation, then run the focus pass
+        const first = stops[0];
+        viewport.scrollLeft = Math.max(
+          0,
+          first.offsetLeft - (viewport.clientWidth - first.offsetWidth) / 2
+        );
+        apply();
+      });
+    })();
+
     return () => { cleanups.forEach((fn) => fn()); };
   }, []);
 
@@ -132,13 +271,10 @@ export default function AboutContent() {
                   <span className="about-stat__label">Fintech, health, commerce, SaaS</span>
                 </div>
               </div>
-              <div className="about-portrait__media reveal">
-                <img src="/assets/images/hero-bg.jpg" alt="Portrait of M. Awais under warm amber light" loading="lazy" />
-              </div>
             </div>
           </section>
 
-          <section className="section timeline section--light">
+          <section className="section experience section--light">
             <div className="rulebar">
               <span className="rulebar__eyebrow">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>
@@ -147,25 +283,74 @@ export default function AboutContent() {
               <span className="rulebar__aside">2017 — Now</span>
             </div>
 
-            <div className="timeline__row reveal">
-              <span className="timeline__years"><span className="timeline__index">(01)</span>2023 — <em className="timeline__now">Now</em></span>
-              <span className="timeline__role">Lead Product Designer<span className="timeline__org">Northbeam</span></span>
-              <span className="timeline__note">Own end-to-end design for the analytics platform across web and mobile.</span>
-            </div>
-            <div className="timeline__row reveal">
-              <span className="timeline__years"><span className="timeline__index">(02)</span>2021 — 2023</span>
-              <span className="timeline__role">Senior UX Designer<span className="timeline__org">Finhaus</span></span>
-              <span className="timeline__note">Rebuilt onboarding and the core dashboard for a fintech serving 40k businesses.</span>
-            </div>
-            <div className="timeline__row reveal">
-              <span className="timeline__years"><span className="timeline__index">(03)</span>2019 — 2021</span>
-              <span className="timeline__role">Product Designer<span className="timeline__org">Studio Mura</span></span>
-              <span className="timeline__note">Brand and product work for healthcare and commerce clients.</span>
-            </div>
-            <div className="timeline__row reveal">
-              <span className="timeline__years"><span className="timeline__index">(04)</span>2017 — 2019</span>
-              <span className="timeline__role">UI Designer<span className="timeline__org">Independent</span></span>
-              <span className="timeline__note">Marketing sites and first design systems for early-stage startups.</span>
+            <div className="roadmap" data-roadmap>
+              <div
+                className="roadmap__viewport"
+                tabIndex={0}
+                role="group"
+                aria-label="Career roadmap. Use the left and right arrow keys to move between roles."
+              >
+                <ol className="roadmap__track">
+                  <span className="roadmap__line" aria-hidden="true"></span>
+
+                  <li className="roadmap__stop" data-state="active">
+                    <span className="roadmap__node" aria-hidden="true"></span>
+                    <article className="roadmap__card">
+                      <span className="roadmap__year">2023 — <em className="roadmap__now">Now</em></span>
+                      <h3 className="roadmap__role">Lead Product Designer</h3>
+                      <span className="roadmap__org">Northbeam</span>
+                      <p className="roadmap__note">Own end-to-end design for the analytics platform across web and mobile.</p>
+                    </article>
+                  </li>
+
+                  <li className="roadmap__stop" data-state="future">
+                    <span className="roadmap__node" aria-hidden="true"></span>
+                    <article className="roadmap__card">
+                      <span className="roadmap__year">2021 — 2023</span>
+                      <h3 className="roadmap__role">Senior UX Designer</h3>
+                      <span className="roadmap__org">Finhaus</span>
+                      <p className="roadmap__note">Rebuilt onboarding and the core dashboard for a fintech serving 40k businesses.</p>
+                    </article>
+                  </li>
+
+                  <li className="roadmap__stop" data-state="future">
+                    <span className="roadmap__node" aria-hidden="true"></span>
+                    <article className="roadmap__card">
+                      <span className="roadmap__year">2019 — 2021</span>
+                      <h3 className="roadmap__role">Product Designer</h3>
+                      <span className="roadmap__org">Studio Mura</span>
+                      <p className="roadmap__note">Brand and product work for healthcare and commerce clients.</p>
+                    </article>
+                  </li>
+
+                  <li className="roadmap__stop" data-state="future">
+                    <span className="roadmap__node" aria-hidden="true"></span>
+                    <article className="roadmap__card">
+                      <span className="roadmap__year">2017 — 2019</span>
+                      <h3 className="roadmap__role">UI Designer</h3>
+                      <span className="roadmap__org">Independent</span>
+                      <p className="roadmap__note">Marketing sites and first design systems for early-stage startups.</p>
+                    </article>
+                  </li>
+                </ol>
+              </div>
+
+              <div className="roadmap__hud">
+                <span className="roadmap__count" aria-hidden="true">
+                  <span className="roadmap__count-cur">01</span>
+                  <span className="roadmap__count-sep">/</span>
+                  <span className="roadmap__count-tot">04</span>
+                </span>
+                <span className="roadmap__rail" aria-hidden="true"><span className="roadmap__rail-fill"></span></span>
+                <div className="roadmap__nav">
+                  <button className="roadmap__btn" type="button" data-dir="prev" aria-label="Previous role">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </button>
+                  <button className="roadmap__btn" type="button" data-dir="next" aria-label="Next role">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </section>
 

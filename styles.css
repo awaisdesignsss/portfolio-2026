@@ -2344,54 +2344,31 @@ textarea:focus-visible {
    showcase row: stats span the image height on the left, portrait right. */
 .about-showcase {
   margin-top: clamp(var(--space-12), 5vw, var(--space-20));
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: clamp(var(--space-8), 5vw, var(--space-16));
-  align-items: stretch;
 }
 
-/* Stats column matches the image height; the three stats divide it evenly */
+/* Same treatment as the homepage .metrics grid, rendered in dark mode */
 .about-showcase__stats {
-  display: flex;
-  flex-direction: column;
-}
-
-.about-portrait__media {
-  align-self: start; /* keep aspect ratio; never stretch/distort the photo */
-  aspect-ratio: 16 / 10;
-  width: 100%;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  background: radial-gradient(120% 120% at 65% 15%, #3a2a1e 0%, #1f150e 55%, #0c0805 100%);
-}
-.about-portrait__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 60% 18%; /* keep the face in frame on the wide crop */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
 }
 
 .about-stat {
-  flex: 1 1 0;              /* each stat takes an equal share of the column height */
-  min-height: 0;           /* allow the column to match the photo height exactly */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* center content within its band */
-  gap: var(--space-3);
-  padding: var(--space-6) 0;
-  border-top: 1px solid var(--dark-border);
+  text-align: left;
 }
-.about-stat:last-child { border-bottom: 1px solid var(--dark-border); }
-/* Echoes the homepage .metrics__number treatment (dimmed affix) */
+/* Mirrors .metrics__number, coloured for the dark pagehead */
 .about-stat__num {
   display: flex;
   align-items: flex-start;
   gap: 0.04em;
-  font-size: clamp(2.75rem, 4.5vw, 72px);
-  font-weight: 400;
+  font-size: clamp(3.5rem, 9vw, 144px);
+  font-weight: 500;
+  line-height: 0.85;
   letter-spacing: -0.5px;
-  line-height: 0.9;
+  color: var(--dark-ink);
+  margin-bottom: var(--space-4);
 }
+/* Dimmed prefix/suffix symbol (yrs, +, ind.) */
 .about-stat__affix {
   font-size: 0.44em;
   line-height: 1;
@@ -2399,11 +2376,12 @@ textarea:focus-visible {
   margin-top: 0.12em;
 }
 .about-stat__label {
-  font-size: var(--text-base);
-  font-weight: 500;
-  letter-spacing: -0.2px;
-  color: var(--dark-ink-muted);
-  max-width: 30ch;
+  display: block;
+  font-size: clamp(var(--text-lg), 1.6vw, 22px);
+  font-weight: 600;
+  letter-spacing: -0.6px;
+  line-height: var(--leading-snug);
+  color: var(--dark-ink-secondary);
 }
 
 /* Biography — full-width kicker, then statements left / detail right */
@@ -2443,63 +2421,209 @@ textarea:focus-visible {
   transform-origin: left center;
 }
 
-/* Experience timeline — an actual ordered sequence.
-   Uses contextual tokens so it can sit on a dark or light section. */
-.timeline { background: var(--bg); color: var(--ink); }
-/* Rule bar shares the rows' grid so "Experience" sits over the date column
-   and "2017 — Now" sits directly above the description column. */
-.timeline .rulebar {
-  display: grid;
-  grid-template-columns: 8rem minmax(0, 1.2fr) minmax(0, 1.5fr);
-  gap: clamp(var(--space-4), 3vw, var(--space-10));
-  align-items: center;
-  margin-bottom: var(--space-4);
-}
-.timeline .rulebar__eyebrow { grid-column: 1 / 3; }
-.timeline .rulebar__aside { grid-column: 3; }
+/* ═══ Experience — "Career Roadmap" carousel ═══
+   Cards strung along a horizontal road; the centred card lifts into focus
+   while neighbours recede, dim, and soften. Scroll-snap + drag + arrows.
+   Contextual tokens so it can sit on a dark or light section. */
+.experience { background: var(--bg); color: var(--ink); }
 
-.timeline__row {
-  display: grid;
-  grid-template-columns: 8rem minmax(0, 1.2fr) minmax(0, 1.5fr);
-  gap: clamp(var(--space-4), 3vw, var(--space-10));
-  align-items: baseline;
-  padding: var(--space-8) 0;
-  border-bottom: 1px solid var(--border);
-  transition: padding-left var(--duration-slow) var(--ease-out);
+.roadmap { --card-w: clamp(272px, 78vw, 380px); position: relative; }
+
+.roadmap__viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  outline: none;
+  border-radius: var(--radius-lg);
 }
-.timeline__row:hover { padding-left: var(--space-3); }
-/* Reveal + hover transitions coexist; rows stagger in (delays never touch hover) */
-@media (prefers-reduced-motion: no-preference) {
-  .js .timeline__row.reveal {
-    transition: opacity var(--duration-reveal) var(--ease-out),
-                transform var(--duration-reveal) var(--ease-out),
-                padding-left var(--duration-slow) var(--ease-out);
-  }
-  .js .timeline__row.reveal:nth-of-type(2) { transition-delay: 70ms, 70ms, 0ms; }
-  .js .timeline__row.reveal:nth-of-type(3) { transition-delay: 140ms, 140ms, 0ms; }
-  .js .timeline__row.reveal:nth-of-type(4) { transition-delay: 210ms, 210ms, 0ms; }
+.roadmap__viewport::-webkit-scrollbar { display: none; }
+.roadmap__viewport:focus-visible { box-shadow: inset 0 0 0 2px var(--brand-amber); }
+.roadmap[data-dragging] .roadmap__viewport {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  user-select: none;
 }
-.timeline__years {
+
+.roadmap__track {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: clamp(var(--space-5), 3vw, var(--space-8));
+  padding-block: var(--space-2) var(--space-4);
+}
+/* Leading & trailing spacers so the first & last card can rest at centre.
+   Flex items (unlike container padding) reliably extend the scroll width.
+   --edge is measured in JS = (viewport - card) / 2. */
+.roadmap__track::before,
+.roadmap__track::after {
+  content: "";
+  flex: 0 0 var(--edge, 0px);
+}
+
+/* The road itself */
+.roadmap__line {
+  position: absolute;
+  top: 19px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--border);
+}
+
+.roadmap__stop {
+  position: relative;
+  flex: 0 0 var(--card-w);
+  scroll-snap-align: center;
+  padding-top: 62px; /* room for the node + connector above the card */
+  display: flex;
+}
+/* connector dropping from the node to the card */
+.roadmap__stop::after {
+  content: "";
+  position: absolute;
+  top: 27px;
+  left: 50%;
+  width: 1px;
+  height: 35px;
+  background: var(--border);
+  transition: background var(--duration-base) var(--ease-out);
+}
+.roadmap__stop[data-state="active"]::after { background: var(--brand-amber); }
+
+/* Milestone node on the road */
+.roadmap__node {
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1.5px solid var(--border-strong);
+  transition: transform var(--duration-base) var(--ease-out),
+              background var(--duration-base) var(--ease-out),
+              border-color var(--duration-base) var(--ease-out),
+              box-shadow var(--duration-base) var(--ease-out);
+}
+.roadmap__stop[data-state="past"] .roadmap__node {
+  background: var(--brand-amber);
+  border-color: var(--brand-amber);
+}
+.roadmap__stop[data-state="active"] .roadmap__node {
+  background: var(--brand-amber);
+  border-color: var(--brand-amber);
+  transform: scale(1.35);
+  box-shadow: 0 0 0 6px rgba(196, 114, 42, 0.16);
+}
+
+/* Card */
+.roadmap__card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: clamp(var(--space-6), 3vw, var(--space-8));
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  transform-origin: center top;
+  will-change: transform, opacity, filter;
+  transition: box-shadow var(--duration-slow) var(--ease-out),
+              border-color var(--duration-slow) var(--ease-out);
+}
+.roadmap__stop[data-state="active"] .roadmap__card {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-lg);
+}
+
+.roadmap__year {
   font-size: var(--text-base);
   color: var(--ink-muted);
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
+  letter-spacing: 0.01em;
 }
-.timeline__index {
-  display: block;
-  margin-bottom: var(--space-1);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--ink-subtle);
-}
-.timeline__now { font-style: normal; color: var(--brand-amber); font-weight: 600; }
-.timeline__role {
-  font-size: clamp(var(--text-xl), 2.2vw, var(--text-2xl));
+.roadmap__now { font-style: normal; color: var(--brand-amber); font-weight: 600; }
+.roadmap__role {
+  font-size: clamp(var(--text-xl), 2.4vw, var(--text-3xl));
   font-weight: 500;
   letter-spacing: -0.02em;
+  line-height: 1.12;
 }
-.timeline__org { display: block; font-size: var(--text-base); color: var(--ink-secondary); margin-top: var(--space-1); font-weight: 400; }
-.timeline__note { font-size: var(--text-base); line-height: var(--leading-relaxed); color: var(--ink-secondary); max-width: 44ch; }
+.roadmap__org { font-size: var(--text-base); color: var(--ink-secondary); font-weight: 400; }
+.roadmap__note {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--ink-secondary);
+}
+
+/* HUD: counter + progress rail + prev/next */
+.roadmap__hud {
+  display: flex;
+  align-items: center;
+  gap: clamp(var(--space-4), 3vw, var(--space-6));
+  margin-top: clamp(var(--space-8), 4vw, var(--space-10));
+}
+.roadmap__count {
+  flex: 0 0 auto;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+.roadmap__count-cur { color: var(--ink); }
+.roadmap__count-sep { margin: 0 0.4em; opacity: 0.5; }
+.roadmap__rail {
+  position: relative;
+  flex: 1 1 auto;
+  height: 2px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.roadmap__rail-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--brand-amber);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+.roadmap__nav { display: flex; gap: var(--space-2); flex: 0 0 auto; }
+.roadmap__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color var(--duration-base) var(--ease-out),
+              transform var(--duration-base) var(--ease-out),
+              opacity var(--duration-base) var(--ease-out);
+}
+.roadmap__btn:hover { border-color: var(--ink); }
+.roadmap__btn:active { transform: scale(0.94); }
+.roadmap__btn:focus-visible { box-shadow: 0 0 0 2px var(--brand-amber); }
+.roadmap__btn:disabled { opacity: 0.35; cursor: default; }
+.roadmap__btn svg { width: 18px; height: 18px; }
+.roadmap__btn[data-dir="prev"] svg { transform: rotate(180deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .roadmap__viewport { scroll-behavior: auto; }
+  .roadmap__node, .roadmap__card, .roadmap__rail-fill { transition: none; }
+}
 
 /* Disciplines marquee — full-bleed light band between two dark sections */
 .marquee {
@@ -2857,12 +2981,9 @@ a.contactmethod:focus-visible { outline: 2px solid var(--brand-amber); outline-o
    SUBPAGE RESPONSIVE
    ═══════════════════════════════════════════════════════════ */
 
-@media (max-width: 1024px) {
-  .about-showcase { grid-template-columns: 1fr; gap: var(--space-10); }
-  .about-showcase__stats { order: 2; }
-  .about-portrait__media { order: 1; aspect-ratio: 16 / 9; }
-  /* Stacked layout: stats size to content again (no photo to match height to) */
-  .about-stat { flex: none; min-height: auto; justify-content: flex-start; }
+@media (max-width: 768px) {
+  /* Stack the three stats like the homepage metrics do on mobile */
+  .about-showcase__stats { grid-template-columns: 1fr; gap: var(--space-10); }
 }
 
 @media (max-width: 768px) {
@@ -2870,8 +2991,6 @@ a.contactmethod:focus-visible { outline: 2px solid var(--brand-amber); outline-o
   .bio__grid { grid-template-columns: 1fr; gap: var(--space-8); }
   .bio__detail p.bio__signature { font-size: 3rem; }
   .cs-block__inner { grid-template-columns: 1fr; gap: var(--space-6); }
-  .timeline__row { grid-template-columns: 1fr; gap: var(--space-2); }
-  .timeline__note { max-width: 48ch; }
   .contactgrid { grid-template-columns: 1fr; }
   .cs-pager { grid-template-columns: 1fr; }
   .cs-pager__link--next { text-align: left; align-items: flex-start; }
