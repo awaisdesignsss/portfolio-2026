@@ -50,13 +50,13 @@ export default function ContactContent() {
               Contact
             </span>
             <h1 className="pagehead__title" data-wordfx>Let's talk.</h1>
-            <p className="pagehead__lead">Whether it's a product from scratch or a redesign that's been waiting too long, a direct message is the fastest way to reach me. Email or WhatsApp, and I'll come back with honest first thoughts.</p>
+            <p className="pagehead__lead">A new product from scratch, or a redesign that&rsquo;s been sitting on your list too long — either way, a quick message is the fastest way to reach me. Drop me an email or WhatsApp, and I&rsquo;ll come back with honest first thoughts, no sales pitch.</p>
           </section>
 
           <section className="section contact">
             <div className="contact__top">
               <p className="contact__status"><span className="contact__dot" aria-hidden="true"></span>Available for new projects</p>
-              <span className="contact__reply">I reply personally, within two business days</span>
+              <span className="contact__reply">I read and reply to every message myself, usually within a day or two</span>
             </div>
 
             <div className="contactgrid">
@@ -122,7 +122,7 @@ export default function ContactContent() {
 
           <div className="footer__main">
             <div className="footer__left">
-              <h3 className="footer__tagline" data-wordfx>Strategic design for brands that matter.</h3>
+              <h3 className="footer__tagline" data-wordfx>Calm, clear design for products people love to use.</h3>
               <div className="footer__contacts">
                 <a href="mailto:hello@awais.design" className="footer__contact-link">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>

@@ -91,7 +91,7 @@ export default function WorkContent() {
               Selected Work
             </span>
             <h1 className="pagehead__title" data-wordfx>Products built to be understood.</h1>
-            <p className="pagehead__lead">Six projects across fintech, healthcare, commerce, and SaaS. Each one started with a tangled problem and ended with an interface that gets out of the way.</p>
+            <p className="pagehead__lead">Six projects across fintech, healthcare, commerce, and SaaS. Every one started as a tangled mess of a problem — and ended as an interface that quietly gets out of the way.</p>
           </section>
 
           <section className="section workindex section--light">
@@ -213,7 +213,7 @@ export default function WorkContent() {
 
           <div className="footer__main">
             <div className="footer__left">
-              <h3 className="footer__tagline" data-wordfx>Strategic design for brands that matter.</h3>
+              <h3 className="footer__tagline" data-wordfx>Calm, clear design for products people love to use.</h3>
               <div className="footer__contacts">
                 <a href="mailto:hello@awais.design" className="footer__contact-link">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>

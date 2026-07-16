@@ -698,22 +698,73 @@ img {
   align-items: center;
   justify-content: center;
   height: 170px;
-  background: rgba(30, 30, 30, 0.05);
+  padding: var(--space-4);
+  background: var(--brand-white);
+  border: 1px solid rgba(30, 30, 30, 0.06);
   border-radius: 10px;
+  overflow: hidden;
   transition: background var(--duration-slow) var(--ease-out);
 }
 
-.logos__card:hover {
-  background: rgba(30, 30, 30, 0.09);
+/* The real logo mark — uniform footprint, full colour (originality kept). */
+.logos__logo {
+  width: auto;
+  height: auto;
+  max-width: 62%;
+  max-height: 40px;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: opacity var(--duration-base) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out-quart);
 }
 
-.logos__name {
-  font-size: var(--text-xl);
+/* Hover reveal — a dark panel with one proof point (role / stat / review). */
+.logos__hover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 20px;
+  background: var(--brand-ink);
+  color: var(--brand-white);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out-quart);
+}
+
+.logos__hover-tag {
+  align-self: flex-start;
+  font-size: var(--text-xs);
   font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--brand-amber);
+}
+
+.logos__hover-text {
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  font-weight: 500;
   letter-spacing: var(--tracking-tight);
-  color: rgba(30, 30, 30, 0.55);
-  white-space: nowrap;
-  user-select: none;
+  color: var(--brand-white);
+}
+
+.logos__hover-meta {
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Impact cards lead with an oversized number for punch. */
+.logos__card[data-reveal="impact"] .logos__hover-text {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -3193,25 +3244,23 @@ html.splash-seen .splash { display: none; }
   .work__viewall:hover svg { transform: translate(3px, -3px); }
 }
 
-/* ── Client logo grid — lift the hovered card, dim its neighbours ── */
+/* ── Client logo grid — lift the hovered card, dim its neighbours,
+      and flip in a proof-point panel ── */
 .logos__card {
   transition: background var(--duration-slow) var(--ease-out),
               transform var(--duration-base) var(--ease-out-quart),
               box-shadow var(--duration-base) var(--ease-out-quart),
               opacity var(--duration-base) var(--ease-out);
 }
-.logos__name {
-  transition: color var(--duration-base) var(--ease-out),
-              transform var(--duration-base) var(--ease-out-quart);
-}
 @media (hover: hover) {
-  .logos__grid:hover .logos__card { opacity: 0.45; }
+  .logos__grid:hover .logos__card { opacity: 0.5; }
   .logos__grid:hover .logos__card:hover {
     opacity: 1;
     transform: translateY(-4px);
     box-shadow: var(--lift-shadow-light);
   }
-  .logos__card:hover .logos__name { color: var(--brand-ink); transform: scale(1.05); }
+  .logos__card:hover .logos__logo { opacity: 0; transform: scale(0.9); }
+  .logos__card:hover .logos__hover { opacity: 1; transform: none; }
 }
 
 /* ── Capabilities list — energise each row on hover ── */

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { applyWordfx } from "@/lib/wordfx";
+import ClientLogos from "@/components/ui/client-logos";
 
 /**
  * Homepage content ported from the original static index.html.
@@ -380,8 +381,8 @@ export default function HomeContent() {
 
             <div className="hero__content">
               <div className="hero__info">
-                <h2 className="hero__subtitle">Certified Designer</h2>
-                <p className="hero__description">I design products people actually understand, from complex systems to experience built on human-centred, aesthetically pleasing, clear and on-brand designs.</p>
+                <h2 className="hero__subtitle">Certified Product Designer</h2>
+                <p className="hero__description">I take complicated products and make them feel obvious. Fewer &ldquo;wait, where do I click?&rdquo; moments — more people getting what they came for, on a screen that&rsquo;s easy on the eyes.</p>
               </div>
               <div className="hero__actions">
                 <a href="#work" className="hero__btn">View Work</a>
@@ -396,9 +397,9 @@ export default function HomeContent() {
 
             <p className="hero__name">Awais</p>
 
-            <p className="hero__intro">I'm M. Awais, Nurturing experiences as a UX/UI &amp; Product Designer</p>
+            <p className="hero__intro">I'm M. Awais — a UX/UI &amp; Product Designer who makes complex things feel simple.</p>
 
-            <p className="hero__available"><span className="hero__bullet"></span>Available to upscale your product</p>
+            <p className="hero__available"><span className="hero__bullet"></span>Open for one new project this quarter</p>
 
             <ul className="hero__menu">
               <li className="hero__menu-item">
@@ -452,43 +453,7 @@ export default function HomeContent() {
             </ul>
           </section>
 
-          <section className="logos section--light">
-            <div className="container">
-              <div className="logos__header">
-                <div className="logos__label-wrap">
-                  <svg className="logos__star" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 0L7.91 4.59L12.5 6L7.91 7.41L6.5 12L5.09 7.41L0.5 6L5.09 4.59L6.5 0Z" fill="currentColor"/></svg>
-                  <span className="logos__label">Built for Ambitious Brands</span>
-                </div>
-                <svg className="logos__arrow" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </div>
-              <div className="logos__grid">
-                <div className="logos__card">
-                  <span className="logos__name">Google</span>
-                </div>
-                <div className="logos__card">
-                  <span className="logos__name">Spotify</span>
-                </div>
-                <div className="logos__card">
-                  <span className="logos__name">Shopify</span>
-                </div>
-                <div className="logos__card">
-                  <span className="logos__name">Slack</span>
-                </div>
-                <div className="logos__card">
-                  <span className="logos__name">Adobe</span>
-                </div>
-                <div className="logos__card">
-                  <span className="logos__name">Figma</span>
-                </div>
-                <div className="logos__card">
-                  <span className="logos__name">Notion</span>
-                </div>
-                <div className="logos__card">
-                  <span className="logos__name">Stripe</span>
-                </div>
-              </div>
-            </div>
-          </section>
+          <ClientLogos />
 
           <section className="process section--light" id="about">
             <div className="process__pin">
@@ -540,7 +505,7 @@ export default function HomeContent() {
                         <span className="process__tag">Design Process</span>
                         <span className="process__counter">01 / 04</span>
                       </div>
-                      <p className="process__desc" data-wordfx>Understanding the problem space through research, user interviews, and competitive analysis. Before designing anything, I learn everything.</p>
+                      <p className="process__desc" data-wordfx>First I dig in. Research, real conversations with users, a hard look at the competition. I&rsquo;d rather understand the problem properly than start pushing pixels and hope.</p>
                       <div className="process__cta">
                         <a href="#contact" className="process__cta-btn">Get started</a>
                         <a href="#contact" className="process__cta-icon" aria-label="Get started">
@@ -554,7 +519,7 @@ export default function HomeContent() {
                         <span className="process__tag">Design Process</span>
                         <span className="process__counter">02 / 04</span>
                       </div>
-                      <p className="process__desc" data-wordfx>Framing the right problem. User flows, information architecture, and clear objectives that align stakeholders before a single pixel moves.</p>
+                      <p className="process__desc" data-wordfx>Then I frame the real problem. Flows, structure, and one clear goal everyone agrees on — so we&rsquo;re not quietly redesigning things halfway through.</p>
                       <div className="process__cta">
                         <a href="#contact" className="process__cta-btn">Get started</a>
                         <a href="#contact" className="process__cta-icon" aria-label="Get started">
@@ -568,7 +533,7 @@ export default function HomeContent() {
                         <span className="process__tag">Design Process</span>
                         <span className="process__counter">03 / 04</span>
                       </div>
-                      <p className="process__desc" data-wordfx>From low-fidelity wireframes to polished high-fidelity screens. Iterating with real feedback at every stage until the solution clicks.</p>
+                      <p className="process__desc" data-wordfx>Now the fun part. Rough wireframes to polished screens, checked against real feedback at every step until it genuinely clicks.</p>
                       <div className="process__cta">
                         <a href="#contact" className="process__cta-btn">Get started</a>
                         <a href="#contact" className="process__cta-icon" aria-label="Get started">
@@ -582,7 +547,7 @@ export default function HomeContent() {
                         <span className="process__tag">Design Process</span>
                         <span className="process__counter">04 / 04</span>
                       </div>
-                      <p className="process__desc" data-wordfx>Comprehensive design systems, detailed developer specs, and close collaboration through build and QA. I stay until it ships right.</p>
+                      <p className="process__desc" data-wordfx>And I don&rsquo;t vanish at handoff. Clean design systems, dev-ready specs, and I stick around through build and QA until it actually ships right.</p>
                       <div className="process__cta">
                         <a href="#contact" className="process__cta-btn">Get started</a>
                         <a href="#contact" className="process__cta-icon" aria-label="Get started">
@@ -607,7 +572,7 @@ export default function HomeContent() {
                 </span>
                 <a href="/work" className="work__viewall">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  View all works
+                  View all work
                 </a>
               </div>
 
@@ -708,7 +673,7 @@ export default function HomeContent() {
                 <a href="#contact" className="services__row">
                   <span className="services__num">(01)</span>
                   <h3 className="services__name" data-wordfx>Web Design</h3>
-                  <p className="services__desc">Pixel-perfect, responsive sites crafted from the ground up for clarity, speed, and conversion.</p>
+                  <p className="services__desc">Responsive sites built from scratch — quick to load, easy to read, and made to turn visitors into customers.</p>
                   <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #2a3a5a 0%, #1a2233 55%, #0d1320 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
@@ -718,7 +683,7 @@ export default function HomeContent() {
                 <a href="#contact" className="services__row">
                   <span className="services__num">(02)</span>
                   <h3 className="services__name" data-wordfx>UI UX Design</h3>
-                  <p className="services__desc">Intuitive flows and interfaces that balance usability with character at every touchpoint.</p>
+                  <p className="services__desc">Flows and screens that feel obvious to use, with just enough personality to stick in memory.</p>
                   <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #1a5a52 0%, #103b38 55%, #07201d 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
@@ -728,7 +693,7 @@ export default function HomeContent() {
                 <a href="#contact" className="services__row">
                   <span className="services__num">(03)</span>
                   <h3 className="services__name" data-wordfx>Product Design</h3>
-                  <p className="services__desc">End-to-end product thinking, from strategy and research to a polished, shippable solution.</p>
+                  <p className="services__desc">The whole journey — strategy, research, and design — turned into something you can actually ship.</p>
                   <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #b3702f 0%, #5a3010 55%, #2a1606 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
@@ -738,7 +703,7 @@ export default function HomeContent() {
                 <a href="#contact" className="services__row">
                   <span className="services__num">(04)</span>
                   <h3 className="services__name" data-wordfx>Branding</h3>
-                  <p className="services__desc">Cohesive visual identities that position and differentiate your brand with precision and clarity.</p>
+                  <p className="services__desc">A visual identity that actually looks like you — and tells people who you are before they read a word.</p>
                   <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #5a2a55 0%, #34203a 55%, #170c1a 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
@@ -748,7 +713,7 @@ export default function HomeContent() {
                 <a href="#contact" className="services__row">
                   <span className="services__num">(05)</span>
                   <h3 className="services__name" data-wordfx>UX Audit</h3>
-                  <p className="services__desc">Deep usability reviews that surface friction points and unlock measurable, compounding gains.</p>
+                  <p className="services__desc">A close look at where people get stuck, and a plain list of fixes — ranked by what&rsquo;ll move the needle most.</p>
                   <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #3a3a6e 0%, #1f1f44 55%, #0c0c20 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
@@ -758,7 +723,7 @@ export default function HomeContent() {
                 <a href="#contact" className="services__row">
                   <span className="services__num">(06)</span>
                   <h3 className="services__name" data-wordfx>AI Native Design</h3>
-                  <p className="services__desc">Smart, AI-driven experiences that streamline operations, reduce costs, and boost efficiency.</p>
+                  <p className="services__desc">AI-powered experiences that quietly do the heavy lifting — less busywork for your team, lower costs for you.</p>
                   <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #b58a2f 0%, #5a3a0a 55%, #2a1c04 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
@@ -773,16 +738,16 @@ export default function HomeContent() {
             <div className="container">
               <div className="metrics__grid">
                 <div className="metrics__item">
-                  <p className="metrics__number"><span className="metrics__affix">$</span>31M</p>
-                  <p className="metrics__label">Client revenue impacted</p>
+                  <p className="metrics__number"><span className="metrics__affix">$</span>12M</p>
+                  <p className="metrics__label">In revenue my work has helped move</p>
                 </div>
                 <div className="metrics__item">
-                  <p className="metrics__number">14<span className="metrics__affix">K</span></p>
-                  <p className="metrics__label">High-intent leads captured</p>
+                  <p className="metrics__number">40<span className="metrics__affix">+</span></p>
+                  <p className="metrics__label">Products and features I&rsquo;ve shipped</p>
                 </div>
                 <div className="metrics__item">
-                  <p className="metrics__number">81<span className="metrics__affix">+</span></p>
-                  <p className="metrics__label">Brands we’ve collaborated with</p>
+                  <p className="metrics__number">8<span className="metrics__affix">yrs</span></p>
+                  <p className="metrics__label">Designing for real teams and users</p>
                 </div>
               </div>
             </div>
@@ -800,7 +765,7 @@ export default function HomeContent() {
                   <svg className="reasons__arrowdown" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v10M2.5 7.5L7 12l4.5-4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </div>
                 <h2 className="reasons__heading" data-wordfx>Better design,<br />simplified.</h2>
-                <p className="reasons__lead">A design partnership that gives you flexible access to high-quality creative work — delivered quickly, refined continuously, and tailored to your brand.</p>
+                <p className="reasons__lead">Think of it as design on tap. Senior-level work whenever you need it, refined until it&rsquo;s right, and shaped around your brand — never pulled off a template.</p>
                 <div className="reasons__cta">
                   <a href="#contact" className="btn reasons__btn">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -814,7 +779,7 @@ export default function HomeContent() {
                       <span className="reasons__avatar" style={{ background: "linear-gradient(135deg, #5a2a55, #170c1a)" } as React.CSSProperties}></span>
                       <span className="reasons__avatar reasons__avatar--more">+81</span>
                     </div>
-                    <span className="reasons__trust">Trusted by directors of influential companies</span>
+                    <span className="reasons__trust">Trusted by founders and product leads I&rsquo;ve worked with</span>
                   </div>
                 </div>
               </div>
@@ -826,7 +791,7 @@ export default function HomeContent() {
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-1.png" alt="" /></span>
                     <div className="reasons__card-body">
                       <h3 className="reasons__card-title" data-wordfx>Predictable Pricing</h3>
-                      <p className="reasons__card-desc">Access dedicated design support through a simple monthly model. No hidden fees, no surprises — just consistent creative work tailored to your needs.</p>
+                      <p className="reasons__card-desc">One flat monthly rate. No surprise invoices, no scope-creep math — just steady design work you can plan your budget around.</p>
                     </div>
                   </article>
                 </div>
@@ -836,7 +801,7 @@ export default function HomeContent() {
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-2.png" alt="" /></span>
                     <div className="reasons__card-body">
                       <h3 className="reasons__card-title" data-wordfx>Limitless Requests</h3>
-                      <p className="reasons__card-desc">Submit as many design requests as you need. I keep refining and improving until everything aligns perfectly with your vision.</p>
+                      <p className="reasons__card-desc">Send over as many requests as you like. I&rsquo;ll keep tweaking and refining until it matches the picture in your head.</p>
                     </div>
                   </article>
                 </div>
@@ -846,7 +811,7 @@ export default function HomeContent() {
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-3.png" alt="" /></span>
                     <div className="reasons__card-body">
                       <h3 className="reasons__card-title" data-wordfx>Fast Delivery</h3>
-                      <p className="reasons__card-desc">Speed meets quality. A streamlined workflow ensures your projects move forward quickly without sacrificing attention to detail.</p>
+                      <p className="reasons__card-desc">Most requests land in a few days, not a few weeks. Quick to turn around — but never rushed where it counts.</p>
                     </div>
                   </article>
                 </div>
@@ -856,7 +821,7 @@ export default function HomeContent() {
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-4.png" alt="" /></span>
                     <div className="reasons__card-body">
                       <h3 className="reasons__card-title" data-wordfx>Senior Design Craft</h3>
-                      <p className="reasons__card-desc">Work with an experienced designer who understands strategy, aesthetics, and performance — delivering work that strengthens your brand.</p>
+                      <p className="reasons__card-desc">You work directly with me — someone who&rsquo;s shipped real products — not a junior learning the ropes on your budget.</p>
                     </div>
                   </article>
                 </div>
@@ -866,7 +831,7 @@ export default function HomeContent() {
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-5.png" alt="" /></span>
                     <div className="reasons__card-body">
                       <h3 className="reasons__card-title" data-wordfx>Clear Collaboration</h3>
-                      <p className="reasons__card-desc">Stay connected through simple, transparent communication that keeps feedback flowing and projects moving.</p>
+                      <p className="reasons__card-desc">Straight talk and simple updates, so you&rsquo;re never chasing me for status. You always know exactly where things stand.</p>
                     </div>
                   </article>
                 </div>
@@ -906,7 +871,7 @@ export default function HomeContent() {
 
           <div className="footer__main">
             <div className="footer__left">
-              <h3 className="footer__tagline" data-wordfx>Strategic design for brands that matter.</h3>
+              <h3 className="footer__tagline" data-wordfx>Calm, clear design for products people love to use.</h3>
               <div className="footer__contacts">
                 <a href="mailto:hello@awais.design" className="footer__contact-link">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { applyWordfx } from "@/lib/wordfx";
+import ClientLogos from "@/components/ui/client-logos";
 
 /**
  * About page content, ported from the original static about.html.
@@ -270,7 +271,7 @@ export default function AboutContent() {
               About
             </span>
             <h1 className="pagehead__title" data-wordfx>Designer set on clarity, not decoration.</h1>
-            <p className="pagehead__lead">I'm M. Awais. For eight years I've helped teams turn dense, technical products into interfaces people understand on the first try, across fintech, healthcare, and commerce.</p>
+            <p className="pagehead__lead">I&rsquo;m M. Awais. For about eight years I&rsquo;ve helped teams take dense, technical products and turn them into something people understand on the first try — across fintech, healthcare, SaaS, and commerce.</p>
 
             <div className="about-showcase">
               <div className="about-showcase__stats">
@@ -279,8 +280,8 @@ export default function AboutContent() {
                   <span className="about-stat__label">Designing products end to end</span>
                 </div>
                 <div className="about-stat">
-                  <span className="about-stat__num">60<span className="about-stat__affix">+</span></span>
-                  <span className="about-stat__label">Products and features shipped</span>
+                  <span className="about-stat__num">40<span className="about-stat__affix">+</span></span>
+                  <span className="about-stat__label">Products &amp; features I&rsquo;ve shipped</span>
                 </div>
                 <div className="about-stat">
                   <span className="about-stat__num">4<span className="about-stat__affix">ind.</span></span>
@@ -296,7 +297,7 @@ export default function AboutContent() {
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>
                 Experience
               </h2>
-              <span className="rulebar__aside">2017 — Now</span>
+              <span className="rulebar__aside">2018 — Now</span>
             </div>
 
             <div className="roadmap" data-roadmap>
@@ -313,9 +314,9 @@ export default function AboutContent() {
                     <span className="roadmap__node" aria-hidden="true"></span>
                     <article className="roadmap__card">
                       <span className="roadmap__year">2023 — <em className="roadmap__now">Now</em></span>
-                      <h3 className="roadmap__role" data-wordfx>Lead Product Designer</h3>
-                      <span className="roadmap__org">Northbeam</span>
-                      <p className="roadmap__note">Own end-to-end design for the analytics platform across web and mobile.</p>
+                      <h3 className="roadmap__role" data-wordfx>Product Designer (Freelance)</h3>
+                      <span className="roadmap__org">Independent</span>
+                      <p className="roadmap__note">Designing products end to end for founders across fintech, SaaS, and commerce.</p>
                     </article>
                   </li>
 
@@ -323,9 +324,9 @@ export default function AboutContent() {
                     <span className="roadmap__node" aria-hidden="true"></span>
                     <article className="roadmap__card">
                       <span className="roadmap__year">2021 — 2023</span>
-                      <h3 className="roadmap__role" data-wordfx>Senior UX Designer</h3>
-                      <span className="roadmap__org">Finhaus</span>
-                      <p className="roadmap__note">Rebuilt onboarding and the core dashboard for a fintech serving 40k businesses.</p>
+                      <h3 className="roadmap__role" data-wordfx>Senior Product Designer</h3>
+                      <span className="roadmap__org">tkxel</span>
+                      <p className="roadmap__note">Led design on enterprise dashboards and a shared design system used across teams.</p>
                     </article>
                   </li>
 
@@ -334,17 +335,17 @@ export default function AboutContent() {
                     <article className="roadmap__card">
                       <span className="roadmap__year">2019 — 2021</span>
                       <h3 className="roadmap__role" data-wordfx>Product Designer</h3>
-                      <span className="roadmap__org">Studio Mura</span>
-                      <p className="roadmap__note">Brand and product work for healthcare and commerce clients.</p>
+                      <span className="roadmap__org">OptimusFox</span>
+                      <p className="roadmap__note">UX and UI for web and mobile products across a range of client projects.</p>
                     </article>
                   </li>
 
                   <li className="roadmap__stop" data-state="future">
                     <span className="roadmap__node" aria-hidden="true"></span>
                     <article className="roadmap__card">
-                      <span className="roadmap__year">2017 — 2019</span>
+                      <span className="roadmap__year">2018 — 2019</span>
                       <h3 className="roadmap__role" data-wordfx>UI Designer</h3>
-                      <span className="roadmap__org">Independent</span>
+                      <span className="roadmap__org">Code District</span>
                       <p className="roadmap__note">Marketing sites and first design systems for early-stage startups.</p>
                     </article>
                   </li>
@@ -370,27 +371,7 @@ export default function AboutContent() {
             </div>
           </section>
 
-          <section className="logos section--light">
-            <div className="container">
-              <div className="logos__header">
-                <div className="logos__label-wrap">
-                  <svg className="logos__star" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 0L7.91 4.59L12.5 6L7.91 7.41L6.5 12L5.09 7.41L0.5 6L5.09 4.59L6.5 0Z" fill="currentColor"/></svg>
-                  <span className="logos__label">Built for Ambitious Brands</span>
-                </div>
-                <svg className="logos__arrow" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </div>
-              <div className="logos__grid">
-                <div className="logos__card"><span className="logos__name">Google</span></div>
-                <div className="logos__card"><span className="logos__name">Spotify</span></div>
-                <div className="logos__card"><span className="logos__name">Shopify</span></div>
-                <div className="logos__card"><span className="logos__name">Slack</span></div>
-                <div className="logos__card"><span className="logos__name">Adobe</span></div>
-                <div className="logos__card"><span className="logos__name">Figma</span></div>
-                <div className="logos__card"><span className="logos__name">Notion</span></div>
-                <div className="logos__card"><span className="logos__name">Stripe</span></div>
-              </div>
-            </div>
-          </section>
+          <ClientLogos />
 
           <section className="marquee section--light" aria-label="Disciplines and tools">
             <div className="marquee__track">
@@ -431,7 +412,7 @@ export default function AboutContent() {
                   <svg className="reasons__arrowdown" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v10M2.5 7.5L7 12l4.5-4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </div>
                 <h2 className="reasons__heading" data-wordfx>Better design,<br />simplified.</h2>
-                <p className="reasons__lead">A design partnership that gives you flexible access to high-quality creative work, delivered quickly, refined continuously, and tailored to your brand.</p>
+                <p className="reasons__lead">Think of it as design on tap. Senior-level work whenever you need it, refined until it&rsquo;s right, and shaped around your brand — never pulled off a template.</p>
                 <div className="reasons__cta">
                   <a href="/contact" className="btn reasons__btn">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -445,7 +426,7 @@ export default function AboutContent() {
                       <span className="reasons__avatar" style={{ background: "linear-gradient(135deg, #5a2a55, #170c1a)" } as React.CSSProperties}></span>
                       <span className="reasons__avatar reasons__avatar--more">+81</span>
                     </div>
-                    <span className="reasons__trust">Trusted by directors of influential companies</span>
+                    <span className="reasons__trust">Trusted by founders and product leads I&rsquo;ve worked with</span>
                   </div>
                 </div>
               </div>
@@ -457,7 +438,7 @@ export default function AboutContent() {
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-1.png" alt="" /></span>
                     <div className="reasons__card-body">
                       <h3 className="reasons__card-title" data-wordfx>Predictable Pricing</h3>
-                      <p className="reasons__card-desc">Access dedicated design support through a simple monthly model. No hidden fees, no surprises, just consistent creative work tailored to your needs.</p>
+                      <p className="reasons__card-desc">One flat monthly rate. No surprise invoices, no scope-creep math — just steady design work you can plan your budget around.</p>
                     </div>
                   </article>
                 </div>
@@ -467,7 +448,7 @@ export default function AboutContent() {
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-2.png" alt="" /></span>
                     <div className="reasons__card-body">
                       <h3 className="reasons__card-title" data-wordfx>Limitless Requests</h3>
-                      <p className="reasons__card-desc">Submit as many design requests as you need. I keep refining and improving until everything aligns perfectly with your vision.</p>
+                      <p className="reasons__card-desc">Send over as many requests as you like. I&rsquo;ll keep tweaking and refining until it matches the picture in your head.</p>
                     </div>
                   </article>
                 </div>
@@ -477,7 +458,7 @@ export default function AboutContent() {
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-3.png" alt="" /></span>
                     <div className="reasons__card-body">
                       <h3 className="reasons__card-title" data-wordfx>Fast Delivery</h3>
-                      <p className="reasons__card-desc">Speed meets quality. A streamlined workflow ensures your projects move forward quickly without sacrificing attention to detail.</p>
+                      <p className="reasons__card-desc">Most requests land in a few days, not a few weeks. Quick to turn around — but never rushed where it counts.</p>
                     </div>
                   </article>
                 </div>
@@ -487,7 +468,7 @@ export default function AboutContent() {
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-4.png" alt="" /></span>
                     <div className="reasons__card-body">
                       <h3 className="reasons__card-title" data-wordfx>Senior Design Craft</h3>
-                      <p className="reasons__card-desc">Work with an experienced designer who understands strategy, aesthetics, and performance, delivering work that strengthens your brand.</p>
+                      <p className="reasons__card-desc">You work directly with me — someone who&rsquo;s shipped real products — not a junior learning the ropes on your budget.</p>
                     </div>
                   </article>
                 </div>
@@ -497,7 +478,7 @@ export default function AboutContent() {
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-5.png" alt="" /></span>
                     <div className="reasons__card-body">
                       <h3 className="reasons__card-title" data-wordfx>Clear Collaboration</h3>
-                      <p className="reasons__card-desc">Stay connected through simple, transparent communication that keeps feedback flowing and projects moving.</p>
+                      <p className="reasons__card-desc">Straight talk and simple updates, so you&rsquo;re never chasing me for status. You always know exactly where things stand.</p>
                     </div>
                   </article>
                 </div>
@@ -536,7 +517,7 @@ export default function AboutContent() {
 
           <div className="footer__main">
             <div className="footer__left">
-              <h3 className="footer__tagline" data-wordfx>Strategic design for brands that matter.</h3>
+              <h3 className="footer__tagline" data-wordfx>Calm, clear design for products people love to use.</h3>
               <div className="footer__contacts">
                 <a href="mailto:hello@awais.design" className="footer__contact-link">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
