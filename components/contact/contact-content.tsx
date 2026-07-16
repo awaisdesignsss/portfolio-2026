@@ -1,15 +1,19 @@
 "use client";
 
 import React from "react";
+import { applyWordfx } from "@/lib/wordfx";
 
 /**
  * Contact page, ported from the original static contact.html.
  * Design comes from the shared styles.css (imported in app/layout.tsx).
- * The only interactive behavior is the mobile nav toggle (no form).
+ * Behavior: per-word heading choreography and the mobile nav toggle.
  */
 export default function ContactContent() {
 
   React.useEffect(() => {
+    // ── wordfx: per-word hover choreography on section headings ──
+    applyWordfx();
+
     // ── Mobile nav toggle ──
     const toggle = document.querySelector<HTMLElement>(".nav__toggle");
     const nav = document.querySelector<HTMLElement>(".nav");
@@ -45,7 +49,7 @@ export default function ContactContent() {
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>
               Contact
             </span>
-            <h1 className="pagehead__title">Let's talk.</h1>
+            <h1 className="pagehead__title" data-wordfx>Let's talk.</h1>
             <p className="pagehead__lead">Whether it's a product from scratch or a redesign that's been waiting too long, a direct message is the fastest way to reach me. Email or WhatsApp, and I'll come back with honest first thoughts.</p>
           </section>
 
@@ -101,7 +105,7 @@ export default function ContactContent() {
               <svg className="footer__arrowdown" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v10M2.5 7.5L7 12l4.5-4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
             <div className="footer__contact-title">
-              <h2 className="footer__cta-heading">Get in touch</h2>
+              <h2 className="footer__cta-heading" data-wordfx>Get in touch</h2>
               <a href="mailto:hello@awais.design" className="btn footer__cta-btn">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 Let's talk
@@ -118,7 +122,7 @@ export default function ContactContent() {
 
           <div className="footer__main">
             <div className="footer__left">
-              <h3 className="footer__tagline">Strategic design for brands that matter.</h3>
+              <h3 className="footer__tagline" data-wordfx>Strategic design for brands that matter.</h3>
               <div className="footer__contacts">
                 <a href="mailto:hello@awais.design" className="footer__contact-link">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>

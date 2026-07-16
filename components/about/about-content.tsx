@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { applyWordfx } from "@/lib/wordfx";
 
 /**
  * About page content, ported from the original static about.html.
@@ -64,29 +65,8 @@ export default function AboutContent() {
       apply();
     })();
 
-    // ── wordfx: per-word hover choreography ──
-    (() => {
-      const wrap = (el: HTMLElement) => {
-        if (el.dataset.wordfxDone) return;
-        const words = (el.textContent || "").trim().split(/\s+/);
-        el.textContent = "";
-        words.forEach((w, i) => {
-          const s = document.createElement("span");
-          s.className = "wordfx";
-          s.textContent = w;
-          const rot = (((i * 137) % 61) - 30) / 10;
-          const lift = 0.06 + ((i * 89) % 5) / 100;
-          const scale = 1.03 + ((i * 53) % 5) / 100;
-          s.style.setProperty("--wr", rot.toFixed(1) + "deg");
-          s.style.setProperty("--wl", "-" + lift.toFixed(2) + "em");
-          s.style.setProperty("--ws", scale.toFixed(2));
-          el.appendChild(s);
-          if (i < words.length - 1) el.appendChild(document.createTextNode(" "));
-        });
-        el.dataset.wordfxDone = "1";
-      };
-      document.querySelectorAll<HTMLElement>("[data-wordfx]").forEach(wrap);
-    })();
+    // ── wordfx: per-word hover choreography (bio copy + section headings) ──
+    applyWordfx();
 
     // ── Experience roadmap: cinematic center-focus carousel ──
     (() => {
@@ -227,6 +207,42 @@ export default function AboutContent() {
       });
     })();
 
+    // ── Stats: count up from zero when each number scrolls into view ──
+    if (!reduceMotion) {
+      const runCount = (el: HTMLElement) => {
+        const textNode = Array.from(el.childNodes).find(
+          (n) => n.nodeType === Node.TEXT_NODE && /\d/.test(n.textContent || "")
+        );
+        if (!textNode) return;
+        const raw = (textNode.textContent || "").trim();
+        const m = raw.match(/^(\d+)(\D*)$/);
+        if (!m) return;
+        const targetVal = parseInt(m[1], 10);
+        const suffix = m[2];
+        const dur = 1500;
+        const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+        const start = performance.now();
+        const tick = (now: number) => {
+          const p = Math.min(1, (now - start) / dur);
+          textNode.textContent = Math.round(easeOut(p) * targetVal) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+          else textNode.textContent = raw;
+        };
+        textNode.textContent = "0" + suffix;
+        requestAnimationFrame(tick);
+      };
+      const cio = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) { runCount(e.target as HTMLElement); cio.unobserve(e.target); }
+          });
+        },
+        { rootMargin: "0px 0px -15% 0px" }
+      );
+      document.querySelectorAll<HTMLElement>(".about-stat__num").forEach((n) => cio.observe(n));
+      cleanups.push(() => cio.disconnect());
+    }
+
     return () => { cleanups.forEach((fn) => fn()); };
   }, []);
 
@@ -253,7 +269,7 @@ export default function AboutContent() {
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>
               About
             </span>
-            <h1 className="pagehead__title">Designer set on clarity, not decoration.</h1>
+            <h1 className="pagehead__title" data-wordfx>Designer set on clarity, not decoration.</h1>
             <p className="pagehead__lead">I'm M. Awais. For eight years I've helped teams turn dense, technical products into interfaces people understand on the first try, across fintech, healthcare, and commerce.</p>
 
             <div className="about-showcase">
@@ -276,10 +292,10 @@ export default function AboutContent() {
 
           <section className="section experience section--light">
             <div className="rulebar">
-              <span className="rulebar__eyebrow">
+              <h2 className="rulebar__eyebrow">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>
                 Experience
-              </span>
+              </h2>
               <span className="rulebar__aside">2017 — Now</span>
             </div>
 
@@ -297,7 +313,7 @@ export default function AboutContent() {
                     <span className="roadmap__node" aria-hidden="true"></span>
                     <article className="roadmap__card">
                       <span className="roadmap__year">2023 — <em className="roadmap__now">Now</em></span>
-                      <h3 className="roadmap__role">Lead Product Designer</h3>
+                      <h3 className="roadmap__role" data-wordfx>Lead Product Designer</h3>
                       <span className="roadmap__org">Northbeam</span>
                       <p className="roadmap__note">Own end-to-end design for the analytics platform across web and mobile.</p>
                     </article>
@@ -307,7 +323,7 @@ export default function AboutContent() {
                     <span className="roadmap__node" aria-hidden="true"></span>
                     <article className="roadmap__card">
                       <span className="roadmap__year">2021 — 2023</span>
-                      <h3 className="roadmap__role">Senior UX Designer</h3>
+                      <h3 className="roadmap__role" data-wordfx>Senior UX Designer</h3>
                       <span className="roadmap__org">Finhaus</span>
                       <p className="roadmap__note">Rebuilt onboarding and the core dashboard for a fintech serving 40k businesses.</p>
                     </article>
@@ -317,7 +333,7 @@ export default function AboutContent() {
                     <span className="roadmap__node" aria-hidden="true"></span>
                     <article className="roadmap__card">
                       <span className="roadmap__year">2019 — 2021</span>
-                      <h3 className="roadmap__role">Product Designer</h3>
+                      <h3 className="roadmap__role" data-wordfx>Product Designer</h3>
                       <span className="roadmap__org">Studio Mura</span>
                       <p className="roadmap__note">Brand and product work for healthcare and commerce clients.</p>
                     </article>
@@ -327,7 +343,7 @@ export default function AboutContent() {
                     <span className="roadmap__node" aria-hidden="true"></span>
                     <article className="roadmap__card">
                       <span className="roadmap__year">2017 — 2019</span>
-                      <h3 className="roadmap__role">UI Designer</h3>
+                      <h3 className="roadmap__role" data-wordfx>UI Designer</h3>
                       <span className="roadmap__org">Independent</span>
                       <p className="roadmap__note">Marketing sites and first design systems for early-stage startups.</p>
                     </article>
@@ -414,7 +430,7 @@ export default function AboutContent() {
                   </span>
                   <svg className="reasons__arrowdown" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v10M2.5 7.5L7 12l4.5-4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </div>
-                <h2 className="reasons__heading">Better design,<br />simplified.</h2>
+                <h2 className="reasons__heading" data-wordfx>Better design,<br />simplified.</h2>
                 <p className="reasons__lead">A design partnership that gives you flexible access to high-quality creative work, delivered quickly, refined continuously, and tailored to your brand.</p>
                 <div className="reasons__cta">
                   <a href="/contact" className="btn reasons__btn">
@@ -440,7 +456,7 @@ export default function AboutContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-1.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title">Predictable Pricing</h3>
+                      <h3 className="reasons__card-title" data-wordfx>Predictable Pricing</h3>
                       <p className="reasons__card-desc">Access dedicated design support through a simple monthly model. No hidden fees, no surprises, just consistent creative work tailored to your needs.</p>
                     </div>
                   </article>
@@ -450,7 +466,7 @@ export default function AboutContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-2.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title">Limitless Requests</h3>
+                      <h3 className="reasons__card-title" data-wordfx>Limitless Requests</h3>
                       <p className="reasons__card-desc">Submit as many design requests as you need. I keep refining and improving until everything aligns perfectly with your vision.</p>
                     </div>
                   </article>
@@ -460,7 +476,7 @@ export default function AboutContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-3.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title">Fast Delivery</h3>
+                      <h3 className="reasons__card-title" data-wordfx>Fast Delivery</h3>
                       <p className="reasons__card-desc">Speed meets quality. A streamlined workflow ensures your projects move forward quickly without sacrificing attention to detail.</p>
                     </div>
                   </article>
@@ -470,7 +486,7 @@ export default function AboutContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-4.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title">Senior Design Craft</h3>
+                      <h3 className="reasons__card-title" data-wordfx>Senior Design Craft</h3>
                       <p className="reasons__card-desc">Work with an experienced designer who understands strategy, aesthetics, and performance, delivering work that strengthens your brand.</p>
                     </div>
                   </article>
@@ -480,7 +496,7 @@ export default function AboutContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-5.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title">Clear Collaboration</h3>
+                      <h3 className="reasons__card-title" data-wordfx>Clear Collaboration</h3>
                       <p className="reasons__card-desc">Stay connected through simple, transparent communication that keeps feedback flowing and projects moving.</p>
                     </div>
                   </article>
@@ -503,7 +519,7 @@ export default function AboutContent() {
               <svg className="footer__arrowdown" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v10M2.5 7.5L7 12l4.5-4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
             <div className="footer__contact-title">
-              <h2 className="footer__cta-heading">Get in touch</h2>
+              <h2 className="footer__cta-heading" data-wordfx>Get in touch</h2>
               <a href="/contact" className="btn footer__cta-btn">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 Let's talk
@@ -520,7 +536,7 @@ export default function AboutContent() {
 
           <div className="footer__main">
             <div className="footer__left">
-              <h3 className="footer__tagline">Strategic design for brands that matter.</h3>
+              <h3 className="footer__tagline" data-wordfx>Strategic design for brands that matter.</h3>
               <div className="footer__contacts">
                 <a href="mailto:hello@awais.design" className="footer__contact-link">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>

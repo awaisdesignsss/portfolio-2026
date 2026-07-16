@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { applyWordfx } from "@/lib/wordfx";
 
 /**
  * Work index page, ported from the original static work.html.
@@ -60,6 +61,9 @@ export default function WorkContent() {
       });
     })();
 
+    // ── wordfx: per-word hover choreography on section headings ──
+    applyWordfx();
+
     return () => { cleanups.forEach((fn) => fn()); };
   }, []);
 
@@ -86,7 +90,7 @@ export default function WorkContent() {
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>
               Selected Work
             </span>
-            <h1 className="pagehead__title">Products built to be understood.</h1>
+            <h1 className="pagehead__title" data-wordfx>Products built to be understood.</h1>
             <p className="pagehead__lead">Six projects across fintech, healthcare, commerce, and SaaS. Each one started with a tangled problem and ended with an interface that gets out of the way.</p>
           </section>
 
@@ -192,7 +196,7 @@ export default function WorkContent() {
               <svg className="footer__arrowdown" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v10M2.5 7.5L7 12l4.5-4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
             <div className="footer__contact-title">
-              <h2 className="footer__cta-heading">Get in touch</h2>
+              <h2 className="footer__cta-heading" data-wordfx>Get in touch</h2>
               <a href="/contact" className="btn footer__cta-btn">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 Let's talk
@@ -209,7 +213,7 @@ export default function WorkContent() {
 
           <div className="footer__main">
             <div className="footer__left">
-              <h3 className="footer__tagline">Strategic design for brands that matter.</h3>
+              <h3 className="footer__tagline" data-wordfx>Strategic design for brands that matter.</h3>
               <div className="footer__contacts">
                 <a href="mailto:hello@awais.design" className="footer__contact-link">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>

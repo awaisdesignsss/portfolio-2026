@@ -18,8 +18,8 @@
   --dark-surface-raised: #1c1c1c;
   --dark-ink: #ffffff;
   --dark-ink-secondary: rgba(255, 255, 255, 0.7);
-  --dark-ink-muted: rgba(255, 255, 255, 0.6);
-  --dark-ink-subtle: rgba(255, 255, 255, 0.4);
+  --dark-ink-muted: rgba(255, 255, 255, 0.62);
+  --dark-ink-subtle: rgba(255, 255, 255, 0.55);
   --dark-border: rgba(255, 255, 255, 0.12);
   --dark-border-strong: rgba(255, 255, 255, 0.2);
   --dark-glass-bg: rgba(255, 255, 255, 0.85);
@@ -31,8 +31,8 @@
   --light-surface-raised: #ffffff;
   --light-ink: #1e1e1e;
   --light-ink-secondary: rgba(30, 30, 30, 0.7);
-  --light-ink-muted: rgba(30, 30, 30, 0.55);
-  --light-ink-subtle: rgba(30, 30, 30, 0.35);
+  --light-ink-muted: rgba(30, 30, 30, 0.7);
+  --light-ink-subtle: rgba(30, 30, 30, 0.6);
   --light-border: rgba(30, 30, 30, 0.1);
   --light-border-strong: rgba(30, 30, 30, 0.18);
   --light-glass-bg: rgba(255, 255, 255, 0.85);
@@ -267,7 +267,11 @@ body {
   line-height: var(--leading-normal);
   background: var(--brand-black);
   color: var(--brand-white);
-  overflow-x: hidden;
+  /* `clip` prevents horizontal overflow WITHOUT making <body> a scroll
+     container (unlike `hidden`, which forces overflow-y to `auto`). This keeps
+     the window/viewport as the sole scroller, so window scroll events fire for
+     the scroll-driven sections. */
+  overflow-x: clip;
 }
 
 a {
@@ -360,11 +364,15 @@ img {
 .nav__toggle {
   display: none;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
   padding: var(--space-2);
+  min-width: 44px;
+  min-height: 44px; /* WCAG 2.5.5 touch target */
 }
 
 .nav__toggle span {
@@ -2096,10 +2104,10 @@ img {
     display: none;
   }
 
-  /* Mobile: Metrics */
+  /* Tablet / large phone: keep metrics multi-column (they only stack < 480) */
   .metrics__grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-10);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
   }
 
   .metrics__item {
@@ -2687,6 +2695,9 @@ textarea:focus-visible {
   padding-bottom: var(--space-12);
 }
 .workfilter__chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px; /* WCAG 2.5.5 touch target */
   padding: var(--space-2) var(--space-5);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-pill);
@@ -2982,8 +2993,13 @@ a.contactmethod:focus-visible { outline: 2px solid var(--brand-amber); outline-o
    ═══════════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
-  /* Stack the three stats like the homepage metrics do on mobile */
-  .about-showcase__stats { grid-template-columns: 1fr; gap: var(--space-10); }
+  /* Keep the three stats multi-column through the tablet / large-phone range;
+     they only stack on true mobile (< 480, below). */
+  .about-showcase__stats { gap: var(--space-6); }
+}
+
+@media (max-width: 480px) {
+  .about-showcase__stats { grid-template-columns: 1fr; gap: var(--space-8); }
 }
 
 @media (max-width: 768px) {
@@ -3054,3 +3070,274 @@ html.splash-seen .splash { display: none; }
 @keyframes splash-line-in {
   to { transform: scaleX(1); }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   INTERACTION & MOTION LAYER
+   Hover feedback, press states, and micro-interactions layered
+   over the base components. Movement is transform / opacity /
+   shadow only. The global prefers-reduced-motion rule (above)
+   collapses every transition here to an instant state change, so
+   these read as plain hover states — never motion — for users
+   who ask for less.  Hover-driven lifts are gated behind
+   `@media (hover: hover)` so they don't stick on touch.
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --lift-shadow-dark: 0 14px 34px -12px rgba(0, 0, 0, 0.55);
+  --lift-shadow-light: 0 14px 30px -14px rgba(30, 30, 30, 0.28);
+}
+
+* { -webkit-tap-highlight-color: transparent; }
+
+/* Per-item stagger for the shared reveal system (delay set inline via --rd) */
+.js .reveal { transition-delay: var(--rd, 0ms); }
+
+/* Counting stats hold a fixed digit width so they don't jitter while animating */
+.metrics__number,
+.about-stat__num { font-variant-numeric: tabular-nums; }
+
+/* ── Filled pill buttons — lift on hover, press on click ── */
+.btn,
+.nav__cta,
+.hero__btn,
+.process__cta-btn {
+  transition: transform var(--duration-base) var(--ease-out-quart),
+              box-shadow var(--duration-base) var(--ease-out-quart),
+              background var(--duration-base) var(--ease-out),
+              opacity var(--duration-base) var(--ease-out);
+}
+@media (hover: hover) {
+  .btn:hover,
+  .nav__cta:hover,
+  .hero__btn:hover,
+  .process__cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--lift-shadow-dark);
+    opacity: 1;
+  }
+}
+.btn:active,
+.nav__cta:active,
+.hero__btn:active,
+.hero__btn-icon:active,
+.process__cta-btn:active {
+  transform: translateY(0) scale(0.96);
+  transition-duration: 90ms;
+}
+/* Leading ↗ arrow inside pill buttons (reasons, footer CTA) travels on hover */
+.btn svg { transition: transform var(--duration-base) var(--ease-out-quart); }
+@media (hover: hover) { .btn:hover svg { transform: translate(2px, -2px); } }
+
+/* ── Round icon buttons ── */
+.hero__btn-icon,
+.process__cta-icon,
+.btn--icon {
+  transition: transform var(--duration-base) var(--ease-out-quart),
+              box-shadow var(--duration-base) var(--ease-out-quart),
+              background var(--duration-base) var(--ease-out),
+              opacity var(--duration-base) var(--ease-out);
+}
+.hero__btn-icon svg,
+.process__cta-icon svg { transition: transform var(--duration-base) var(--ease-out-quart); }
+@media (hover: hover) {
+  .process__cta-icon:hover { transform: translateY(-2px); box-shadow: var(--lift-shadow-dark); opacity: 1; }
+  .process__cta-icon:hover svg { transform: translateX(3px); }        /* → nudge */
+  /* hero icon lift is owned by the magnetic JS; keep the shadow + arrow bob */
+  .hero__btn-icon:hover { box-shadow: var(--lift-shadow-dark); opacity: 1; }
+  .hero__btn-icon:hover svg { transform: rotate(90deg) translateX(3px); } /* ↓ bob */
+}
+.process__cta-icon:active { transform: scale(0.94); }
+
+/* ── Nav — animated underline on hover, persistent under the current page ── */
+.nav__link { position: relative; }
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 100%;
+  height: 1.5px;
+  margin: 0;
+  background: var(--brand-ink);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--duration-base) var(--ease-out-quart);
+}
+.nav__link[aria-current="page"]::after { transform: scaleX(1); transform-origin: left; margin: 0; }
+@media (hover: hover) {
+  .nav__link:hover { opacity: 1; }
+  .nav__link:hover::after { transform: scaleX(1); transform-origin: left; }
+}
+
+/* ── Hero discipline menu (LinkedIn / Dribbble / …) ── */
+.hero__menu-label,
+.hero__menu-icon,
+.hero__menu-arrow {
+  transition: transform var(--duration-base) var(--ease-out-quart),
+              color var(--duration-base) var(--ease-out);
+}
+@media (hover: hover) {
+  .hero__menu-link:hover { opacity: 1; }
+  .hero__menu-link:hover .hero__menu-label { transform: translateX(6px); color: #fff; }
+  .hero__menu-link:hover .hero__menu-icon { color: var(--brand-amber); }
+  .hero__menu-link:hover .hero__menu-arrow { transform: rotate(-45deg) translate(3px, -3px); color: #fff; }
+}
+
+/* ── "View all works" ↗ ── */
+.work__viewall svg { transition: transform var(--duration-base) var(--ease-out-quart); }
+@media (hover: hover) {
+  .work__viewall:hover { opacity: 1; }
+  .work__viewall:hover svg { transform: translate(3px, -3px); }
+}
+
+/* ── Client logo grid — lift the hovered card, dim its neighbours ── */
+.logos__card {
+  transition: background var(--duration-slow) var(--ease-out),
+              transform var(--duration-base) var(--ease-out-quart),
+              box-shadow var(--duration-base) var(--ease-out-quart),
+              opacity var(--duration-base) var(--ease-out);
+}
+.logos__name {
+  transition: color var(--duration-base) var(--ease-out),
+              transform var(--duration-base) var(--ease-out-quart);
+}
+@media (hover: hover) {
+  .logos__grid:hover .logos__card { opacity: 0.45; }
+  .logos__grid:hover .logos__card:hover {
+    opacity: 1;
+    transform: translateY(-4px);
+    box-shadow: var(--lift-shadow-light);
+  }
+  .logos__card:hover .logos__name { color: var(--brand-ink); transform: scale(1.05); }
+}
+
+/* ── Capabilities list — energise each row on hover ── */
+.services__row { transition: border-color var(--duration-base) var(--ease-out); }
+.services__num { transition: color var(--duration-base) var(--ease-out); }
+.services__name {
+  transition: transform var(--duration-base) var(--ease-out-quart),
+              color var(--duration-base) var(--ease-out);
+}
+@media (hover: hover) {
+  .services__row:hover { border-color: rgba(196, 114, 42, 0.5); }
+  .services__row:hover .services__num { color: var(--brand-amber); }
+  .services__row:hover .services__name { transform: translateX(6px); }
+}
+
+/* ── "Why work with me" cards + trust avatars ── */
+.reasons__card {
+  transition: transform 0.6s var(--ease-out),
+              border-color var(--duration-base) var(--ease-out),
+              box-shadow var(--duration-base) var(--ease-out-quart);
+}
+.reasons__icon img { transition: transform var(--duration-slow) var(--ease-out-quart); }
+.reasons__avatar { position: relative; transition: transform var(--duration-base) var(--ease-out-quart); }
+@media (hover: hover) {
+  .reasons__card:hover {
+    border-color: rgba(196, 114, 42, 0.55);
+    box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.75);
+  }
+  .reasons__card:hover .reasons__icon img { transform: scale(1.09) rotate(-3deg); }
+  .reasons__avatar:hover { transform: translateY(-5px) scale(1.12); z-index: 2; }
+}
+
+/* ── Footer link list ── */
+.footer__link-text { display: inline-block; transition: transform var(--duration-base) var(--ease-out-quart); }
+.footer__link-num {
+  transition: color var(--duration-base) var(--ease-out),
+              opacity var(--duration-base) var(--ease-out);
+}
+.footer__contact-link svg { transition: transform var(--duration-base) var(--ease-out-quart), color var(--duration-base) var(--ease-out); }
+@media (hover: hover) {
+  .footer__link:hover .footer__link-text { transform: translateX(2px); }
+  .footer__link:hover .footer__link-num { color: var(--brand-amber); opacity: 1; }
+  .footer__contact-link:hover { opacity: 1; }
+  .footer__contact-link:hover svg { transform: translate(2px, -2px); color: var(--brand-amber); }
+}
+
+/* ── Work index cards lift as a whole (media scale already exists) ── */
+.workcard { transition: transform var(--duration-base) var(--ease-out-quart); }
+@media (hover: hover) { .js .workcard:hover { transform: translateY(-6px); } }
+.workfilter__chip:active { transform: scale(0.96); }
+
+/* ── Live availability dot: a warm amber pulse ── */
+.hero__available .hero__bullet { background: var(--brand-amber); position: relative; }
+.hero__available .hero__bullet::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid var(--brand-amber);
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero__available .hero__bullet::after { animation: available-pulse 2.6s var(--ease-out) infinite; }
+}
+@keyframes available-pulse {
+  0%   { transform: scale(0.7); opacity: 0.7; }
+  70%  { opacity: 0; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ENTRANCE MOTION
+   Two systems, both visible-by-default so nothing depends on an
+   animation that a headless renderer or reduced-motion user
+   never sees:
+   1. Hero — plays on load once the splash tears away. `.hero-reveal`
+      is added to <html> by the splash (or immediately when it's
+      skipped); each element animates from a hidden keyframe, so if
+      the class is never added the hero simply stays visible.
+   2. Sections — `.enter` / `.enter--fade` elements are tagged + given
+      a `--rd` stagger in JS, then flipped to `.is-in` the first time
+      their section scrolls into view.
+   ═══════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* ── Hero: staggered entrance after the splash reveal ── */
+  .hero-reveal .hero__bg        { animation: hero-bg-in 1200ms var(--ease-out) both; }
+  .hero-reveal .hero__name      { animation: hero-name-in 620ms var(--ease-out-quart) 140ms both; }
+  .hero-reveal .hero__subtitle  { animation: hero-rise 480ms var(--ease-out-quart) 220ms both; }
+  .hero-reveal .hero__description{ animation: hero-rise 480ms var(--ease-out-quart) 280ms both; }
+  .hero-reveal .hero__actions   { animation: hero-rise 480ms var(--ease-out-quart) 340ms both; }
+  .hero-reveal .hero__intro     { animation: hero-rise 480ms var(--ease-out-quart) 320ms both; }
+  .hero-reveal .hero__available { animation: hero-rise 460ms var(--ease-out-quart) 380ms both; }
+  .hero-reveal .hero__menu-item { animation: hero-rise 460ms var(--ease-out-quart) both; }
+  .hero-reveal .hero__menu-item:nth-child(1) { animation-delay: 400ms; }
+  .hero-reveal .hero__menu-item:nth-child(2) { animation-delay: 460ms; }
+  .hero-reveal .hero__menu-item:nth-child(3) { animation-delay: 520ms; }
+  .hero-reveal .hero__menu-item:nth-child(4) { animation-delay: 580ms; }
+  .hero-reveal .nav             { animation: nav-in 520ms var(--ease-out-quart) 120ms both; }
+
+  /* ── Sections: quick, subtle, staggered scroll-in ──
+     The hidden state snaps in instantly (transition: none) so elements
+     with their own opacity transition don't visibly fade out first;
+     only `.is-in` animates. JS strips these classes once the entrance
+     finishes, so the transform/opacity never lingers to fight hovers. */
+  .js .enter,
+  .js .enter--fade  { opacity: 0; transition: none; }
+  .js .enter        { transform: translateY(14px); }
+  .js .enter.is-in {
+    opacity: 1;
+    transform: none;
+    transition: opacity 480ms var(--ease-out-quart),
+                transform 480ms var(--ease-out-quart);
+    transition-delay: var(--rd, 0ms);
+  }
+  .js .enter--fade.is-in {
+    opacity: 1;
+    transition: opacity 480ms var(--ease-out-quart);
+    transition-delay: var(--rd, 0ms);
+  }
+}
+
+/* hero__name and .nav keep their centring translateX(-50%) through the rise */
+@keyframes hero-rise      { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes hero-name-in   { from { opacity: 0; transform: translateX(-50%) translateY(22px); } to { opacity: 1; transform: translateX(-50%); } }
+@keyframes nav-in         { from { opacity: 0; transform: translateX(-50%) translateY(-12px); } to { opacity: 1; transform: translateX(-50%); } }
+@keyframes hero-bg-in     { from { transform: scale(1.05); } to { transform: none; } }
+

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { applyWordfx } from "@/lib/wordfx";
 
 /**
  * Homepage content ported from the original static index.html.
@@ -193,31 +194,154 @@ export default function HomeContent() {
       apply();
     })();
 
-    // ── wordfx: per-word hover choreography ──
-    (() => {
-      const wrap = (el: HTMLElement) => {
-        if (el.dataset.wordfxDone) return;
-        const words = (el.textContent || "").trim().split(/\s+/);
-        el.textContent = "";
-        words.forEach((w, i) => {
-          const s = document.createElement("span");
-          s.className = "wordfx";
-          s.textContent = w;
-          const rot = (((i * 137) % 61) - 30) / 10;
-          const lift = 0.06 + ((i * 89) % 5) / 100;
-          const scale = 1.03 + ((i * 53) % 5) / 100;
-          s.style.setProperty("--wr", rot.toFixed(1) + "deg");
-          s.style.setProperty("--wl", "-" + lift.toFixed(2) + "em");
-          s.style.setProperty("--ws", scale.toFixed(2));
-          el.appendChild(s);
-          if (i < words.length - 1) el.appendChild(document.createTextNode(" "));
-        });
-        el.dataset.wordfxDone = "1";
+    // ── wordfx: per-word hover choreography (process copy + section headings) ──
+    applyWordfx();
+
+    // ── Metrics: count up from zero when the number scrolls into view ──
+    if (!reduceMotion) {
+      const runCount = (el: HTMLElement) => {
+        const textNode = Array.from(el.childNodes).find(
+          (n) => n.nodeType === Node.TEXT_NODE && /\d/.test(n.textContent || "")
+        );
+        if (!textNode) return;
+        const raw = (textNode.textContent || "").trim();
+        const m = raw.match(/^(\d+)(\D*)$/);
+        if (!m) return;
+        const target = parseInt(m[1], 10);
+        const suffix = m[2];
+        const dur = 1500;
+        const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+        const start = performance.now();
+        const tick = (now: number) => {
+          const p = Math.min(1, (now - start) / dur);
+          textNode.textContent = Math.round(easeOut(p) * target) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+          else textNode.textContent = raw;
+        };
+        textNode.textContent = "0" + suffix;
+        requestAnimationFrame(tick);
       };
-      document.querySelectorAll<HTMLElement>("[data-wordfx]").forEach(wrap);
-    })();
+      const cio = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) { runCount(e.target as HTMLElement); cio.unobserve(e.target); }
+          });
+        },
+        { rootMargin: "0px 0px -15% 0px" }
+      );
+      document.querySelectorAll<HTMLElement>(".metrics__number").forEach((n) => cio.observe(n));
+      cleanups.push(() => cio.disconnect());
+    }
+
+    // ── Magnetic pull on the hero's primary actions ──
+    if (!reduceMotion && window.matchMedia("(hover: hover)").matches) {
+      const strength = 0.3;
+      const max = 10;
+      const clamp = (v: number) => Math.max(-max, Math.min(max, v * strength));
+      document.querySelectorAll<HTMLElement>(".hero__btn, .hero__btn-icon").forEach((el) => {
+        const onMove = (ev: PointerEvent) => {
+          const r = el.getBoundingClientRect();
+          el.style.transition = "transform 60ms linear";
+          el.style.transform = `translate(${clamp(ev.clientX - (r.left + r.width / 2))}px, ${clamp(ev.clientY - (r.top + r.height / 2))}px)`;
+        };
+        const onLeave = () => {
+          el.style.transition = "transform 500ms var(--ease-out-quart)";
+          el.style.transform = "translate(0px, 0px)";
+        };
+        el.addEventListener("pointermove", onMove);
+        el.addEventListener("pointerleave", onLeave);
+        cleanups.push(() => {
+          el.removeEventListener("pointermove", onMove);
+          el.removeEventListener("pointerleave", onLeave);
+          el.style.transform = "";
+          el.style.transition = "";
+        });
+      });
+    }
 
     return () => { cleanups.forEach((fn) => fn()); };
+  }, []);
+
+  // ── Section entrance orchestration (isolated) ──
+  // Kept in its own effect so a failure anywhere in the main effect can't stop
+  // it from running. Each tagged element animates into place the moment it
+  // scrolls into view, via IntersectionObserver — no scroll listener, no rAF,
+  // and indifferent to which element is the scroll container. Elements are
+  // `.enter` (rise + fade) or `.enter--fade` (fade only, for elements whose
+  // transform is already driven by another effect); grouped elements carry a
+  // per-group `--rd` stagger. Content is visible by default with JS off or
+  // reduced motion, so nothing ever ships blank.
+  React.useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const targets: HTMLElement[] = [];
+    const tag = (
+      sectionSel: string,
+      specs: Array<{ sel: string; fade?: boolean }>,
+      step = 70
+    ) => {
+      const section = document.querySelector<HTMLElement>(sectionSel);
+      if (!section) return;
+      specs.forEach(({ sel, fade }) => {
+        section.querySelectorAll<HTMLElement>(sel).forEach((el, i) => {
+          el.classList.add(fade ? "enter--fade" : "enter");
+          el.style.setProperty("--rd", i * step + "ms");
+          targets.push(el);
+        });
+      });
+    };
+
+    tag(".logos", [{ sel: ".logos__label-wrap" }, { sel: ".logos__card" }], 55);
+    tag(".process", [{ sel: ".process__card", fade: true }]);
+    tag(".work", [{ sel: ".work__header" }]);
+    tag(".services", [{ sel: ".services__head" }, { sel: ".services__row" }], 55);
+    tag(".metrics", [{ sel: ".metrics__item" }], 90);
+    tag(".reasons", [
+      { sel: ".reasons__head" },
+      { sel: ".reasons__heading" },
+      { sel: ".reasons__lead" },
+      { sel: ".reasons__cta" },
+      { sel: ".reasons__card", fade: true },
+    ], 90);
+    tag(".footer", [
+      { sel: ".footer__contact-head" },
+      { sel: ".footer__cta-heading" },
+      { sel: ".footer__cta-btn" },
+      { sel: ".footer__tagline" },
+      { sel: ".footer__contacts" },
+      { sel: ".footer__links" },
+    ], 70);
+
+    const timers: Array<ReturnType<typeof setTimeout>> = [];
+    const clearTags = (el: HTMLElement) => {
+      el.classList.remove("enter", "enter--fade", "is-in");
+      el.style.removeProperty("--rd");
+    };
+
+    if (!("IntersectionObserver" in window)) {
+      targets.forEach(clearTags);
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const el = e.target as HTMLElement;
+          io.unobserve(el);
+          el.classList.add("is-in");
+          const delay = parseFloat(el.style.getPropertyValue("--rd")) || 0;
+          timers.push(setTimeout(() => clearTags(el), delay + 720));
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px" }
+    );
+    targets.forEach((el) => io.observe(el));
+
+    return () => {
+      io.disconnect();
+      timers.forEach(clearTimeout);
+    };
   }, []);
 
   return (
@@ -248,6 +372,8 @@ export default function HomeContent() {
         </nav>
 
         <main>
+
+          <h1 className="sr-only">M. Awais — UX/UI &amp; Product Designer</h1>
 
           <section className="hero">
             <img src="/assets/images/hero-bg.jpg" alt="M. Awais portrait with warm amber spotlight" className="hero__bg" />
@@ -374,7 +500,7 @@ export default function HomeContent() {
                     <div className="process__slide">
                       <img className="process__photo" src="/assets/images/process/discover.png" alt="Discover stage" />
                       <div className="process__overlay">
-                        <h4 className="process__overlay-title">Discover</h4>
+                        <h3 className="process__overlay-title">Discover</h3>
                         <div className="process__dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
                       </div>
                     </div>
@@ -382,7 +508,7 @@ export default function HomeContent() {
                     <div className="process__slide">
                       <img className="process__photo" src="/assets/images/process/define.png" alt="Define stage" />
                       <div className="process__overlay">
-                        <h4 className="process__overlay-title">Define</h4>
+                        <h3 className="process__overlay-title">Define</h3>
                         <div className="process__dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
                       </div>
                     </div>
@@ -390,7 +516,7 @@ export default function HomeContent() {
                     <div className="process__slide">
                       <img className="process__photo" src="/assets/images/process/design.png" alt="Design stage" />
                       <div className="process__overlay">
-                        <h4 className="process__overlay-title">Design</h4>
+                        <h3 className="process__overlay-title">Design</h3>
                         <div className="process__dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
                       </div>
                     </div>
@@ -398,7 +524,7 @@ export default function HomeContent() {
                     <div className="process__slide">
                       <img className="process__photo" src="/assets/images/process/deliver.png" alt="Deliver stage" />
                       <div className="process__overlay">
-                        <h4 className="process__overlay-title">Deliver</h4>
+                        <h3 className="process__overlay-title">Deliver</h3>
                         <div className="process__dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
                       </div>
                     </div>
@@ -581,7 +707,7 @@ export default function HomeContent() {
 
                 <a href="#contact" className="services__row">
                   <span className="services__num">(01)</span>
-                  <h3 className="services__name">Web Design</h3>
+                  <h3 className="services__name" data-wordfx>Web Design</h3>
                   <p className="services__desc">Pixel-perfect, responsive sites crafted from the ground up for clarity, speed, and conversion.</p>
                   <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #2a3a5a 0%, #1a2233 55%, #0d1320 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
@@ -591,7 +717,7 @@ export default function HomeContent() {
 
                 <a href="#contact" className="services__row">
                   <span className="services__num">(02)</span>
-                  <h3 className="services__name">UI UX Design</h3>
+                  <h3 className="services__name" data-wordfx>UI UX Design</h3>
                   <p className="services__desc">Intuitive flows and interfaces that balance usability with character at every touchpoint.</p>
                   <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #1a5a52 0%, #103b38 55%, #07201d 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
@@ -601,7 +727,7 @@ export default function HomeContent() {
 
                 <a href="#contact" className="services__row">
                   <span className="services__num">(03)</span>
-                  <h3 className="services__name">Product Design</h3>
+                  <h3 className="services__name" data-wordfx>Product Design</h3>
                   <p className="services__desc">End-to-end product thinking, from strategy and research to a polished, shippable solution.</p>
                   <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #b3702f 0%, #5a3010 55%, #2a1606 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
@@ -611,7 +737,7 @@ export default function HomeContent() {
 
                 <a href="#contact" className="services__row">
                   <span className="services__num">(04)</span>
-                  <h3 className="services__name">Branding</h3>
+                  <h3 className="services__name" data-wordfx>Branding</h3>
                   <p className="services__desc">Cohesive visual identities that position and differentiate your brand with precision and clarity.</p>
                   <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #5a2a55 0%, #34203a 55%, #170c1a 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
@@ -621,7 +747,7 @@ export default function HomeContent() {
 
                 <a href="#contact" className="services__row">
                   <span className="services__num">(05)</span>
-                  <h3 className="services__name">UX Audit</h3>
+                  <h3 className="services__name" data-wordfx>UX Audit</h3>
                   <p className="services__desc">Deep usability reviews that surface friction points and unlock measurable, compounding gains.</p>
                   <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #3a3a6e 0%, #1f1f44 55%, #0c0c20 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
@@ -631,7 +757,7 @@ export default function HomeContent() {
 
                 <a href="#contact" className="services__row">
                   <span className="services__num">(06)</span>
-                  <h3 className="services__name">AI Native Design</h3>
+                  <h3 className="services__name" data-wordfx>AI Native Design</h3>
                   <p className="services__desc">Smart, AI-driven experiences that streamline operations, reduce costs, and boost efficiency.</p>
                   <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #b58a2f 0%, #5a3a0a 55%, #2a1c04 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
@@ -673,7 +799,7 @@ export default function HomeContent() {
                   </span>
                   <svg className="reasons__arrowdown" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v10M2.5 7.5L7 12l4.5-4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </div>
-                <h2 className="reasons__heading">Better design,<br />simplified.</h2>
+                <h2 className="reasons__heading" data-wordfx>Better design,<br />simplified.</h2>
                 <p className="reasons__lead">A design partnership that gives you flexible access to high-quality creative work — delivered quickly, refined continuously, and tailored to your brand.</p>
                 <div className="reasons__cta">
                   <a href="#contact" className="btn reasons__btn">
@@ -699,7 +825,7 @@ export default function HomeContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-1.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title">Predictable Pricing</h3>
+                      <h3 className="reasons__card-title" data-wordfx>Predictable Pricing</h3>
                       <p className="reasons__card-desc">Access dedicated design support through a simple monthly model. No hidden fees, no surprises — just consistent creative work tailored to your needs.</p>
                     </div>
                   </article>
@@ -709,7 +835,7 @@ export default function HomeContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-2.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title">Limitless Requests</h3>
+                      <h3 className="reasons__card-title" data-wordfx>Limitless Requests</h3>
                       <p className="reasons__card-desc">Submit as many design requests as you need. I keep refining and improving until everything aligns perfectly with your vision.</p>
                     </div>
                   </article>
@@ -719,7 +845,7 @@ export default function HomeContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-3.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title">Fast Delivery</h3>
+                      <h3 className="reasons__card-title" data-wordfx>Fast Delivery</h3>
                       <p className="reasons__card-desc">Speed meets quality. A streamlined workflow ensures your projects move forward quickly without sacrificing attention to detail.</p>
                     </div>
                   </article>
@@ -729,7 +855,7 @@ export default function HomeContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-4.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title">Senior Design Craft</h3>
+                      <h3 className="reasons__card-title" data-wordfx>Senior Design Craft</h3>
                       <p className="reasons__card-desc">Work with an experienced designer who understands strategy, aesthetics, and performance — delivering work that strengthens your brand.</p>
                     </div>
                   </article>
@@ -739,7 +865,7 @@ export default function HomeContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-5.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title">Clear Collaboration</h3>
+                      <h3 className="reasons__card-title" data-wordfx>Clear Collaboration</h3>
                       <p className="reasons__card-desc">Stay connected through simple, transparent communication that keeps feedback flowing and projects moving.</p>
                     </div>
                   </article>
@@ -763,7 +889,7 @@ export default function HomeContent() {
               <svg className="footer__arrowdown" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v10M2.5 7.5L7 12l4.5-4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
             <div className="footer__contact-title">
-              <h2 className="footer__cta-heading">Get in touch</h2>
+              <h2 className="footer__cta-heading" data-wordfx>Get in touch</h2>
               <a href="mailto:hello@awais.design" className="btn footer__cta-btn">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 Let's talk
@@ -780,7 +906,7 @@ export default function HomeContent() {
 
           <div className="footer__main">
             <div className="footer__left">
-              <h3 className="footer__tagline">Strategic design for brands that matter.</h3>
+              <h3 className="footer__tagline" data-wordfx>Strategic design for brands that matter.</h3>
               <div className="footer__contacts">
                 <a href="mailto:hello@awais.design" className="footer__contact-link">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>

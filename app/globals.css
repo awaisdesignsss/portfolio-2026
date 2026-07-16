@@ -33,3 +33,98 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
+
+/* Screen-reader-only: available to assistive tech, invisible on screen */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Intro splash — a full-width loading bar at screen centre that
+   fills 0→100% (with a live counter), then expands and tears the
+   black panel into two halves to reveal the hero behind it.
+   ───────────────────────────────────────────────────────────── */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  --tear-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The two black panels that split apart on the tear */
+.intro__half {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: calc(50% + 1px); /* 1px overlap so the seam never leaks */
+  background: #0a0a0a;
+  will-change: transform;
+  transition: transform 880ms var(--tear-ease);
+}
+.intro__half--top { top: 0; }
+.intro__half--bottom { bottom: 0; }
+.intro--tear .intro__half--top { transform: translateY(-100%); }
+.intro--tear .intro__half--bottom { transform: translateY(100%); }
+
+/* Bar + counter, sitting on the seam */
+.intro__center {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 clamp(1.25rem, 5vw, 4rem);
+}
+
+.intro__bar {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+  will-change: transform;
+  transition: transform 420ms var(--tear-ease), opacity 360ms ease;
+}
+.intro__bar-fill {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  transform-origin: left center;
+  transform: scaleX(0); /* driven inline from the JS progress value */
+  box-shadow: 0 0 16px 1px rgba(196, 114, 42, 0.55); /* warm leading glow */
+}
+/* On the tear the bar flares open along the seam, then vanishes */
+.intro--tear .intro__bar {
+  transform: scaleY(12);
+  opacity: 0;
+}
+
+.intro__count {
+  align-self: flex-end;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.72);
+  font-variant-numeric: tabular-nums;
+  transition: opacity 220ms ease;
+}
+.intro--tear .intro__count { opacity: 0; }
+.intro__pct { opacity: 0.5; margin-left: 1px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .intro { display: none; }
+}
