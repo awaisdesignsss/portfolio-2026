@@ -3390,3 +3390,38 @@ html.splash-seen .splash { display: none; }
 @keyframes nav-in         { from { opacity: 0; transform: translateX(-50%) translateY(-12px); } to { opacity: 1; transform: translateX(-50%); } }
 @keyframes hero-bg-in     { from { transform: scale(1.05); } to { transform: none; } }
 
+/* ─────────────────────────────────────────────────────────────
+   MOUSE PARALLAX
+   `--mx` / `--my` are written per-frame by components/pointer-fx
+   (roughly -1..1 from the viewport centre). Layers use the
+   independent `translate` property so parallax composes cleanly with
+   the transform-based entrance animations and centring above.
+   Background layers drift with the cursor; foreground copy drifts
+   the opposite way and less, so the planes separate in depth.
+   ───────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__bg {
+    scale: 1.08; /* overscan so the drift never exposes an edge */
+    translate: calc(var(--mx, 0) * 20px) calc(var(--my, 0) * 20px);
+    will-change: translate;
+  }
+  .hero__content {
+    translate: calc(var(--mx, 0) * -8px) calc(var(--my, 0) * -7px);
+    will-change: translate;
+  }
+  .hero__name {
+    translate: calc(var(--mx, 0) * -14px) calc(var(--my, 0) * -9px);
+    will-change: translate;
+  }
+
+  /* Sub-page headers (Work / About / Contact) get the same depth cue. */
+  .pagehead__title {
+    translate: calc(var(--mx, 0) * -10px) calc(var(--my, 0) * -6px);
+    will-change: translate;
+  }
+  .pagehead__lead {
+    translate: calc(var(--mx, 0) * -5px) calc(var(--my, 0) * -3px);
+    will-change: translate;
+  }
+}
+

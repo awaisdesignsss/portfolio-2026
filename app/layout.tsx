@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PointerFX from "@/components/pointer-fx";
 import "./globals.css";
 // Original portfolio stylesheet — reused verbatim so migrated pages keep
 // their exact design. Imported after globals so it wins over Tailwind base.
@@ -28,7 +29,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <PointerFX />
+        {children}
+      </body>
     </html>
   );
 }
