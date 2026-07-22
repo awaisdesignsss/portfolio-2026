@@ -358,6 +358,7 @@ export default function HomeContent() {
             </svg>
           </div>
           <div className="nav__menu">
+            <span className="nav__pill" aria-hidden="true" />
             <a href="/" className="nav__link" aria-current="page">Home</a>
             <a href="/work" className="nav__link">Work</a>
             <a href="/about" className="nav__link">About</a>
@@ -377,6 +378,7 @@ export default function HomeContent() {
 
           <section className="hero">
             <img src="/assets/images/hero-bg.jpg" alt="M. Awais portrait with warm amber spotlight" className="hero__bg" />
+            <div className="hero__fx" aria-hidden="true" />
 
             <div className="hero__content">
               <div className="hero__info">
@@ -579,7 +581,7 @@ export default function HomeContent() {
 
                 <article className="work__project">
                   <div className="work__cover">
-                    <div className="work__media" style={{ background: "radial-gradient(120% 120% at 70% 20%, #2a3a5a 0%, #1a2233 55%, #0d1320 100%)" } as React.CSSProperties}></div>
+                    <div className="work__media" style={{ backgroundImage: "url(/assets/images/work/work-01.jpg)" }}></div>
                     <div className="work__scrim"></div>
                     <a className="work__cardlink" href="/work/paywise-dashboard" aria-label="View Paywise Dashboard case study"></a>
                     <div className="work__caption">
@@ -591,7 +593,7 @@ export default function HomeContent() {
 
                 <article className="work__project">
                   <div className="work__cover">
-                    <div className="work__media" style={{ background: "radial-gradient(120% 120% at 70% 20%, #1a5a52 0%, #103b38 55%, #07201d 100%)" } as React.CSSProperties}></div>
+                    <div className="work__media" style={{ backgroundImage: "url(/assets/images/work/work-02.jpg)" }}></div>
                     <div className="work__scrim"></div>
                     <a className="work__cardlink" href="/work/medflow" aria-label="View MedFlow case study"></a>
                     <div className="work__caption">
@@ -603,7 +605,7 @@ export default function HomeContent() {
 
                 <article className="work__project">
                   <div className="work__cover">
-                    <div className="work__media" style={{ background: "radial-gradient(120% 120% at 70% 20%, #b3702f 0%, #5a3010 55%, #2a1606 100%)" } as React.CSSProperties}></div>
+                    <div className="work__media" style={{ backgroundImage: "url(/assets/images/work/work-03.jpg)" }}></div>
                     <div className="work__scrim"></div>
                     <a className="work__cardlink" href="/work/luxe-marketplace" aria-label="View Luxe Marketplace case study"></a>
                     <div className="work__caption">
@@ -615,7 +617,7 @@ export default function HomeContent() {
 
                 <article className="work__project">
                   <div className="work__cover">
-                    <div className="work__media" style={{ background: "radial-gradient(120% 120% at 70% 20%, #3a3a6e 0%, #1f1f44 55%, #0c0c20 100%)" } as React.CSSProperties}></div>
+                    <div className="work__media" style={{ backgroundImage: "url(/assets/images/work/work-04.jpg)" }}></div>
                     <div className="work__scrim"></div>
                     <a className="work__cardlink" href="/work/datapulse" aria-label="View DataPulse case study"></a>
                     <div className="work__caption">

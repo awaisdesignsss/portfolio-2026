@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PointerFX from "@/components/pointer-fx";
+import NavPill from "@/components/nav-pill";
 import "./globals.css";
 // Original portfolio stylesheet — reused verbatim so migrated pages keep
 // their exact design. Imported after globals so it wins over Tailwind base.
@@ -16,8 +17,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark js">
+    <html lang="en" className="dark js" suppressHydrationWarning>
       <head>
+        {/* Flag the intro splash before first paint, home route only, so the
+            hero never flashes and repeat/reduced-motion visits skip it. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(location.pathname==='/'&&!sessionStorage.getItem('awais-splash')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('splashing')}}catch(e){}",
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -31,6 +40,7 @@ export default function RootLayout({
       </head>
       <body>
         <PointerFX />
+        <NavPill />
         {children}
       </body>
     </html>

@@ -320,6 +320,7 @@ img {
 }
 
 .nav__menu {
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--space-12);
@@ -327,16 +328,14 @@ img {
 }
 
 .nav__link {
+  position: relative;
+  z-index: 1;
   font-size: var(--text-base);
   font-weight: 400;
   line-height: 2;
   color: var(--brand-ink);
   white-space: nowrap;
-  transition: opacity var(--duration-base) var(--ease-out);
-}
-
-.nav__link:hover {
-  opacity: 0.6;
+  transition: color var(--duration-base) var(--ease-out);
 }
 
 .nav__cta {
@@ -409,6 +408,47 @@ img {
   object-fit: cover;
   object-position: center;
   pointer-events: none;
+}
+
+/* Subtle drifting dot-grid behind the portrait. Sits above the photo but
+   below the content, blended (screen) so it only reads as faint warm
+   texture in the darker background, and masked away from the subject so it
+   never crosses the face. Kept very low-opacity so it never competes. */
+.hero__fx {
+  position: absolute;
+  z-index: 2; /* between --z-bg (1) and --z-content (5) */
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+    circle at center,
+    rgba(226, 162, 96, 0.9) 0.9px,
+    transparent 1.7px
+  );
+  background-size: 34px 34px;
+  opacity: 0.14;
+  mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(
+    115% 90% at 60% 40%,
+    transparent 0%,
+    transparent 30%,
+    #000 66%
+  );
+  mask-image: radial-gradient(
+    115% 90% at 60% 40%,
+    transparent 0%,
+    transparent 30%,
+    #000 66%
+  );
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero__fx {
+    animation: hero-fx-drift 32s linear infinite;
+  }
+}
+@keyframes hero-fx-drift {
+  to {
+    background-position: 34px 68px;
+  }
 }
 
 /* ─── Hero Content (Right Side) ─── */
@@ -719,25 +759,33 @@ img {
               transform var(--duration-slow) var(--ease-out-quart);
 }
 
-/* Hover reveal — a dark panel with one proof point (role / stat / review). */
-.logos__hover {
-  position: absolute;
-  inset: 0;
+/* Cursor-following detail chip — a small dark card that trails the pointer
+   while it's over a logo, showing that client's proof point. Positioned via
+   JS (see components/ui/client-logos). */
+.logos__chip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8000;
+  max-width: 244px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  gap: 8px;
-  padding: 20px;
+  gap: 6px;
+  padding: 12px 14px;
   background: var(--brand-ink);
   color: var(--brand-white);
-  opacity: 0;
-  transform: translateY(10px);
+  border-radius: 12px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.3);
   pointer-events: none;
-  transition: opacity var(--duration-slow) var(--ease-out),
-              transform var(--duration-slow) var(--ease-out-quart);
+  opacity: 0;
+  transition: opacity 0.16s var(--ease-out);
+  will-change: transform, opacity;
+}
+.logos__chip.is-visible {
+  opacity: 1;
 }
 
-.logos__hover-tag {
+.logos__chip-tag {
   align-self: flex-start;
   font-size: var(--text-xs);
   font-weight: 600;
@@ -746,7 +794,7 @@ img {
   color: var(--brand-amber);
 }
 
-.logos__hover-text {
+.logos__chip-text {
   font-size: var(--text-sm);
   line-height: 1.4;
   font-weight: 500;
@@ -754,17 +802,10 @@ img {
   color: var(--brand-white);
 }
 
-.logos__hover-meta {
+.logos__chip-meta {
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-wide);
   color: rgba(255, 255, 255, 0.55);
-}
-
-/* Impact cards lead with an oversized number for punch. */
-.logos__card[data-reveal="impact"] .logos__hover-text {
-  font-size: var(--text-lg);
-  font-weight: 700;
-  letter-spacing: var(--tracking-tight);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1220,6 +1261,9 @@ img {
   inset: -2%;            /* slight overscan so parallax never reveals an edge */
   will-change: transform, filter;
   transform-origin: center center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .work__scrim {
@@ -2276,15 +2320,8 @@ img {
 /* Current page marker in the nav */
 .nav__link[aria-current="page"] {
   font-weight: 600;
+  color: var(--brand-ink);
   opacity: 1;
-}
-.nav__link[aria-current="page"]::after {
-  content: "";
-  display: block;
-  height: 1.5px;
-  margin-top: -2px;
-  background: var(--brand-ink);
-  border-radius: 2px;
 }
 
 /* Keyboard focus — visible on every interactive element across subpages */
@@ -3201,26 +3238,37 @@ html.splash-seen .splash { display: none; }
 }
 .process__cta-icon:active { transform: scale(0.94); }
 
-/* ── Nav — animated underline on hover, persistent under the current page ── */
-.nav__link { position: relative; }
-.nav__link::after {
-  content: "";
+/* ── Nav — sliding amber pill indicator (positioned by components/nav-pill).
+      The pill glides to the hovered link and rests under the current page;
+      the lit link's label flips to white to read on the fill. ── */
+.nav__pill {
   position: absolute;
   left: 0;
-  bottom: 2px;
-  width: 100%;
-  height: 1.5px;
-  margin: 0;
-  background: var(--brand-ink);
-  border-radius: 2px;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform var(--duration-base) var(--ease-out-quart);
+  top: 0;
+  z-index: 0;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  background: rgba(30, 30, 30, 0.08); /* soft light-grey highlight */
+  opacity: 0;
+  transform: translate(0, 0);
+  pointer-events: none;
+  will-change: transform, width;
+  transition: transform 0.34s var(--ease-out-quart),
+              width 0.34s var(--ease-out-quart),
+              opacity 0.2s var(--ease-out);
 }
-.nav__link[aria-current="page"]::after { transform: scaleX(1); transform-origin: left; margin: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .nav__pill { transition: opacity 0.2s var(--ease-out); }
+}
+
+/* No-JS / pre-hydration fallback cue for hover. */
 @media (hover: hover) {
-  .nav__link:hover { opacity: 1; }
-  .nav__link:hover::after { transform: scaleX(1); transform-origin: left; }
+  .nav__link:hover { color: #000; }
+}
+
+/* Whichever link the pill sits under; ink reads on the grey fill. */
+.nav__link.is-lit {
+  color: var(--brand-ink);
 }
 
 /* ── Hero discipline menu (LinkedIn / Dribbble / …) ── */
@@ -3259,8 +3307,8 @@ html.splash-seen .splash { display: none; }
     transform: translateY(-4px);
     box-shadow: var(--lift-shadow-light);
   }
-  .logos__card:hover .logos__logo { opacity: 0; transform: scale(0.9); }
-  .logos__card:hover .logos__hover { opacity: 1; transform: none; }
+  /* Lift the logo slightly toward the pointer instead of hiding it. */
+  .logos__card:hover .logos__logo { transform: scale(1.04); }
 }
 
 /* ── Capabilities list — energise each row on hover ── */
@@ -3347,20 +3395,15 @@ html.splash-seen .splash { display: none; }
 
 @media (prefers-reduced-motion: no-preference) {
 
-  /* ── Hero: staggered entrance after the splash reveal ── */
-  .hero-reveal .hero__bg        { animation: hero-bg-in 1200ms var(--ease-out) both; }
-  .hero-reveal .hero__name      { animation: hero-name-in 620ms var(--ease-out-quart) 140ms both; }
-  .hero-reveal .hero__subtitle  { animation: hero-rise 480ms var(--ease-out-quart) 220ms both; }
-  .hero-reveal .hero__description{ animation: hero-rise 480ms var(--ease-out-quart) 280ms both; }
-  .hero-reveal .hero__actions   { animation: hero-rise 480ms var(--ease-out-quart) 340ms both; }
-  .hero-reveal .hero__intro     { animation: hero-rise 480ms var(--ease-out-quart) 320ms both; }
-  .hero-reveal .hero__available { animation: hero-rise 460ms var(--ease-out-quart) 380ms both; }
-  .hero-reveal .hero__menu-item { animation: hero-rise 460ms var(--ease-out-quart) both; }
-  .hero-reveal .hero__menu-item:nth-child(1) { animation-delay: 400ms; }
-  .hero-reveal .hero__menu-item:nth-child(2) { animation-delay: 460ms; }
-  .hero-reveal .hero__menu-item:nth-child(3) { animation-delay: 520ms; }
-  .hero-reveal .hero__menu-item:nth-child(4) { animation-delay: 580ms; }
-  .hero-reveal .nav             { animation: nav-in 520ms var(--ease-out-quart) 120ms both; }
+  /* ── Hero: choreographed entrance after the splash docks the nav ──
+     The photo dissolves in first, then the left-side copy slides in from
+     the left and the right-side copy slides in from the right. */
+  .hero-reveal .hero__bg        { animation: hero-dissolve 900ms var(--ease-out) both; }
+  .hero-reveal .hero__name      { animation: hero-in-name 720ms var(--ease-out-quart) 700ms both; }
+  .hero-reveal .hero__intro     { animation: hero-in-left 680ms var(--ease-out-quart) 800ms both; }
+  .hero-reveal .hero__available { animation: hero-in-left 640ms var(--ease-out-quart) 880ms both; }
+  .hero-reveal .hero__content   { animation: hero-in-right 700ms var(--ease-out-quart) 700ms both; }
+  .hero-reveal .hero__menu      { animation: hero-in-right 680ms var(--ease-out-quart) 800ms both; }
 
   /* ── Sections: quick, subtle, staggered scroll-in ──
      The hidden state snaps in instantly (transition: none) so elements
@@ -3384,11 +3427,12 @@ html.splash-seen .splash { display: none; }
   }
 }
 
-/* hero__name and .nav keep their centring translateX(-50%) through the rise */
-@keyframes hero-rise      { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-@keyframes hero-name-in   { from { opacity: 0; transform: translateX(-50%) translateY(22px); } to { opacity: 1; transform: translateX(-50%); } }
-@keyframes nav-in         { from { opacity: 0; transform: translateX(-50%) translateY(-12px); } to { opacity: 1; transform: translateX(-50%); } }
-@keyframes hero-bg-in     { from { transform: scale(1.05); } to { transform: none; } }
+/* Photo dissolves; copy slides in from its own side of the screen.
+   hero__name keeps its centring translateX(-50%) through the slide. */
+@keyframes hero-dissolve  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hero-in-left   { from { opacity: 0; transform: translateX(-120px); } to { opacity: 1; transform: none; } }
+@keyframes hero-in-right  { from { opacity: 0; transform: translateX(120px); }  to { opacity: 1; transform: none; } }
+@keyframes hero-in-name   { from { opacity: 0; transform: translateX(calc(-50% - 120px)); } to { opacity: 1; transform: translateX(-50%); } }
 
 /* ─────────────────────────────────────────────────────────────
    MOUSE PARALLAX

@@ -48,95 +48,192 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   Intro splash — a full-width loading bar at screen centre that
-   fills 0→100% (with a live counter), then expands and tears the
-   black panel into two halves to reveal the hero behind it.
+   Intro splash — a black field with a nav-sized pill at centre.
+   The pill fills white (a loading fill), docks up to the real nav
+   position while the nav contents fade in, then the field dissolves
+   to reveal the hero. Choreography in components/splash-screen.
+   `.splashing` is set on <html> before first paint (inline script in
+   layout) for the home route only, so nothing flashes either way.
    ───────────────────────────────────────────────────────────── */
+html.splashing {
+  overflow: hidden; /* lock scroll while the splash is up */
+}
+
 .intro {
   position: fixed;
   inset: 0;
-  z-index: 9999;
-  --tear-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 8; /* above hero content (5), below the nav (10) */
+  pointer-events: none;
+  display: none;
+  --intro-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.splashing .intro {
+  display: block;
 }
 
-/* The two black panels that split apart on the tear */
-.intro__half {
+/* Black field that dissolves away to reveal the photo. */
+.intro__field {
   position: absolute;
-  left: 0;
-  right: 0;
-  height: calc(50% + 1px); /* 1px overlap so the seam never leaks */
+  inset: 0;
   background: #0a0a0a;
-  will-change: transform;
-  transition: transform 880ms var(--tear-ease);
+  transition: opacity 900ms ease;
 }
-.intro__half--top { top: 0; }
-.intro__half--bottom { bottom: 0; }
-.intro--tear .intro__half--top { transform: translateY(-100%); }
-.intro--tear .intro__half--bottom { transform: translateY(100%); }
+.intro.is-clearing .intro__field {
+  opacity: 0;
+}
 
-/* Bar + counter, sitting on the seam */
-.intro__center {
+/* The pill: nav-sized, centred, positioned by transform. Exact size and
+   the dock offset are set inline once the real nav is measured. */
+.intro__pill {
   position: absolute;
   top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
+  left: 50%;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 0 clamp(1.25rem, 5vw, 4rem);
-}
-
-.intro__bar {
-  position: relative;
-  width: 100%;
-  height: 2px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.14);
+  width: min(938px, calc(100% - 3rem));
+  height: 60px;
+  transform: translate(-50%, -50%);
+  border-radius: var(--radius-nav);
+  border: 1.5px solid rgba(255, 255, 255, 0.92);
+  background: transparent;
   overflow: hidden;
-  will-change: transform;
-  transition: transform 420ms var(--tear-ease), opacity 360ms ease;
+  will-change: transform, opacity;
+  transition: transform 600ms var(--intro-ease), opacity 380ms ease;
 }
-.intro__bar-fill {
+.intro__fill {
   position: absolute;
   inset: 0;
   background: #ffffff;
   transform-origin: left center;
-  transform: scaleX(0); /* driven inline from the JS progress value */
-  box-shadow: 0 0 16px 1px rgba(196, 114, 42, 0.55); /* warm leading glow */
+  transform: scaleX(0);
+  transition: transform 950ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-/* On the tear the bar flares open along the seam, then vanishes */
-.intro--tear .intro__bar {
-  transform: scaleY(12);
+.intro__pill.is-filled .intro__fill {
+  transform: scaleX(1);
+}
+.intro__pill.is-gone {
   opacity: 0;
 }
 
-.intro__count {
-  align-self: flex-end;
-  font-family: var(--font-sans, sans-serif);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.72);
-  font-variant-numeric: tabular-nums;
-  transition: opacity 220ms ease;
+/* Real nav: hidden under the splash, faded in at the pill hand-off. */
+.splashing .nav {
+  opacity: 0;
 }
-.intro--tear .intro__count { opacity: 0; }
-.intro__pct { opacity: 0.5; margin-left: 1px; }
+.splashing.nav-in .nav {
+  opacity: 1;
+  transition: opacity 440ms ease;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .intro { display: none; }
+  .intro {
+    display: none;
+  }
 }
 
-/* Cursor trail canvas — full-screen, click-through, above content but below
-   the splash. Painted only on fine-pointer devices (see components/pointer-fx). */
-.pointer-fx {
+/* ─────────────────────────────────────────────────────────────
+   Custom cursor — a precise dot at the pointer and a ring that
+   spring-lags behind it. Colour is luminance-adaptive: light over
+   dark backgrounds, dark over light ones (JS toggles .is-light).
+   Over text / links / buttons the ring becomes a circular lens that
+   magnifies the content beneath it (a live DOM clone, see
+   components/pointer-fx). Only mounted on fine-pointer devices.
+   ───────────────────────────────────────────────────────────── */
+.cursor,
+.cursor * {
+  pointer-events: none;
+}
+.cursor {
   position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
   z-index: 9000;
-  mix-blend-mode: screen;
+}
+
+.cursor__dot,
+.cursor__ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+/* Revealed once the pointer first moves. */
+.cursor.is-active .cursor__dot,
+.cursor.is-active .cursor__ring {
+  opacity: 1;
+}
+
+.cursor__dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px; /* centre on the transform origin */
+  background: #f2ede6; /* light on dark by default */
+  transition: opacity 0.25s ease, background-color 0.2s ease;
+}
+
+.cursor__ring {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1.5px solid rgba(242, 237, 230, 0.85);
+  transition: width 0.22s ease, height 0.22s ease, margin 0.22s ease,
+    border-color 0.2s ease, opacity 0.3s ease;
+}
+
+/* Over a light background, flip to dark ink. */
+.cursor.is-light .cursor__dot {
+  background: #16130f;
+}
+.cursor.is-light .cursor__ring {
+  border-color: rgba(22, 19, 15, 0.8);
+}
+
+/* ── Magnifier lens ──────────────────────────────────────────
+   A full-viewport layer clipped to a disc at the pointer. Its
+   background matches the sampled backdrop so transparent areas of
+   the magnified clone blend seamlessly into the surrounding page. */
+.cursor__lens {
+  position: fixed;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.16s ease;
+  will-change: clip-path, opacity;
+  /* Filled at runtime with the backdrop colour behind the hovered
+     control, so the magnified clone sits on a matching opaque disc
+     (no see-through ghosting, no white-on-white wash). */
+  background: #0a0a0a;
+}
+.cursor__stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+/* Hover state: reveal the lens, grow the ring into its frame,
+   hide the plain dot. */
+.cursor.is-hover .cursor__lens {
+  opacity: 1;
+}
+.cursor.is-hover .cursor__ring {
+  width: 96px;
+  height: 96px;
+  margin: -48px 0 0 -48px;
+}
+.cursor.is-hover .cursor__dot {
+  opacity: 0;
+}
+
+/* Hide the native cursor while ours is driving. Keep it on text fields
+   so the caret and text affordance still read. */
+.has-custom-cursor,
+.has-custom-cursor a,
+.has-custom-cursor button {
+  cursor: none;
+}
+.has-custom-cursor input,
+.has-custom-cursor textarea,
+.has-custom-cursor select,
+.has-custom-cursor [contenteditable="true"] {
+  cursor: auto;
 }

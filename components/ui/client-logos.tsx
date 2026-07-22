@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 /**
@@ -75,8 +77,8 @@ const CLIENTS: Client[] = [
   {
     name: "Relia",
     src: "/assets/images/clients/azaq-relia.jpeg",
-    maxH: 54,
-    maxW: 84,
+    maxH: 92,
+    maxW: 62,
     reveal: {
       kind: "role",
       label: "What I did",
@@ -87,7 +89,7 @@ const CLIENTS: Client[] = [
   {
     name: "Maximum Impact Partners",
     src: "/assets/images/clients/maximum-impact-partners.png",
-    maxH: 56,
+    maxH: 74,
     reveal: {
       kind: "review",
       label: "Review",
@@ -120,6 +122,84 @@ const CLIENTS: Client[] = [
 ];
 
 export default function ClientLogos() {
+  const gridRef = React.useRef<HTMLDivElement>(null);
+  const chipRef = React.useRef<HTMLDivElement>(null);
+  // `content` holds the last shown detail (kept during fade-out); `visible`
+  // toggles the chip on/off.
+  const [content, setContent] = React.useState<Client | null>(null);
+  const [visible, setVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const grid = gridRef.current;
+    const chip = chipRef.current;
+    if (!grid || !chip) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+    let mx = 0;
+    let my = 0;
+    let cx = 0;
+    let cy = 0;
+    let shown = false;
+    let current: string | null = null;
+    let raf = 0;
+
+    const onMove = (e: PointerEvent) => {
+      mx = e.clientX;
+      my = e.clientY;
+      const card = (e.target as Element | null)?.closest?.(".logos__card") as HTMLElement | null;
+      const name = card?.dataset.name ?? null;
+      if (name === current) return;
+      current = name;
+      if (name) {
+        const c = CLIENTS.find((x) => x.name === name);
+        if (c) setContent(c);
+        setVisible(true);
+      } else {
+        setVisible(false);
+      }
+    };
+    const onLeave = () => {
+      current = null;
+      setVisible(false);
+    };
+
+    grid.addEventListener("pointermove", onMove);
+    grid.addEventListener("pointerleave", onLeave);
+
+    const tick = () => {
+      // Snap to the pointer the first frame it appears, then ease-follow.
+      if (current && !shown) {
+        cx = mx;
+        cy = my;
+        shown = true;
+      } else if (!current) {
+        shown = false;
+      }
+      cx += (mx - cx) * 0.22;
+      cy += (my - cy) * 0.22;
+
+      // Offset from the cursor (clear of the custom cursor ring); flip near
+      // the viewport edges so the chip never clips.
+      const off = 22;
+      const w = chip.offsetWidth || 220;
+      const h = chip.offsetHeight || 90;
+      let x = cx + off;
+      let y = cy + off;
+      if (x + w > window.innerWidth - 10) x = cx - off - w;
+      if (y + h > window.innerHeight - 10) y = cy - off - h;
+      chip.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      grid.removeEventListener("pointermove", onMove);
+      grid.removeEventListener("pointerleave", onLeave);
+    };
+  }, []);
+
   return (
     <section className="logos section--light">
       <div className="container">
@@ -135,9 +215,9 @@ export default function ClientLogos() {
           </svg>
         </div>
 
-        <div className="logos__grid">
+        <div className="logos__grid" ref={gridRef}>
           {CLIENTS.map((c) => (
-            <div className="logos__card" key={c.name} data-reveal={c.reveal.kind}>
+            <div className="logos__card" key={c.name} data-name={c.name}>
               <img
                 className="logos__logo"
                 src={c.src}
@@ -148,17 +228,26 @@ export default function ClientLogos() {
                   ...(c.maxW ? { maxWidth: `${c.maxW}%` } : null),
                 }}
               />
-
-              <div className="logos__hover" aria-hidden="true">
-                <span className="logos__hover-tag">{c.reveal.label}</span>
-                <p className="logos__hover-text">{c.reveal.detail}</p>
-                <span className="logos__hover-meta">
-                  {c.reveal.kind === "review" ? c.reveal.attribution : c.reveal.meta}
-                </span>
-              </div>
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Cursor-following detail chip (fixed; positioned via JS). */}
+      <div
+        ref={chipRef}
+        className={`logos__chip${visible ? " is-visible" : ""}`}
+        aria-hidden="true"
+      >
+        {content && (
+          <>
+            <span className="logos__chip-tag">{content.reveal.label}</span>
+            <p className="logos__chip-text">{content.reveal.detail}</p>
+            <span className="logos__chip-meta">
+              {content.reveal.kind === "review" ? content.reveal.attribution : content.reveal.meta}
+            </span>
+          </>
+        )}
       </div>
     </section>
   );

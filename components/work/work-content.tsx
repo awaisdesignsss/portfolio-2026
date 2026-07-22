@@ -72,6 +72,7 @@ export default function WorkContent() {
       <nav className="nav">
           <a className="nav__logo" href="/" aria-label="M. Awais, home"><span className="brandmark" role="img" aria-label="Awais"></span></a>
           <div className="nav__menu">
+            <span className="nav__pill" aria-hidden="true" />
             <a href="/" className="nav__link">Home</a>
             <a href="/work" className="nav__link" aria-current="page">Work</a>
             <a href="/about" className="nav__link">About</a>
