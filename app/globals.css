@@ -34,6 +34,27 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ─────────────────────────────────────────────────────────────
+   Lenis smooth scroll — required base styles (see components/
+   smooth-scroll). Only active once Lenis adds `.lenis` to <html>;
+   native scroll is untouched under reduced motion. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 /* Screen-reader-only: available to assistive tech, invisible on screen */
 .sr-only {
   position: absolute;

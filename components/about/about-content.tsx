@@ -304,6 +304,7 @@ export default function AboutContent() {
             <div className="roadmap" data-roadmap>
               <div
                 className="roadmap__viewport"
+                data-lenis-prevent
                 tabIndex={0}
                 role="group"
                 aria-label="Career roadmap. Use the left and right arrow keys to move between roles."

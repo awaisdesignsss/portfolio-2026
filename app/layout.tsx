@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PointerFX from "@/components/pointer-fx";
 import NavPill from "@/components/nav-pill";
+import SmoothScroll from "@/components/smooth-scroll";
 import "./globals.css";
 // Original portfolio stylesheet — reused verbatim so migrated pages keep
 // their exact design. Imported after globals so it wins over Tailwind base.
@@ -39,6 +40,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <SmoothScroll />
         <PointerFX />
         <NavPill />
         {children}
