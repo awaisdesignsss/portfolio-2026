@@ -419,35 +419,53 @@ img {
   z-index: 2; /* between --z-bg (1) and --z-content (5) */
   inset: 0;
   pointer-events: none;
-  background-image: radial-gradient(
-    circle at center,
-    rgba(226, 162, 96, 0.9) 0.9px,
-    transparent 1.7px
-  );
-  background-size: 34px 34px;
-  opacity: 0.14;
   mix-blend-mode: screen;
+  /* Keep the dots in the background — masked out of the region around the
+     subject so the portrait always reads on top. */
   -webkit-mask-image: radial-gradient(
-    115% 90% at 60% 40%,
+    120% 96% at 60% 42%,
     transparent 0%,
-    transparent 30%,
-    #000 66%
+    transparent 40%,
+    #000 74%
   );
   mask-image: radial-gradient(
-    115% 90% at 60% 40%,
+    120% 96% at 60% 42%,
     transparent 0%,
-    transparent 30%,
-    #000 66%
+    transparent 40%,
+    #000 74%
   );
 }
+
+/* Each dot twinkles on its own delay/duration (set inline), so they blink
+   in and out from every side rather than drifting as one grid. */
+.hero__dot {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  background: radial-gradient(
+    circle,
+    rgba(247, 196, 132, 1) 0%,
+    rgba(228, 165, 99, 0.65) 40%,
+    transparent 78%
+  );
+  opacity: 0;
+}
 @media (prefers-reduced-motion: no-preference) {
-  .hero__fx {
-    animation: hero-fx-drift 32s linear infinite;
+  .hero__dot {
+    animation-name: hero-twinkle;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
   }
 }
-@keyframes hero-fx-drift {
-  to {
-    background-position: 34px 68px;
+@keyframes hero-twinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 

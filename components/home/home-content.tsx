@@ -11,6 +11,30 @@ import ClientLogos from "@/components/ui/client-logos";
  * animations (process, work, reasons) and the wordfx word-splitter are
  * ported verbatim into the effect below, with proper listener cleanup.
  */
+/**
+ * Ambient hero dots — a fixed, seeded scatter so server and client render
+ * identically (no hydration mismatch). Each dot twinkles on its own delay/
+ * duration (see .hero__dot in styles.css), so they blink in randomly from
+ * every side rather than moving as one grid.
+ */
+const heroDots = (() => {
+  let a = 0x9e3779b9;
+  const rnd = () => {
+    a |= 0;
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+  return Array.from({ length: 140 }, () => ({
+    x: rnd() * 100,
+    y: rnd() * 100,
+    s: 3 + rnd() * 5, // size px
+    d: rnd() * 9, // delay s — spread so blinks stay sporadic
+    t: 2.8 + rnd() * 3, // duration s
+  }));
+})();
+
 export default function HomeContent() {
 
   React.useEffect(() => {
@@ -378,7 +402,22 @@ export default function HomeContent() {
 
           <section className="hero">
             <img src="/assets/images/hero-bg.jpg" alt="M. Awais portrait with warm amber spotlight" className="hero__bg" />
-            <div className="hero__fx" aria-hidden="true" />
+            <div className="hero__fx" aria-hidden="true">
+              {heroDots.map((d, i) => (
+                <span
+                  key={i}
+                  className="hero__dot"
+                  style={{
+                    left: `${d.x}%`,
+                    top: `${d.y}%`,
+                    width: `${d.s}px`,
+                    height: `${d.s}px`,
+                    animationDelay: `${d.d}s`,
+                    animationDuration: `${d.t}s`,
+                  }}
+                />
+              ))}
+            </div>
 
             <div className="hero__content">
               <div className="hero__info">
