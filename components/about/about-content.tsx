@@ -69,143 +69,55 @@ export default function AboutContent() {
     // ── wordfx: per-word hover choreography (bio copy + section headings) ──
     applyWordfx();
 
-    // ── Experience roadmap: cinematic center-focus carousel ──
+    // ── Experience ledger: scroll-drawn spine + reading spotlight ──
     (() => {
-      const root = document.querySelector<HTMLElement>("[data-roadmap]");
-      if (!root) return;
-      const viewport = root.querySelector<HTMLElement>(".roadmap__viewport");
-      const track = root.querySelector<HTMLElement>(".roadmap__track");
-      const stops = Array.from(root.querySelectorAll<HTMLElement>(".roadmap__stop"));
-      if (!viewport || !track || !stops.length) return;
-      const cards = stops.map((s) => s.querySelector<HTMLElement>(".roadmap__card"));
-      const railFill = root.querySelector<HTMLElement>(".roadmap__rail-fill");
-      const countCur = root.querySelector<HTMLElement>(".roadmap__count-cur");
-      const btnPrev = root.querySelector<HTMLButtonElement>('[data-dir="prev"]');
-      const btnNext = root.querySelector<HTMLButtonElement>('[data-dir="next"]');
-      const n = stops.length;
-      const clamp01 = (x: number) => (x < 0 ? 0 : x > 1 ? 1 : x);
-      let active = 0;
-      let target = 0;
-      let programmatic = false;
-      let progTimer: ReturnType<typeof setTimeout> | undefined;
-      let ticking = false;
+      const ledger = document.querySelector<HTMLElement>("[data-ledger]");
+      if (!ledger) return;
+      const rows = Array.from(ledger.querySelectorAll<HTMLElement>(".ledger__row"));
+      const spine = ledger.querySelector<HTMLElement>(".ledger__spine");
+      const fill = ledger.querySelector<HTMLElement>(".ledger__spine-fill");
+      if (!rows.length) return;
+      const clamp = (v: number, a: number, b: number) => (v < a ? a : v > b ? b : v);
 
-      function apply() {
-        ticking = false;
-        const vp = viewport!.getBoundingClientRect();
-        const center = vp.left + vp.width / 2;
-        const step =
-          n > 1 ? Math.abs(stops[1].offsetLeft - stops[0].offsetLeft) || vp.width : vp.width;
-        let best = 0;
-        let bestDist = Infinity;
-        for (let i = 0; i < n; i++) {
-          const r = stops[i].getBoundingClientRect();
-          const dist = Math.abs(r.left + r.width / 2 - center);
-          if (dist < bestDist) { bestDist = dist; best = i; }
-          const card = cards[i];
-          if (card && !reduceMotion) {
-            const e = clamp01(dist / step);
-            card.style.transform = `scale(${(1 - e * 0.12).toFixed(4)})`;
-            card.style.opacity = (1 - e * 0.5).toFixed(3);
-            card.style.filter = e > 0.01 ? `blur(${(e * 3).toFixed(2)}px)` : "none";
-          }
-        }
-        if (best !== active) {
-          active = best;
-          for (let i = 0; i < n; i++) {
-            stops[i].dataset.state = i < active ? "past" : i === active ? "active" : "future";
-          }
-          if (countCur) countCur.textContent = String(active + 1).padStart(2, "0");
-        }
-        // While the user scrolls/drags manually, keep the button target in sync;
-        // during a programmatic scroll, leave it so rapid clicks can queue ahead.
-        if (!programmatic) target = active;
-        // Progress normalized to the first→last "centered" scroll range so the
-        // rail reads 0% on the first card and a full 100% on the last.
-        const firstC = stops[0].offsetLeft - (vp.width - stops[0].offsetWidth) / 2;
-        const lastC =
-          stops[n - 1].offsetLeft - (vp.width - stops[n - 1].offsetWidth) / 2;
-        const denom = lastC - firstC;
-        const prog = denom > 0 ? clamp01((viewport!.scrollLeft - firstC) / denom) : 0;
-        if (railFill) railFill.style.transform = `scaleX(${prog.toFixed(4)})`;
-        if (btnPrev) btnPrev.disabled = active === 0;
-        if (btnNext) btnNext.disabled = active === n - 1;
+      // Reduced motion: no scroll-linked drawing. Light the current role and
+      // leave every entry fully legible.
+      if (reduceMotion) {
+        rows.forEach((r, i) => {
+          r.toggleAttribute("data-active", i === 0);
+          r.dataset.reached = i === 0 ? "true" : "false";
+        });
+        return;
       }
 
-      const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(apply); } };
-      viewport.addEventListener("scroll", onScroll, { passive: true });
-      cleanups.push(() => viewport.removeEventListener("scroll", onScroll));
+      let ticking = false;
+      const update = () => {
+        ticking = false;
+        // The "reading line" the spotlight tracks — a little above centre.
+        const focus = window.innerHeight * 0.42;
+        let activeIdx = -1;
+        for (let i = 0; i < rows.length; i++) {
+          const marker = rows[i].querySelector<HTMLElement>(".ledger__marker");
+          const mr = marker!.getBoundingClientRect();
+          const reached = mr.top + mr.height / 2 <= focus;
+          rows[i].dataset.reached = reached ? "true" : "false";
+          if (reached) activeIdx = i;
+        }
+        for (let i = 0; i < rows.length; i++) {
+          rows[i].toggleAttribute("data-active", i === activeIdx);
+        }
+        // Grow the amber spine down to the reading line.
+        if (spine && fill) {
+          const sr = spine.getBoundingClientRect();
+          fill.style.height = `${clamp(focus - sr.top, 0, sr.height)}px`;
+        }
+      };
 
-      const scrollToIndex = (i: number) => {
-        target = Math.max(0, Math.min(n - 1, i));
-        const stop = stops[target];
-        const left = stop.offsetLeft - (viewport.clientWidth - stop.offsetWidth) / 2;
-        programmatic = true;
-        if (progTimer) clearTimeout(progTimer);
-        progTimer = setTimeout(() => { programmatic = false; }, 700);
-        viewport.scrollTo({ left, behavior: reduceMotion ? "auto" : "smooth" });
-      };
-      const onPrev = () => scrollToIndex(target - 1);
-      const onNext = () => scrollToIndex(target + 1);
-      btnPrev?.addEventListener("click", onPrev);
-      btnNext?.addEventListener("click", onNext);
-      cleanups.push(() => btnPrev?.removeEventListener("click", onPrev));
-      cleanups.push(() => btnNext?.removeEventListener("click", onNext));
-      cleanups.push(() => { if (progTimer) clearTimeout(progTimer); });
-
-      const onKey = (e: KeyboardEvent) => {
-        if (e.key === "ArrowRight") { e.preventDefault(); scrollToIndex(target + 1); }
-        else if (e.key === "ArrowLeft") { e.preventDefault(); scrollToIndex(target - 1); }
-      };
-      viewport.addEventListener("keydown", onKey);
-      cleanups.push(() => viewport.removeEventListener("keydown", onKey));
-
-      // Mouse drag to scroll (touch keeps native swipe + snap)
-      let dragging = false;
-      let startX = 0;
-      let startScroll = 0;
-      const onDown = (e: PointerEvent) => {
-        if (e.pointerType !== "mouse") return;
-        dragging = true;
-        startX = e.clientX;
-        startScroll = viewport.scrollLeft;
-        root.dataset.dragging = "true";
-      };
-      const onMove = (e: PointerEvent) => {
-        if (!dragging) return;
-        viewport.scrollLeft = startScroll - (e.clientX - startX);
-      };
-      const onUp = () => {
-        if (!dragging) return;
-        dragging = false;
-        delete root.dataset.dragging;
-      };
-      viewport.addEventListener("pointerdown", onDown);
-      window.addEventListener("pointermove", onMove);
-      window.addEventListener("pointerup", onUp);
-      cleanups.push(() => viewport.removeEventListener("pointerdown", onDown));
-      cleanups.push(() => window.removeEventListener("pointermove", onMove));
-      cleanups.push(() => window.removeEventListener("pointerup", onUp));
-
-      // Edge spacers = (viewport - card) / 2 so the first & last card can center.
-      const measure = () => {
-        const edge = Math.max(0, (viewport.clientWidth - stops[0].offsetWidth) / 2);
-        track.style.setProperty("--edge", `${edge}px`);
-      };
-      const onResize = () => { measure(); apply(); };
-      window.addEventListener("resize", onResize);
-      cleanups.push(() => window.removeEventListener("resize", onResize));
-
-      measure();
-      requestAnimationFrame(() => {
-        // center the first card without animation, then run the focus pass
-        const first = stops[0];
-        viewport.scrollLeft = Math.max(
-          0,
-          first.offsetLeft - (viewport.clientWidth - first.offsetWidth) / 2
-        );
-        apply();
-      });
+      const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+      cleanups.push(() => window.removeEventListener("scroll", onScroll));
+      cleanups.push(() => window.removeEventListener("resize", onScroll));
+      update();
     })();
 
     // ── Stats: count up from zero when each number scrolls into view ──
@@ -301,75 +213,64 @@ export default function AboutContent() {
               <span className="rulebar__aside">2018 — Now</span>
             </div>
 
-            <div className="roadmap" data-roadmap>
-              <div
-                className="roadmap__viewport"
-                data-lenis-prevent
-                tabIndex={0}
-                role="group"
-                aria-label="Career roadmap. Use the left and right arrow keys to move between roles."
-              >
-                <ol className="roadmap__track">
-                  <span className="roadmap__line" aria-hidden="true"></span>
+            <div className="ledger" data-ledger>
+              <span className="ledger__spine" aria-hidden="true">
+                <span className="ledger__spine-fill"></span>
+              </span>
 
-                  <li className="roadmap__stop" data-state="active">
-                    <span className="roadmap__node" aria-hidden="true"></span>
-                    <article className="roadmap__card">
-                      <span className="roadmap__year">2023 — <em className="roadmap__now">Now</em></span>
-                      <h3 className="roadmap__role" data-wordfx>Product Designer (Freelance)</h3>
-                      <span className="roadmap__org">Independent</span>
-                      <p className="roadmap__note">Designing products end to end for founders across fintech, SaaS, and commerce.</p>
-                    </article>
-                  </li>
+              <ol className="ledger__rows">
+                <li className="ledger__row reveal" data-current style={{ "--i": 0 } as React.CSSProperties}>
+                  <span className="ledger__marker" aria-hidden="true"></span>
+                  <span className="ledger__period">
+                    <span className="ledger__from">2023</span>
+                    <em className="ledger__now"><span className="ledger__pulse" aria-hidden="true"></span>Now</em>
+                  </span>
+                  <div className="ledger__main">
+                    <h3 className="ledger__role" data-wordfx>Product Designer</h3>
+                    <span className="ledger__org">Independent · Freelance</span>
+                  </div>
+                  <p className="ledger__note">Designing products end to end for founders across fintech, SaaS, and commerce.</p>
+                </li>
 
-                  <li className="roadmap__stop" data-state="future">
-                    <span className="roadmap__node" aria-hidden="true"></span>
-                    <article className="roadmap__card">
-                      <span className="roadmap__year">2021 — 2023</span>
-                      <h3 className="roadmap__role" data-wordfx>Senior Product Designer</h3>
-                      <span className="roadmap__org">tkxel</span>
-                      <p className="roadmap__note">Led design on enterprise dashboards and a shared design system used across teams.</p>
-                    </article>
-                  </li>
+                <li className="ledger__row reveal" style={{ "--i": 1 } as React.CSSProperties}>
+                  <span className="ledger__marker" aria-hidden="true"></span>
+                  <span className="ledger__period">
+                    <span className="ledger__from">2021</span>
+                    <span className="ledger__to">2023</span>
+                  </span>
+                  <div className="ledger__main">
+                    <h3 className="ledger__role" data-wordfx>Senior Product Designer</h3>
+                    <span className="ledger__org">tkxel</span>
+                  </div>
+                  <p className="ledger__note">Led design on enterprise dashboards and a shared design system used across teams.</p>
+                </li>
 
-                  <li className="roadmap__stop" data-state="future">
-                    <span className="roadmap__node" aria-hidden="true"></span>
-                    <article className="roadmap__card">
-                      <span className="roadmap__year">2019 — 2021</span>
-                      <h3 className="roadmap__role" data-wordfx>Product Designer</h3>
-                      <span className="roadmap__org">OptimusFox</span>
-                      <p className="roadmap__note">UX and UI for web and mobile products across a range of client projects.</p>
-                    </article>
-                  </li>
+                <li className="ledger__row reveal" style={{ "--i": 2 } as React.CSSProperties}>
+                  <span className="ledger__marker" aria-hidden="true"></span>
+                  <span className="ledger__period">
+                    <span className="ledger__from">2019</span>
+                    <span className="ledger__to">2021</span>
+                  </span>
+                  <div className="ledger__main">
+                    <h3 className="ledger__role" data-wordfx>Product Designer</h3>
+                    <span className="ledger__org">OptimusFox</span>
+                  </div>
+                  <p className="ledger__note">UX and UI for web and mobile products across a range of client projects.</p>
+                </li>
 
-                  <li className="roadmap__stop" data-state="future">
-                    <span className="roadmap__node" aria-hidden="true"></span>
-                    <article className="roadmap__card">
-                      <span className="roadmap__year">2018 — 2019</span>
-                      <h3 className="roadmap__role" data-wordfx>UI Designer</h3>
-                      <span className="roadmap__org">Code District</span>
-                      <p className="roadmap__note">Marketing sites and first design systems for early-stage startups.</p>
-                    </article>
-                  </li>
-                </ol>
-              </div>
-
-              <div className="roadmap__hud">
-                <span className="roadmap__count" aria-hidden="true">
-                  <span className="roadmap__count-cur">01</span>
-                  <span className="roadmap__count-sep">/</span>
-                  <span className="roadmap__count-tot">04</span>
-                </span>
-                <span className="roadmap__rail" aria-hidden="true"><span className="roadmap__rail-fill"></span></span>
-                <div className="roadmap__nav">
-                  <button className="roadmap__btn" type="button" data-dir="prev" aria-label="Previous role">
-                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  </button>
-                  <button className="roadmap__btn" type="button" data-dir="next" aria-label="Next role">
-                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  </button>
-                </div>
-              </div>
+                <li className="ledger__row reveal" style={{ "--i": 3 } as React.CSSProperties}>
+                  <span className="ledger__marker" aria-hidden="true"></span>
+                  <span className="ledger__period">
+                    <span className="ledger__from">2018</span>
+                    <span className="ledger__to">2019</span>
+                  </span>
+                  <div className="ledger__main">
+                    <h3 className="ledger__role" data-wordfx>UI Designer</h3>
+                    <span className="ledger__org">Code District</span>
+                  </div>
+                  <p className="ledger__note">Marketing sites and first design systems for early-stage startups.</p>
+                </li>
+              </ol>
             </div>
           </section>
 
