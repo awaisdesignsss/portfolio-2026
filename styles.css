@@ -406,7 +406,10 @@ img {
   width: 100%;
   height: calc(100% + 4px);
   object-fit: cover;
-  object-position: center;
+  /* Anchor toward the top of the frame so the full head (hair) clears the
+     fixed nav instead of being cropped; the photo's dark ground fills the
+     rest. Nudged down slightly for breathing room under the header. */
+  object-position: 50% 14%;
   pointer-events: none;
 }
 
@@ -466,6 +469,10 @@ img {
 }
 
 /* ─── Hero Content (Right Side) ─── */
+
+/* Wrapper is transparent on desktop (children keep their absolute Figma
+   positions); on tablet/mobile it becomes the bottom-left overlay stack. */
+.hero__lead { display: contents; }
 
 .hero__content {
   position: absolute;
@@ -1937,36 +1944,67 @@ img {
     gap: var(--space-8);
   }
 
+  /* Tablet hero (Figma 2204-805): portrait fills the frame; a bottom-left
+     stack (Awais → Certified Designer → description → View Work) with the
+     social links bottom-right. Intro + availability chip drop away. */
   .hero {
-    min-height: 600px;
+    min-height: 720px;
+  }
+
+  .hero__bg {
+    object-position: 50% 8%;
+  }
+
+  .hero__lead {
+    display: flex;
+    flex-direction: column-reverse; /* script name on top, content below */
+    align-items: flex-start;
+    gap: clamp(var(--space-3), 2vw, var(--space-5));
+    position: absolute;
+    z-index: var(--z-content);
+    left: var(--section-pad-x);
+    right: auto;
+    top: auto;
+    bottom: clamp(var(--space-10), 6vh, var(--space-16));
+    width: min(66%, 520px);
   }
 
   .hero__content {
-    top: 180px;
+    position: static;
+    top: auto;
     left: auto;
-    right: var(--section-pad-x);
-    width: min(380px, 40%);
-    gap: var(--space-8);
+    right: auto;
+    width: 100%;
+    gap: var(--space-5);
   }
 
   .hero__name {
-    font-size: clamp(160px, 22vw, 300px);
-    line-height: 0.8;
-    top: 380px;
-    left: 200px;
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: none;
     width: auto;
+    text-align: left;
+    font-size: clamp(120px, 18vw, 190px);
+    line-height: 0.74;
+    letter-spacing: -6px;
   }
 
-  .hero__intro {
-    top: auto;
-    bottom: 140px;
-    width: min(400px, 50%);
-    font-size: var(--text-xl);
-    line-height: 1.5;
+  .hero__intro,
+  .hero__available {
+    display: none;
   }
 
   .hero__menu {
-    display: none;
+    display: flex;
+    position: absolute;
+    z-index: var(--z-content);
+    top: auto;
+    right: var(--section-pad-x);
+    bottom: clamp(var(--space-10), 6vh, var(--space-16));
+    width: min(36%, 250px);
   }
 
   /* Tablet: Logos */
@@ -2058,18 +2096,25 @@ img {
     max-height: none;
   }
 
+  /* Mobile hero (Figma 2204-806): portrait fills the top; the same
+     bottom-left stack (Awais → Certified Designer → description → View Work),
+     with the social links reduced to an icon-only column on the right. */
   .hero__bg {
-    object-position: 55% center;
+    object-position: 50% 6%;
+  }
+
+  /* Inherits the column-reverse flex from the tablet rules; tighten spacing
+     and leave a lane on the right for the icon column. */
+  .hero__lead {
+    left: var(--section-pad-x);
+    right: auto;
+    bottom: clamp(var(--space-8), 4vh, var(--space-12));
+    width: calc(100% - 2 * var(--section-pad-x) - 78px);
+    gap: var(--space-3);
   }
 
   .hero__content {
-    position: absolute;
-    top: auto;
-    bottom: 200px;
-    left: var(--section-pad-x);
-    right: var(--section-pad-x);
-    width: auto;
-    gap: var(--space-6);
+    gap: var(--space-4);
   }
 
   .hero__subtitle {
@@ -2082,27 +2127,34 @@ img {
   }
 
   .hero__name {
-    font-size: clamp(100px, 28vw, 200px);
-    line-height: 0.8;
-    top: auto;
-    bottom: 360px;
-    left: var(--section-pad-x);
-    transform: none;
-    width: auto;
-    text-align: left;
+    font-size: clamp(96px, 26vw, 150px);
+    line-height: 0.72;
+    letter-spacing: -5px;
   }
 
-  .hero__intro {
-    display: none;
-  }
-
+  .hero__intro,
   .hero__available {
-    bottom: var(--space-8);
-    font-size: var(--text-sm);
+    display: none;
   }
 
   .hero__menu {
-    display: none;
+    display: flex;
+    left: auto;
+    right: var(--section-pad-x);
+    bottom: clamp(var(--space-8), 4vh, var(--space-12));
+    width: 50px;
+  }
+  .hero__menu-link {
+    padding: var(--space-3) 0;
+  }
+  /* Collapse the text label to just its icon. */
+  .hero__menu-label {
+    gap: 0;
+    font-size: 0;
+  }
+  .hero__menu-arrow {
+    width: 14px;
+    height: 14px;
   }
 
   /* Mobile: Section headings */
@@ -2300,10 +2352,6 @@ img {
 @media (max-width: 480px) {
   .hero__name {
     font-size: clamp(80px, 25vw, 140px);
-  }
-
-  .hero__content {
-    bottom: 160px;
   }
 
   .hero__subtitle {
