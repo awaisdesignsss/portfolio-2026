@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Wordmark from "@/components/ui/wordmark";
 
 /** Case study "foodhub", ported from the original static work/foodhub.html. */
 export default function FoodhubContent() {
@@ -36,7 +37,7 @@ export default function FoodhubContent() {
   return (
     <>
       <nav className="nav">
-          <a className="nav__logo" href="/" aria-label="M. Awais, home"><span className="brandmark" role="img" aria-label="Awais"></span></a>
+          <a className="nav__logo" href="/" aria-label="M. Awais, home"><Wordmark /></a>
           <div className="nav__menu">
             <a href="/" className="nav__link">Home</a>
             <a href="/work" className="nav__link" aria-current="page">Work</a>

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { applyWordfx } from "@/lib/wordfx";
+import Wordmark from "@/components/ui/wordmark";
 
 /**
  * Work index page, ported from the original static work.html.
@@ -70,7 +71,7 @@ export default function WorkContent() {
   return (
     <>
       <nav className="nav">
-          <a className="nav__logo" href="/" aria-label="M. Awais, home"><span className="brandmark" role="img" aria-label="Awais"></span></a>
+          <a className="nav__logo" href="/" aria-label="M. Awais, home"><Wordmark /></a>
           <div className="nav__menu">
             <span className="nav__pill" aria-hidden="true" />
             <a href="/" className="nav__link">Home</a>
