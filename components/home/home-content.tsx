@@ -280,14 +280,15 @@ export default function HomeContent() {
     const targets: HTMLElement[] = [];
     const tag = (
       sectionSel: string,
-      specs: Array<{ sel: string; fade?: boolean }>,
+      specs: Array<{ sel: string; fade?: boolean; dir?: "left" | "right" }>,
       step = 70
     ) => {
       const section = document.querySelector<HTMLElement>(sectionSel);
       if (!section) return;
-      specs.forEach(({ sel, fade }) => {
+      specs.forEach(({ sel, fade, dir }) => {
         section.querySelectorAll<HTMLElement>(sel).forEach((el, i) => {
           el.classList.add(fade ? "enter--fade" : "enter");
+          if (dir) el.classList.add(dir === "left" ? "enter--left" : "enter--right");
           el.style.setProperty("--rd", i * step + "ms");
           targets.push(el);
         });
@@ -296,14 +297,17 @@ export default function HomeContent() {
 
     tag(".logos", [{ sel: ".logos__label-wrap" }, { sel: ".logos__card" }], 55);
     tag(".process", [{ sel: ".process__card", fade: true }]);
+    // Work is a pinned 3D scrub with its own choreography; only the header
+    // gets the scroll-in so we don't fight the cards' per-frame transforms.
     tag(".work", [{ sel: ".work__header" }]);
-    tag(".services", [{ sel: ".services__head" }, { sel: ".services__row" }], 55);
-    tag(".metrics", [{ sel: ".metrics__item" }], 90);
+    tag(".services", [{ sel: ".services__head" }, { sel: ".services__row" }], 70);
+    tag(".metrics", [{ sel: ".metrics__item" }], 110);
+    // Left column slides in from the left while the reason cards rise/stack.
     tag(".reasons", [
-      { sel: ".reasons__head" },
-      { sel: ".reasons__heading" },
-      { sel: ".reasons__lead" },
-      { sel: ".reasons__cta" },
+      { sel: ".reasons__head", dir: "left" },
+      { sel: ".reasons__heading", dir: "left" },
+      { sel: ".reasons__lead", dir: "left" },
+      { sel: ".reasons__cta", dir: "left" },
       { sel: ".reasons__card", fade: true },
     ], 90);
     tag(".footer", [
@@ -317,7 +321,7 @@ export default function HomeContent() {
 
     const timers: Array<ReturnType<typeof setTimeout>> = [];
     const clearTags = (el: HTMLElement) => {
-      el.classList.remove("enter", "enter--fade", "is-in");
+      el.classList.remove("enter", "enter--fade", "enter--left", "enter--right", "is-in");
       el.style.removeProperty("--rd");
     };
 
@@ -334,7 +338,7 @@ export default function HomeContent() {
           io.unobserve(el);
           el.classList.add("is-in");
           const delay = parseFloat(el.style.getPropertyValue("--rd")) || 0;
-          timers.push(setTimeout(() => clearTags(el), delay + 720));
+          timers.push(setTimeout(() => clearTags(el), delay + 960));
         });
       },
       { rootMargin: "0px 0px -8% 0px" }

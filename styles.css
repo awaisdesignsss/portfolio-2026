@@ -3427,26 +3427,32 @@ html.splash-seen .splash { display: none; }
   .hero-reveal .hero__content   { animation: hero-in-right 700ms var(--ease-out-quart) 700ms both; }
   .hero-reveal .hero__menu      { animation: hero-in-right 680ms var(--ease-out-quart) 800ms both; }
 
-  /* ── Sections: quick, subtle, staggered scroll-in ──
+  /* ── Sections: cinematic, staggered scroll-in ──
      The hidden state snaps in instantly (transition: none) so elements
      with their own opacity transition don't visibly fade out first;
-     only `.is-in` animates. JS strips these classes once the entrance
-     finishes, so the transform/opacity never lingers to fight hovers. */
+     only `.is-in` animates. Each element rises a clear distance and
+     settles on an exponential ease-out, staggered per group via --rd.
+     JS strips these classes once the entrance finishes, so the
+     transform never lingers to fight hovers.
+     `--enter-y` lets a group override the travel distance/direction. */
   .js .enter,
   .js .enter--fade  { opacity: 0; transition: none; }
-  .js .enter        { transform: translateY(14px); }
+  .js .enter        { transform: translate(var(--enter-x, 0), var(--enter-y, 44px)); }
   .js .enter.is-in {
     opacity: 1;
     transform: none;
-    transition: opacity 480ms var(--ease-out-quart),
-                transform 480ms var(--ease-out-quart);
+    transition: opacity 620ms var(--ease-out),
+                transform 780ms var(--ease-out);
     transition-delay: var(--rd, 0ms);
   }
   .js .enter--fade.is-in {
     opacity: 1;
-    transition: opacity 480ms var(--ease-out-quart);
+    transition: opacity 720ms var(--ease-out);
     transition-delay: var(--rd, 0ms);
   }
+  /* Directional variants for elements that read better sliding sideways. */
+  .js .enter--left  { --enter-x: -56px; --enter-y: 0px; }
+  .js .enter--right { --enter-x: 56px;  --enter-y: 0px; }
 }
 
 /* Photo dissolves; copy slides in from its own side of the screen.
