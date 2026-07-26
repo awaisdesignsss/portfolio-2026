@@ -634,7 +634,7 @@ export default function HomeContent() {
 
                 <article className="work__project">
                   <div className="work__cover">
-                    <div className="work__media" style={{ background: "radial-gradient(120% 120% at 70% 20%, #5a2a55 0%, #34203a 55%, #170c1a 100%)" } as React.CSSProperties}></div>
+                    <div className="work__media" style={{ backgroundImage: "url(/assets/images/work/work-05.jpg)" }}></div>
                     <div className="work__scrim"></div>
                     <a className="work__cardlink" href="/work/zenith-digital" aria-label="View Zenith Digital case study"></a>
                     <div className="work__caption">
@@ -646,7 +646,7 @@ export default function HomeContent() {
 
                 <article className="work__project">
                   <div className="work__cover">
-                    <div className="work__media" style={{ background: "radial-gradient(120% 120% at 70% 20%, #b58a2f 0%, #5a3a0a 55%, #2a1c04 100%)" } as React.CSSProperties}></div>
+                    <div className="work__media" style={{ backgroundImage: "url(/assets/images/work/work-06.jpg)" }}></div>
                     <div className="work__scrim"></div>
                     <a className="work__cardlink" href="/work/foodhub" aria-label="View FoodHub case study"></a>
                     <div className="work__caption">
