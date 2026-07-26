@@ -1488,6 +1488,11 @@ img {
   z-index: 5;
   pointer-events: none;
   opacity: 0;
+  /* The hover image (set inline per row) fills the panel; the gradient behind
+     it in the same declaration shows if the image is missing. */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   transform: translateY(-50%) scale(0.9);
   transition: opacity var(--duration-slow) var(--ease-out),
               transform var(--duration-slow) var(--ease-out);
@@ -1966,7 +1971,8 @@ img {
     right: auto;
     top: auto;
     bottom: clamp(var(--space-10), 6vh, var(--space-16));
-    width: min(66%, 520px);
+    /* Narrow enough to clear the social menu on the right. */
+    width: min(52%, 430px);
   }
 
   .hero__content {
@@ -1987,9 +1993,12 @@ img {
     transform: none;
     width: auto;
     text-align: left;
-    font-size: clamp(120px, 18vw, 190px);
-    line-height: 0.74;
-    letter-spacing: -6px;
+    /* Smaller than before + a little left padding so the script's leading
+       flourish never clips against the viewport edge. */
+    font-size: clamp(84px, 12vw, 132px);
+    line-height: 0.76;
+    letter-spacing: -4px;
+    padding-left: 0.14em;
   }
 
   .hero__intro,
@@ -2004,7 +2013,7 @@ img {
     top: auto;
     right: var(--section-pad-x);
     bottom: clamp(var(--space-10), 6vh, var(--space-16));
-    width: min(36%, 250px);
+    width: min(32%, 220px);
   }
 
   /* Tablet: Logos */
@@ -2127,9 +2136,9 @@ img {
   }
 
   .hero__name {
-    font-size: clamp(96px, 26vw, 150px);
-    line-height: 0.72;
-    letter-spacing: -5px;
+    font-size: clamp(76px, 22vw, 118px);
+    line-height: 0.74;
+    letter-spacing: -3px;
   }
 
   .hero__intro,

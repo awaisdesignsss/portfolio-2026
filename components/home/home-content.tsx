@@ -685,7 +685,7 @@ export default function HomeContent() {
                   <span className="services__num">(01)</span>
                   <h3 className="services__name" data-wordfx>Web Design</h3>
                   <p className="services__desc">Responsive sites built from scratch — quick to load, easy to read, and made to turn visitors into customers.</p>
-                  <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #2a3a5a 0%, #1a2233 55%, #0d1320 100%)" } as React.CSSProperties}></span>
+                  <span className="services__thumb" style={{ backgroundImage: "url(/assets/images/services/web-design.jpg), radial-gradient(120% 120% at 60% 25%, #2a3a5a 0%, #1a2233 55%, #0d1320 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
                   </span>
@@ -695,7 +695,7 @@ export default function HomeContent() {
                   <span className="services__num">(02)</span>
                   <h3 className="services__name" data-wordfx>UI UX Design</h3>
                   <p className="services__desc">Flows and screens that feel obvious to use, with just enough personality to stick in memory.</p>
-                  <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #1a5a52 0%, #103b38 55%, #07201d 100%)" } as React.CSSProperties}></span>
+                  <span className="services__thumb" style={{ backgroundImage: "url(/assets/images/services/ui-ux-design.jpg), radial-gradient(120% 120% at 60% 25%, #1a5a52 0%, #103b38 55%, #07201d 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
                   </span>
@@ -705,7 +705,7 @@ export default function HomeContent() {
                   <span className="services__num">(03)</span>
                   <h3 className="services__name" data-wordfx>Product Design</h3>
                   <p className="services__desc">The whole journey — strategy, research, and design — turned into something you can actually ship.</p>
-                  <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #b3702f 0%, #5a3010 55%, #2a1606 100%)" } as React.CSSProperties}></span>
+                  <span className="services__thumb" style={{ backgroundImage: "url(/assets/images/services/product-design.jpg), radial-gradient(120% 120% at 60% 25%, #b3702f 0%, #5a3010 55%, #2a1606 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
                   </span>
@@ -715,7 +715,7 @@ export default function HomeContent() {
                   <span className="services__num">(04)</span>
                   <h3 className="services__name" data-wordfx>Branding</h3>
                   <p className="services__desc">A visual identity that actually looks like you — and tells people who you are before they read a word.</p>
-                  <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #5a2a55 0%, #34203a 55%, #170c1a 100%)" } as React.CSSProperties}></span>
+                  <span className="services__thumb" style={{ backgroundImage: "url(/assets/images/services/branding.jpg), radial-gradient(120% 120% at 60% 25%, #5a2a55 0%, #34203a 55%, #170c1a 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
                   </span>
@@ -725,7 +725,7 @@ export default function HomeContent() {
                   <span className="services__num">(05)</span>
                   <h3 className="services__name" data-wordfx>UX Audit</h3>
                   <p className="services__desc">A close look at where people get stuck, and a plain list of fixes — ranked by what&rsquo;ll move the needle most.</p>
-                  <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #3a3a6e 0%, #1f1f44 55%, #0c0c20 100%)" } as React.CSSProperties}></span>
+                  <span className="services__thumb" style={{ backgroundImage: "url(/assets/images/services/ux-audit.jpg), radial-gradient(120% 120% at 60% 25%, #3a3a6e 0%, #1f1f44 55%, #0c0c20 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
                   </span>
@@ -735,7 +735,7 @@ export default function HomeContent() {
                   <span className="services__num">(06)</span>
                   <h3 className="services__name" data-wordfx>AI Native Design</h3>
                   <p className="services__desc">AI-powered experiences that quietly do the heavy lifting — less busywork for your team, lower costs for you.</p>
-                  <span className="services__thumb" style={{ background: "radial-gradient(120% 120% at 60% 25%, #b58a2f 0%, #5a3a0a 55%, #2a1c04 100%)" } as React.CSSProperties}></span>
+                  <span className="services__thumb" style={{ backgroundImage: "url(/assets/images/services/ai-native-design.jpg), radial-gradient(120% 120% at 60% 25%, #b58a2f 0%, #5a3a0a 55%, #2a1c04 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
                   </span>
