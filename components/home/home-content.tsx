@@ -338,7 +338,7 @@ export default function HomeContent() {
           io.unobserve(el);
           el.classList.add("is-in");
           const delay = parseFloat(el.style.getPropertyValue("--rd")) || 0;
-          timers.push(setTimeout(() => clearTags(el), delay + 960));
+          timers.push(setTimeout(() => clearTags(el), delay + 1120));
         });
       },
       { rootMargin: "0px 0px -8% 0px" }

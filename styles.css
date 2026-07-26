@@ -3437,22 +3437,22 @@ html.splash-seen .splash { display: none; }
      `--enter-y` lets a group override the travel distance/direction. */
   .js .enter,
   .js .enter--fade  { opacity: 0; transition: none; }
-  .js .enter        { transform: translate(var(--enter-x, 0), var(--enter-y, 44px)); }
+  .js .enter        { transform: translate(var(--enter-x, 0), var(--enter-y, 64px)); }
   .js .enter.is-in {
     opacity: 1;
     transform: none;
-    transition: opacity 620ms var(--ease-out),
-                transform 780ms var(--ease-out);
+    transition: opacity 745ms var(--ease-out),
+                transform 935ms var(--ease-out);
     transition-delay: var(--rd, 0ms);
   }
   .js .enter--fade.is-in {
     opacity: 1;
-    transition: opacity 720ms var(--ease-out);
+    transition: opacity 865ms var(--ease-out);
     transition-delay: var(--rd, 0ms);
   }
   /* Directional variants for elements that read better sliding sideways. */
-  .js .enter--left  { --enter-x: -56px; --enter-y: 0px; }
-  .js .enter--right { --enter-x: 56px;  --enter-y: 0px; }
+  .js .enter--left  { --enter-x: -80px; --enter-y: 0px; }
+  .js .enter--right { --enter-x: 80px;  --enter-y: 0px; }
 }
 
 /* Photo dissolves; copy slides in from its own side of the screen.
