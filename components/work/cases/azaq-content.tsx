@@ -3,8 +3,8 @@
 import React from "react";
 import Wordmark from "@/components/ui/wordmark";
 
-/** Case study "luxe-marketplace", ported from the original static work/luxe-marketplace.html. */
-export default function LuxeMarketplaceContent() {
+/** Case study "azaq", authored to match the repo's case-study structure. */
+export default function AzaqContent() {
 
   React.useEffect(() => {
     const cleanups: Array<() => void> = [];
@@ -57,34 +57,34 @@ export default function LuxeMarketplaceContent() {
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M10.5 3.5L3.5 10.5M3.5 10.5H9M3.5 10.5V5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               All work
             </a>
-            <p className="cs-hero__niche">E-commerce</p>
-            <h1 className="cs-hero__title">Luxe Marketplace</h1>
-            <p className="cs-hero__summary">A curated marketplace for independent makers, designed so the product photography carries the experience and checkout never breaks the spell.</p>
+            <p className="cs-hero__niche">Enterprise · Digital Transformation</p>
+            <h1 className="cs-hero__title">AZAQ</h1>
+            <p className="cs-hero__summary">Relia, an FMCG arm of a major Saudi group, moved off D365 and paper onto a web platform that turns Customer Onboarding and Trade Spending into tracked, digital approvals.</p>
             <dl className="cs-facts">
-              <div><dt className="cs-facts__k">Role</dt><dd className="cs-facts__v">Product Designer</dd></div>
-              <div><dt className="cs-facts__k">Timeline</dt><dd className="cs-facts__v">6 months</dd></div>
-              <div><dt className="cs-facts__k">Year</dt><dd className="cs-facts__v">2023</dd></div>
-              <div><dt className="cs-facts__k">Industry</dt><dd className="cs-facts__v">E-commerce / Marketplace</dd></div>
+              <div><dt className="cs-facts__k">Role</dt><dd className="cs-facts__v">Sole Product Designer</dd></div>
+              <div><dt className="cs-facts__k">Timeline</dt><dd className="cs-facts__v">4 months · 2025</dd></div>
+              <div><dt className="cs-facts__k">Year</dt><dd className="cs-facts__v">2025</dd></div>
+              <div><dt className="cs-facts__k">Industry</dt><dd className="cs-facts__v">Enterprise · FMCG</dd></div>
             </dl>
           </section>
 
           <div className="cs-cover">
-            <div className="cs-cover__media reveal" style={{ background: "radial-gradient(120% 120% at 70% 20%, #b3702f 0%, #5a3010 55%, #2a1606 100%)" } as React.CSSProperties} role="img" aria-label="Luxe Marketplace cover artwork"></div>
+            <div className="cs-cover__media reveal" style={{ background: "url(/assets/images/work/case-azaq.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #33465e 0%, #1e2b3a 55%, #0c1420 100%)" } as React.CSSProperties} role="img" aria-label="AZAQ cover artwork"></div>
           </div>
 
           <section className="section cs-overview">
             <div className="cs-overview__grid">
-              <div className="cs-overview__col reveal"><h2>The problem</h2><p>A generic storefront flattened every maker into the same template. The catalog looked cheap next to the goods, and browsing felt like work.</p></div>
-              <div className="cs-overview__col reveal"><h2>My role</h2><p>I designed the browse and product experience, the seller storefronts, and the checkout, partnering with a brand designer on the visual language.</p></div>
-              <div className="cs-overview__col reveal"><h2>The outcome</h2><p>An editorial browse model, storefronts makers could shape, and a checkout that holds the premium feel all the way to confirmation.</p></div>
+              <div className="cs-overview__col reveal"><h2>The problem</h2><p>Relia ran Customer Onboarding and Trade Spending on Microsoft D365 and paper. Approvals bounced back and forth, and a salesman sometimes had to physically deliver a document to the Account Representative to move things along. Salesmen and customers were both worn down by it.</p></div>
+              <div className="cs-overview__col reveal"><h2>My role</h2><p>I was the sole designer, working with a business analyst to design the platform. I delivered the Customer Onboarding and Trade Spending modules. More were planned, but the client's internal circumstances paused the rest.</p></div>
+              <div className="cs-overview__col reveal"><h2>The outcome</h2><p>A web platform that makes onboarding smooth and approvals traceable. More customers get onboarded, and the salesmen are far less bogged down in the process.</p></div>
             </div>
           </section>
 
           <section className="section cs-metrics">
             <div className="cs-metrics__grid">
-              <div className="cs-metric reveal"><p className="cs-metric__num">+34%<span></span></p><p className="cs-metric__label">Add-to-cart rate after the browse redesign</p></div>
-              <div className="cs-metric reveal"><p className="cs-metric__num">+19%<span></span></p><p className="cs-metric__label">Checkout completion on mobile</p></div>
-              <div className="cs-metric reveal"><p className="cs-metric__num">2.1x<span></span></p><p className="cs-metric__label">Average time spent per browsing session</p></div>
+              <div className="cs-metric reveal"><p className="cs-metric__num">4-stage<span></span></p><p className="cs-metric__label">Approval chain digitized: Salesman, Clerk, Account Rep, Manager</p></div>
+              <div className="cs-metric reveal"><p className="cs-metric__num">2<span> modules</span></p><p className="cs-metric__label">Customer Onboarding and Trade Spending, live on the platform</p></div>
+              <div className="cs-metric reveal"><p className="cs-metric__num">0<span> hand-offs</span></p><p className="cs-metric__label">No more documents delivered in person to earn an approval</p></div>
             </div>
           </section>
 
@@ -92,8 +92,8 @@ export default function LuxeMarketplaceContent() {
             <div className="cs-block__inner">
               <p className="cs-block__kicker">Challenge</p>
               <div>
-                <h2 className="cs-block__title">Reading the real problem.</h2>
-                <div className="prose"><p>Premium is fragile online. One default control, one cramped grid, and the whole thing reads as a template. The challenge was letting the products lead while keeping the system consistent enough to scale across thousands of makers.</p></div>
+                <h2 className="cs-block__title">Approvals that traveled by hand.</h2>
+                <div className="prose"><p>Relia's process was paperwork and patience. Every onboarding and every trade spending request moved through a chain of approvals and rejections, mostly on paper and inside D365. When it stalled, a salesman would sometimes have to hand-carry a document to the Account Representative just to keep it moving. It was slow, it was frustrating for everyone in the chain, and it kept good customers waiting.</p></div>
               </div>
             </div>
           </section>
@@ -102,11 +102,11 @@ export default function LuxeMarketplaceContent() {
             <div className="cs-block__inner">
               <p className="cs-block__kicker">Process</p>
               <div>
-                <h2 className="cs-block__title">From questions to structure.</h2>
-                <div className="prose"><p>I studied how people actually shop for considered goods, then built a browse model around large imagery and slow, deliberate pacing. We gave makers a storefront they could shape within rails, and rebuilt checkout to feel like part of the same world rather than a different app.</p></div>
+                <h2 className="cs-block__title">Map the chain, then make it flow.</h2>
+                <div className="prose"><p>The heart of both modules is an approval workflow that runs from the Salesman to the Clerk to the Account Representative to the Manager. I designed for each of those roles and the moments where things used to break down, so a request moves forward on its own instead of by hand. Trade Spending covers a lot of ground here, from activity proposals and business development agreements between the two parties to promotional activities and claims, so it needed structure that could hold all of it clearly.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 30% 30%, #b3702f 0%, #5a3010 55%, #2a1606 100%)" } as React.CSSProperties}></div>
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 80% 60%, #b3702f 0%, #5a3010 55%, #2a1606 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 30% 30%, #33465e 0%, #1e2b3a 55%, #0c1420 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 80% 60%, #33465e 0%, #1e2b3a 55%, #0c1420 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
@@ -116,23 +116,23 @@ export default function LuxeMarketplaceContent() {
             <div className="cs-block__inner">
               <p className="cs-block__kicker">Solution</p>
               <div>
-                <h2 className="cs-block__title">What we shipped.</h2>
-                <div className="prose"><p>Luxe leads with photography and restraint. Storefronts feel distinct without breaking the system, and the checkout carries the same calm confidence as the catalog, which is exactly where most marketplaces lose people.</p></div>
+                <h2 className="cs-block__title">A web platform, made for the people who use it.</h2>
+                <div className="prose"><p>The client asked for a mobile app. I pushed for web instead, and the reason was practical. Salesmen work from tablets, where an optimized web view sits comfortably, and the clerks, account reps, and managers all work on larger screens where a proper web interface is far easier than a phone. So the platform reads well on a tablet in the field and on a desktop in the office, and everyone in the approval chain gets a view that fits how they actually work.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "radial-gradient(120% 120% at 50% 25%, #b3702f 0%, #5a3010 55%, #2a1606 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "radial-gradient(120% 120% at 50% 25%, #33465e 0%, #1e2b3a 55%, #0c1420 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
           </section>
 
           <nav className="cs-pager" aria-label="More projects">
-            <a className="cs-pager__link cs-pager__link--prev" href="/work/medflow">
+            <a className="cs-pager__link cs-pager__link--prev" href="/work/asap">
               <span className="cs-pager__dir">Previous</span>
-              <span className="cs-pager__name">MedFlow</span>
+              <span className="cs-pager__name">ASAP</span>
             </a>
-            <a className="cs-pager__link cs-pager__link--next" href="/work/datapulse">
+            <a className="cs-pager__link cs-pager__link--next" href="/work/workeasy">
               <span className="cs-pager__dir">Next</span>
-              <span className="cs-pager__name">DataPulse</span>
+              <span className="cs-pager__name">WorkEasy</span>
             </a>
           </nav>
 

@@ -3,8 +3,8 @@
 import React from "react";
 import Wordmark from "@/components/ui/wordmark";
 
-/** Case study "paywise-dashboard", ported from the original static work/paywise-dashboard.html. */
-export default function PaywiseDashboardContent() {
+/** Case study "phlex65", authored to match the repo's case-study structure. */
+export default function Phlex65Content() {
 
   React.useEffect(() => {
     const cleanups: Array<() => void> = [];
@@ -57,34 +57,34 @@ export default function PaywiseDashboardContent() {
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M10.5 3.5L3.5 10.5M3.5 10.5H9M3.5 10.5V5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               All work
             </a>
-            <p className="cs-hero__niche">Fintech</p>
-            <h1 className="cs-hero__title">Paywise Dashboard</h1>
-            <p className="cs-hero__summary">A payments dashboard that turned a wall of transactions into a workspace finance teams could actually run their day from.</p>
+            <p className="cs-hero__niche">Healthcare · SaaS Platform</p>
+            <h1 className="cs-hero__title">Phlex65</h1>
+            <p className="cs-hero__summary">A dated caregiving app, first modernized, then reimagined as a multi-tenant SaaS where any agency can sign up, bring its own caregivers, and serve the people who need care.</p>
             <dl className="cs-facts">
-              <div><dt className="cs-facts__k">Role</dt><dd className="cs-facts__v">Lead Product Designer</dd></div>
-              <div><dt className="cs-facts__k">Timeline</dt><dd className="cs-facts__v">5 months</dd></div>
-              <div><dt className="cs-facts__k">Year</dt><dd className="cs-facts__v">2024</dd></div>
-              <div><dt className="cs-facts__k">Industry</dt><dd className="cs-facts__v">Fintech / B2B</dd></div>
+              <div><dt className="cs-facts__k">Role</dt><dd className="cs-facts__v">Sole Product Designer</dd></div>
+              <div><dt className="cs-facts__k">Timeline</dt><dd className="cs-facts__v">6 months · 2025</dd></div>
+              <div><dt className="cs-facts__k">Year</dt><dd className="cs-facts__v">2025</dd></div>
+              <div><dt className="cs-facts__k">Industry</dt><dd className="cs-facts__v">Healthcare · SaaS</dd></div>
             </dl>
           </section>
 
           <div className="cs-cover">
-            <div className="cs-cover__media reveal" style={{ background: "radial-gradient(120% 120% at 70% 20%, #2a3a5a 0%, #1a2233 55%, #0d1320 100%)" } as React.CSSProperties} role="img" aria-label="Paywise Dashboard cover artwork"></div>
+            <div className="cs-cover__media reveal" style={{ background: "url(/assets/images/work/case-phlex65.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #4a2f6e 0%, #281a44 55%, #100a20 100%)" } as React.CSSProperties} role="img" aria-label="Phlex65 cover artwork"></div>
           </div>
 
           <section className="section cs-overview">
             <div className="cs-overview__grid">
-              <div className="cs-overview__col reveal"><h2>The problem</h2><p>Finance teams lived in exports. The old dashboard showed everything at once and answered nothing, so reconciling a single day took hours.</p></div>
-              <div className="cs-overview__col reveal"><h2>My role</h2><p>I led design end to end: research with finance teams, information architecture, the interaction model, and the shipped UI alongside two engineers.</p></div>
-              <div className="cs-overview__col reveal"><h2>The outcome</h2><p>A focused workspace with saved views, inline reconciliation, and a hierarchy that surfaces what needs attention first.</p></div>
+              <div className="cs-overview__col reveal"><h2>The problem</h2><p>Phlex65 ran on phone calls and paper. The agency scheduled caregivers by phone, and the mobile app they had was so old and lost in its navigation that nobody used it. The whole model also lived inside a single agency, with no way for others to join.</p></div>
+              <div className="cs-overview__col reveal"><h2>My role</h2><p>I was the sole designer, working with a business analyst. I redesigned the entire mobile experience for both caregivers and care receivers, then designed the super admin panel for the client and the agency admin panel for onboarding new agencies.</p></div>
+              <div className="cs-overview__col reveal"><h2>The outcome</h2><p>A modern, user-centric app and a multi-tenant platform. Agencies can sign up, add their own caregivers, and serve care receivers, while the client oversees everything from the top.</p></div>
             </div>
           </section>
 
           <section className="section cs-metrics">
             <div className="cs-metrics__grid">
-              <div className="cs-metric reveal"><p className="cs-metric__num">62%<span> faster</span></p><p className="cs-metric__label">Average time to reconcile a day of transactions</p></div>
-              <div className="cs-metric reveal"><p className="cs-metric__num">3.4x<span></span></p><p className="cs-metric__label">Increase in weekly active finance users</p></div>
-              <div className="cs-metric reveal"><p className="cs-metric__num">41%<span> fewer</span></p><p className="cs-metric__label">Support tickets about exports and filtering</p></div>
+              <div className="cs-metric reveal"><p className="cs-metric__num">1 → many<span></span></p><p className="cs-metric__label">A single agency reborn as a multi-tenant SaaS platform</p></div>
+              <div className="cs-metric reveal"><p className="cs-metric__num">2 apps<span></span></p><p className="cs-metric__label">Caregiver and care receiver experiences, plus two admin panels</p></div>
+              <div className="cs-metric reveal"><p className="cs-metric__num">6 mo<span></span></p><p className="cs-metric__label">Full platform: 2 months on mobile, 4 on the admin systems</p></div>
             </div>
           </section>
 
@@ -92,8 +92,8 @@ export default function PaywiseDashboardContent() {
             <div className="cs-block__inner">
               <p className="cs-block__kicker">Challenge</p>
               <div>
-                <h2 className="cs-block__title">Reading the real problem.</h2>
-                <div className="prose"><p>The product had grown one metric at a time until the screen was a scoreboard no one could read. Everything competed for attention, which meant nothing held it. The first job was deciding what a finance team needs in the first five seconds, and ruthlessly demoting the rest.</p></div>
+                <h2 className="cs-block__title">From phone calls to a platform anyone can join.</h2>
+                <div className="prose"><p>Phlex65 had two problems stacked on top of each other. The day-to-day ran on calls and paperwork because the existing app was too old and confusing to trust. And the business itself was locked to one agency, with no path for others to come aboard. The job was first to make the app something people would actually reach for, then to rethink the entire system as a SaaS that many agencies could run inside, each with their own caregivers and their own world.</p></div>
               </div>
             </div>
           </section>
@@ -102,11 +102,11 @@ export default function PaywiseDashboardContent() {
             <div className="cs-block__inner">
               <p className="cs-block__kicker">Process</p>
               <div>
-                <h2 className="cs-block__title">From questions to structure.</h2>
-                <div className="prose"><p>I shadowed five finance teams through a real close, then mapped every question they asked of the data. Those questions became the structure: a default view that answers the common ones, saved views for the rest, and reconciliation moved inline so people stopped leaving for spreadsheets.</p></div>
+                <h2 className="cs-block__title">Design for the people first, then for scale.</h2>
+                <div className="prose"><p>I started with the two people at the heart of it. Care receivers who need a service near them, and caregivers who accept the work and show up. I designed the mobile experience around that reality, then worked out how the model stretches to many agencies at once. A business analyst and I mapped how an agency signs up, brings its caregivers, and operates without ever touching another agency's data, while the client sits above all of them as super admin.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 30% 30%, #2a3a5a 0%, #1a2233 55%, #0d1320 100%)" } as React.CSSProperties}></div>
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 80% 60%, #2a3a5a 0%, #1a2233 55%, #0d1320 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 30% 30%, #4a2f6e 0%, #281a44 55%, #100a20 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 80% 60%, #4a2f6e 0%, #281a44 55%, #100a20 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
@@ -116,23 +116,23 @@ export default function PaywiseDashboardContent() {
             <div className="cs-block__inner">
               <p className="cs-block__kicker">Solution</p>
               <div>
-                <h2 className="cs-block__title">What we shipped.</h2>
-                <div className="prose"><p>The shipped dashboard leads with a single clear status, then lets people drill without losing their place. Saved views replace the export habit, and a quiet motion system keeps people oriented as numbers update in real time.</p></div>
+                <h2 className="cs-block__title">Search nearby, request, done.</h2>
+                <div className="prose"><p>The move that pulls people off the phone is search. A care receiver finds nearby caregivers offering the service they need on a map, sends a request for the job, and the caregiver accepts and arrives at the set time. Both sides have a job portal built into the app. Above the apps sit two panels: an agency admin scoped to each agency that signs up, and a super admin for the client, with a lifted dashboard that brings analytics, stats, and cleaner navigation into one view.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "radial-gradient(120% 120% at 50% 25%, #2a3a5a 0%, #1a2233 55%, #0d1320 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "radial-gradient(120% 120% at 50% 25%, #4a2f6e 0%, #281a44 55%, #100a20 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
           </section>
 
           <nav className="cs-pager" aria-label="More projects">
-            <a className="cs-pager__link cs-pager__link--prev" href="/work/foodhub">
+            <a className="cs-pager__link cs-pager__link--prev" href="/work/azoria">
               <span className="cs-pager__dir">Previous</span>
-              <span className="cs-pager__name">FoodHub</span>
+              <span className="cs-pager__name">Azoria</span>
             </a>
-            <a className="cs-pager__link cs-pager__link--next" href="/work/medflow">
+            <a className="cs-pager__link cs-pager__link--next" href="/work/currency-gram">
               <span className="cs-pager__dir">Next</span>
-              <span className="cs-pager__name">MedFlow</span>
+              <span className="cs-pager__name">Currency Gram</span>
             </a>
           </nav>
 

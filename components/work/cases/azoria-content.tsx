@@ -3,8 +3,8 @@
 import React from "react";
 import Wordmark from "@/components/ui/wordmark";
 
-/** Case study "foodhub", ported from the original static work/foodhub.html. */
-export default function FoodhubContent() {
+/** Case study "azoria", authored to match the repo's case-study structure. */
+export default function AzoriaContent() {
 
   React.useEffect(() => {
     const cleanups: Array<() => void> = [];
@@ -57,34 +57,34 @@ export default function FoodhubContent() {
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M10.5 3.5L3.5 10.5M3.5 10.5H9M3.5 10.5V5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               All work
             </a>
-            <p className="cs-hero__niche">Food & Drink</p>
-            <h1 className="cs-hero__title">FoodHub</h1>
-            <p className="cs-hero__summary">An ordering app for local restaurants, designed so a hungry person can go from open to checkout in under a minute.</p>
+            <p className="cs-hero__niche">Hospitality · Mobile App</p>
+            <h1 className="cs-hero__title">Azoria</h1>
+            <p className="cs-hero__summary">A luxury resort in Bali, freed from Airbnb and a patchwork of third-party tools, with one app for staying, playing padel, training, and working, all run from a single admin.</p>
             <dl className="cs-facts">
-              <div><dt className="cs-facts__k">Role</dt><dd className="cs-facts__v">Product Designer</dd></div>
-              <div><dt className="cs-facts__k">Timeline</dt><dd className="cs-facts__v">4 months</dd></div>
-              <div><dt className="cs-facts__k">Year</dt><dd className="cs-facts__v">2022</dd></div>
-              <div><dt className="cs-facts__k">Industry</dt><dd className="cs-facts__v">Food & Drink / Mobile</dd></div>
+              <div><dt className="cs-facts__k">Role</dt><dd className="cs-facts__v">Sole Product Designer</dd></div>
+              <div><dt className="cs-facts__k">Timeline</dt><dd className="cs-facts__v">6 months · 2025 to 2026</dd></div>
+              <div><dt className="cs-facts__k">Year</dt><dd className="cs-facts__v">2026</dd></div>
+              <div><dt className="cs-facts__k">Industry</dt><dd className="cs-facts__v">Hospitality</dd></div>
             </dl>
           </section>
 
           <div className="cs-cover">
-            <div className="cs-cover__media reveal" style={{ background: "radial-gradient(120% 120% at 70% 20%, #b58a2f 0%, #5a3a0a 55%, #2a1c04 100%)" } as React.CSSProperties} role="img" aria-label="FoodHub cover artwork"></div>
+            <div className="cs-cover__media reveal" style={{ background: "url(/assets/images/work/case-azoria.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #a86a3a 0%, #5a3418 55%, #2a1808 100%)" } as React.CSSProperties} role="img" aria-label="Azoria cover artwork"></div>
           </div>
 
           <section className="section cs-overview">
             <div className="cs-overview__grid">
-              <div className="cs-overview__col reveal"><h2>The problem</h2><p>Ordering took too many taps and too many decisions. People abandoned carts at the exact moment they were ready to pay.</p></div>
-              <div className="cs-overview__col reveal"><h2>My role</h2><p>I designed the ordering flow, menu experience, and checkout, working with the restaurant-success team on what kitchens needed too.</p></div>
-              <div className="cs-overview__col reveal"><h2>The outcome</h2><p>A menu that’s fast to scan, a cart that remembers, and a checkout that defaults to the obvious so people finish.</p></div>
+              <div className="cs-overview__col reveal"><h2>The problem</h2><p>Azoria offers far more than a room: padel courts, pilates and gym, a co-working space. Airbnb and Booking.com could only handle the stay, so the resort leaned on a patchwork of separate apps for everything else, with nothing tying it together.</p></div>
+              <div className="cs-overview__col reveal"><h2>My role</h2><p>I was the sole designer. I designed the full mobile app and its web admin panel from scratch, built the design system and brand guidelines, and managed the developers through to a shippable product.</p></div>
+              <div className="cs-overview__col reveal"><h2>The outcome</h2><p>One self-owned super-app covering all four services, backed by an admin panel that runs the entire resort. The client is happy with a launch-ready product and hopeful about what it opens up.</p></div>
             </div>
           </section>
 
           <section className="section cs-metrics">
             <div className="cs-metrics__grid">
-              <div className="cs-metric reveal"><p className="cs-metric__num">-41%<span></span></p><p className="cs-metric__label">Drop in cart abandonment at checkout</p></div>
-              <div className="cs-metric reveal"><p className="cs-metric__num">52 sec<span></span></p><p className="cs-metric__label">Median time from open to order placed</p></div>
-              <div className="cs-metric reveal"><p className="cs-metric__num">+27%<span></span></p><p className="cs-metric__label">Repeat orders within 30 days</p></div>
+              <div className="cs-metric reveal"><p className="cs-metric__num">4-in-1<span></span></p><p className="cs-metric__label">Living, Padel, Fitness, and Workspace in a single app</p></div>
+              <div className="cs-metric reveal"><p className="cs-metric__num">0 → 1<span></span></p><p className="cs-metric__label">From third-party dependence to a self-owned platform</p></div>
+              <div className="cs-metric reveal"><p className="cs-metric__num">1<span> admin</span></p><p className="cs-metric__label">Web panel running every service, with role and facility-level access</p></div>
             </div>
           </section>
 
@@ -92,8 +92,8 @@ export default function FoodhubContent() {
             <div className="cs-block__inner">
               <p className="cs-block__kicker">Challenge</p>
               <div>
-                <h2 className="cs-block__title">Reading the real problem.</h2>
-                <div className="prose"><p>Food ordering is decided by mood and speed. Every extra screen is a chance to give up. The design had to respect hunger: fewer decisions, faster scanning, and a checkout that never makes someone stop and think.</p></div>
+                <h2 className="cs-block__title">One resort, four services, too many apps.</h2>
+                <div className="prose"><p>Everything at Azoria worked, but it worked in pieces. Airbnb and Booking.com covered the stay and nothing else, so each additional service leaned on its own third-party tool. For guests that meant juggling different apps to do things at one resort. For staff it meant managing a service through software they didn't own or control. The client wanted out: a single platform, built for Azoria, that could hold all of it.</p></div>
               </div>
             </div>
           </section>
@@ -102,11 +102,11 @@ export default function FoodhubContent() {
             <div className="cs-block__inner">
               <p className="cs-block__kicker">Process</p>
               <div>
-                <h2 className="cs-block__title">From questions to structure.</h2>
-                <div className="prose"><p>I watched people order on their phones in real conditions, distracted and hungry, then cut the flow to its bones. We made the menu fast to scan, taught the cart to remember, and removed every checkout step that wasn’t load-bearing.</p></div>
+                <h2 className="cs-block__title">I pushed for one app, not four.</h2>
+                <div className="prose"><p>The client's first instinct was to build four separate apps, one per service, sitting on a shared admin. I pushed back. I argued that the whole system should be synchronized, with all four services living inside a single app, so a guest moves between staying, playing, and working without ever leaving. I designed it that way and walked him through it, and by the end he was glad he'd listened. That decision shaped everything else.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 30% 30%, #b58a2f 0%, #5a3a0a 55%, #2a1c04 100%)" } as React.CSSProperties}></div>
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 80% 60%, #b58a2f 0%, #5a3a0a 55%, #2a1c04 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 30% 30%, #a86a3a 0%, #5a3418 55%, #2a1808 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 80% 60%, #a86a3a 0%, #5a3418 55%, #2a1808 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
@@ -116,23 +116,23 @@ export default function FoodhubContent() {
             <div className="cs-block__inner">
               <p className="cs-block__kicker">Solution</p>
               <div>
-                <h2 className="cs-block__title">What we shipped.</h2>
-                <div className="prose"><p>FoodHub gets out of the way. The menu reads fast, the cart carries context, and checkout defaults to the obvious choice, so the app keeps up with how quickly people actually decide what to eat.</p></div>
+                <h2 className="cs-block__title">A super-app, and an admin that runs the place.</h2>
+                <div className="prose"><p>The app carries four core modules. Living to book resorts and apartments, Padel to book courts and play with friends, Fitness to book the gym and pilates classes, and Workspace to book co-working space. Behind it sits a web admin that manages all of it, fully customizable, with roles and permissions and facility-level access so any department at any location gets exactly the control it needs. A design system and brand guidelines hold the whole thing together.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "radial-gradient(120% 120% at 50% 25%, #b58a2f 0%, #5a3a0a 55%, #2a1c04 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "radial-gradient(120% 120% at 50% 25%, #a86a3a 0%, #5a3418 55%, #2a1808 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
           </section>
 
           <nav className="cs-pager" aria-label="More projects">
-            <a className="cs-pager__link cs-pager__link--prev" href="/work/zenith-digital">
+            <a className="cs-pager__link cs-pager__link--prev" href="/work/workeasy">
               <span className="cs-pager__dir">Previous</span>
-              <span className="cs-pager__name">Zenith Digital</span>
+              <span className="cs-pager__name">WorkEasy</span>
             </a>
-            <a className="cs-pager__link cs-pager__link--next" href="/work/paywise-dashboard">
+            <a className="cs-pager__link cs-pager__link--next" href="/work/phlex65">
               <span className="cs-pager__dir">Next</span>
-              <span className="cs-pager__name">Paywise Dashboard</span>
+              <span className="cs-pager__name">Phlex65</span>
             </a>
           </nav>
 

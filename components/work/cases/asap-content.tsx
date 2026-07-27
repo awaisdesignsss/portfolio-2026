@@ -3,8 +3,8 @@
 import React from "react";
 import Wordmark from "@/components/ui/wordmark";
 
-/** Case study "medflow", ported from the original static work/medflow.html. */
-export default function MedflowContent() {
+/** Case study "asap", authored to match the repo's case-study structure. */
+export default function AsapContent() {
 
   React.useEffect(() => {
     const cleanups: Array<() => void> = [];
@@ -57,34 +57,34 @@ export default function MedflowContent() {
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M10.5 3.5L3.5 10.5M3.5 10.5H9M3.5 10.5V5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               All work
             </a>
-            <p className="cs-hero__niche">Healthcare</p>
-            <h1 className="cs-hero__title">MedFlow</h1>
-            <p className="cs-hero__summary">A patient-flow tool that helped clinic staff see the whole floor at a glance and move people through care without the clipboard.</p>
+            <p className="cs-hero__niche">E-commerce · CMS Platform</p>
+            <h1 className="cs-hero__title">ASAP</h1>
+            <p className="cs-hero__summary">A parts distribution company running 658 separate .NET websites, rebuilt as one Next.js CMS, with a site for every vertical and a single place to manage them all.</p>
             <dl className="cs-facts">
-              <div><dt className="cs-facts__k">Role</dt><dd className="cs-facts__v">Senior Product Designer</dd></div>
-              <div><dt className="cs-facts__k">Timeline</dt><dd className="cs-facts__v">4 months</dd></div>
-              <div><dt className="cs-facts__k">Year</dt><dd className="cs-facts__v">2024</dd></div>
-              <div><dt className="cs-facts__k">Industry</dt><dd className="cs-facts__v">Healthcare / SaaS</dd></div>
+              <div><dt className="cs-facts__k">Role</dt><dd className="cs-facts__v">Lead Product Designer</dd></div>
+              <div><dt className="cs-facts__k">Timeline</dt><dd className="cs-facts__v">Late 2025 to 2026</dd></div>
+              <div><dt className="cs-facts__k">Year</dt><dd className="cs-facts__v">2026</dd></div>
+              <div><dt className="cs-facts__k">Industry</dt><dd className="cs-facts__v">E-commerce · CMS</dd></div>
             </dl>
           </section>
 
           <div className="cs-cover">
-            <div className="cs-cover__media reveal" style={{ background: "radial-gradient(120% 120% at 70% 20%, #1a5a52 0%, #103b38 55%, #07201d 100%)" } as React.CSSProperties} role="img" aria-label="MedFlow cover artwork"></div>
+            <div className="cs-cover__media reveal" style={{ background: "url(/assets/images/work/case-asap.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #1e5a6e 0%, #123f4a 55%, #08222a 100%)" } as React.CSSProperties} role="img" aria-label="ASAP cover artwork"></div>
           </div>
 
           <section className="section cs-overview">
             <div className="cs-overview__grid">
-              <div className="cs-overview__col reveal"><h2>The problem</h2><p>Front-desk and clinical staff tracked patients across whiteboards, paper, and three systems. Handoffs slipped, and wait times grew with no one able to see why.</p></div>
-              <div className="cs-overview__col reveal"><h2>My role</h2><p>I owned research, the flow model, and UI, working with a clinical advisor to keep the design safe under real pressure.</p></div>
-              <div className="cs-overview__col reveal"><h2>The outcome</h2><p>A live floor view with clear states for every patient, role-aware actions, and handoffs that leave a trail instead of a guess.</p></div>
+              <div className="cs-overview__col reveal"><h2>The problem</h2><p>658 websites, each stuck on aging .NET, each with its own admin panel. Infrastructure ran about $85K a month, and with no central platform, the SEO and content teams couldn't stay in sync across sites.</p></div>
+              <div className="cs-overview__col reveal"><h2>My role</h2><p>I led a team of four designers. I designed the CMS and its full component system, then guided the team as we rebuilt every site through it, working alongside a separate engineering lead.</p></div>
+              <div className="cs-overview__col reveal"><h2>The outcome</h2><p>One Next.js CMS running all 658 sites. Infrastructure dropped to about $32K a month, RFQs rose 10%, and every site is now managed from a single dashboard.</p></div>
             </div>
           </section>
 
           <section className="section cs-metrics">
             <div className="cs-metrics__grid">
-              <div className="cs-metric reveal"><p className="cs-metric__num">28%<span> shorter</span></p><p className="cs-metric__label">Average patient wait time per visit</p></div>
-              <div className="cs-metric reveal"><p className="cs-metric__num">99.2%<span></span></p><p className="cs-metric__label">Handoffs completed without a dropped step</p></div>
-              <div className="cs-metric reveal"><p className="cs-metric__num">2 wks<span></span></p><p className="cs-metric__label">Time for a new clinic to fully onboard</p></div>
+              <div className="cs-metric reveal"><p className="cs-metric__num">62%<span> less</span></p><p className="cs-metric__label">Monthly infrastructure cost, from $85K down to $32K</p></div>
+              <div className="cs-metric reveal"><p className="cs-metric__num">658<span> → 1</span></p><p className="cs-metric__label">Legacy .NET sites unified into one Next.js CMS</p></div>
+              <div className="cs-metric reveal"><p className="cs-metric__num">+10%<span></span></p><p className="cs-metric__label">Increase in RFQs across the network of sites</p></div>
             </div>
           </section>
 
@@ -92,8 +92,8 @@ export default function MedflowContent() {
             <div className="cs-block__inner">
               <p className="cs-block__kicker">Challenge</p>
               <div>
-                <h2 className="cs-block__title">Reading the real problem.</h2>
-                <div className="prose"><p>Healthcare interfaces fail quietly: a missed state becomes a missed patient. The design had to be glanceable from across a room, forgiving under interruption, and impossible to misread when someone is tired at the end of a shift.</p></div>
+                <h2 className="cs-block__title">658 sites, one system.</h2>
+                <div className="prose"><p>The hard part was never a single screen. It was scale. Designing 658 sites by hand was impossible, and letting each one drift on its own was exactly the mess we were leaving behind. I had to build a system flexible enough to fit very different verticals, yet consistent enough that one team could run all of it. On top of that, the old setup gave every site its own admin, so the people handling SEO and content were working blind across the network.</p></div>
               </div>
             </div>
           </section>
@@ -102,11 +102,11 @@ export default function MedflowContent() {
             <div className="cs-block__inner">
               <p className="cs-block__kicker">Process</p>
               <div>
-                <h2 className="cs-block__title">From questions to structure.</h2>
-                <div className="prose"><p>I observed two clinics for a full day each, mapping every place a patient could stall. We modeled care as a set of unambiguous states, tested the colors and labels with staff who weren’t in the room when we designed them, and tuned until the floor view read correctly at a glance.</p></div>
+                <h2 className="cs-block__title">Themes by vertical, custom for the few that mattered.</h2>
+                <div className="prose"><p>I grouped the 658 sites by vertical and designed a small set of themes, then mapped each site to the template that fit it. For the top ten sites, the ones that carried the most weight, I designed custom experiences. Everything else ran on shared theming, which is what made the scale manageable. Along the way I introduced JSON-based components so we could design new components at runtime with Claude and drop them straight into a site, which kept the team fast as the migration ramped up.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 30% 30%, #1a5a52 0%, #103b38 55%, #07201d 100%)" } as React.CSSProperties}></div>
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 80% 60%, #1a5a52 0%, #103b38 55%, #07201d 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 30% 30%, #1e5a6e 0%, #123f4a 55%, #08222a 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 80% 60%, #1e5a6e 0%, #123f4a 55%, #08222a 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
@@ -116,23 +116,23 @@ export default function MedflowContent() {
             <div className="cs-block__inner">
               <p className="cs-block__kicker">Solution</p>
               <div>
-                <h2 className="cs-block__title">What we shipped.</h2>
-                <div className="prose"><p>MedFlow shows the whole floor as one calm board. Each patient carries a clear state and the next action for whoever is looking. Handoffs are explicit and logged, so the question stops being who has this patient.</p></div>
+                <h2 className="cs-block__title">A builder, plus one dashboard over everything.</h2>
+                <div className="prose"><p>The CMS is a drag-and-drop website builder with a library of components and ready-made templates. Each site has its own admin controls inside the CMS, scoped to that site, while a master dashboard sits above all of them with network-wide insight. Shared SEO controls at the site level finally let the teams work in step, and are a big part of why RFQs went up. Around forty people now run the entire network from one place.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "radial-gradient(120% 120% at 50% 25%, #1a5a52 0%, #103b38 55%, #07201d 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "radial-gradient(120% 120% at 50% 25%, #1e5a6e 0%, #123f4a 55%, #08222a 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
           </section>
 
           <nav className="cs-pager" aria-label="More projects">
-            <a className="cs-pager__link cs-pager__link--prev" href="/work/paywise-dashboard">
+            <a className="cs-pager__link cs-pager__link--prev" href="/work/currency-gram">
               <span className="cs-pager__dir">Previous</span>
-              <span className="cs-pager__name">Paywise Dashboard</span>
+              <span className="cs-pager__name">Currency Gram</span>
             </a>
-            <a className="cs-pager__link cs-pager__link--next" href="/work/luxe-marketplace">
+            <a className="cs-pager__link cs-pager__link--next" href="/work/azaq">
               <span className="cs-pager__dir">Next</span>
-              <span className="cs-pager__name">Luxe Marketplace</span>
+              <span className="cs-pager__name">AZAQ</span>
             </a>
           </nav>
 

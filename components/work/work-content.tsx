@@ -5,10 +5,8 @@ import { applyWordfx } from "@/lib/wordfx";
 import Wordmark from "@/components/ui/wordmark";
 
 /**
- * Work index page, ported from the original static work.html.
- * Design comes from the shared styles.css (imported in app/layout.tsx).
- * Nav toggle, reveal-on-scroll, and the industry filter are ported into
- * the effect below with listener/observer cleanup.
+ * Work index page. Same structure as the repo's work-content.tsx,
+ * updated to list the six real case studies with matching filter chips.
  */
 export default function WorkContent() {
 
@@ -93,90 +91,90 @@ export default function WorkContent() {
               Selected Work
             </span>
             <h1 className="pagehead__title" data-wordfx>Products built to be understood.</h1>
-            <p className="pagehead__lead">Six projects across fintech, healthcare, commerce, and SaaS. Every one started as a tangled mess of a problem — and ended as an interface that quietly gets out of the way.</p>
+            <p className="pagehead__lead">Six products across fintech, healthcare, hospitality, workforce, enterprise, and commerce. Each one began as a tangled operational problem and ended as an interface that quietly gets out of the way.</p>
           </section>
 
           <section className="section workindex section--light">
             <div className="workfilter" role="group" aria-label="Filter projects by industry">
               <button className="workfilter__chip" data-filter="all" aria-pressed="true">All</button>
-              <button className="workfilter__chip" data-filter="fintech" aria-pressed="false">Fintech</button>
-              <button className="workfilter__chip" data-filter="healthcare" aria-pressed="false">Healthcare</button>
               <button className="workfilter__chip" data-filter="ecommerce" aria-pressed="false">E-commerce</button>
-              <button className="workfilter__chip" data-filter="saas" aria-pressed="false">SaaS</button>
-              <button className="workfilter__chip" data-filter="banking" aria-pressed="false">Banking</button>
-              <button className="workfilter__chip" data-filter="food" aria-pressed="false">Food &amp; Drink</button>
+              <button className="workfilter__chip" data-filter="workforce" aria-pressed="false">Workforce</button>
+              <button className="workfilter__chip" data-filter="hospitality" aria-pressed="false">Hospitality</button>
+              <button className="workfilter__chip" data-filter="healthcare" aria-pressed="false">Healthcare</button>
+              <button className="workfilter__chip" data-filter="enterprise" aria-pressed="false">Enterprise</button>
+              <button className="workfilter__chip" data-filter="fintech" aria-pressed="false">Fintech</button>
             </div>
 
             <div className="workindex__grid">
 
-              <a className="workcard reveal" href="/work/paywise-dashboard" data-niche="fintech" aria-label="Paywise Dashboard, fintech case study">
+              <a className="workcard reveal" href="/work/currency-gram" data-niche="fintech" aria-label="Currency Gram, Fintech case study">
                 <div className="workcard__cover">
-                  <div className="workcard__media" style={{ background: "radial-gradient(120% 120% at 70% 20%, #2a3a5a 0%, #1a2233 55%, #0d1320 100%)" } as React.CSSProperties}></div>
+                  <div className="workcard__media" style={{ background: "url(/assets/images/work/case-currency-gram.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #14564e 0%, #0c3833 55%, #05201c 100%)" } as React.CSSProperties}></div>
                   <div className="workcard__scrim"></div>
                   <span className="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                   <div className="workcard__meta">
-                    <span><span className="workcard__niche">Fintech</span><span className="workcard__name">Paywise Dashboard</span></span>
-                    <span className="workcard__year">2024</span>
+                    <span><span className="workcard__niche">Fintech</span><span className="workcard__name">Currency Gram</span></span>
+                    <span className="workcard__year">2025</span>
                   </div>
                 </div>
               </a>
 
-              <a className="workcard reveal" href="/work/medflow" data-niche="healthcare" aria-label="MedFlow, healthcare case study">
+              <a className="workcard reveal" href="/work/asap" data-niche="ecommerce" aria-label="ASAP, E-commerce case study">
                 <div className="workcard__cover">
-                  <div className="workcard__media" style={{ background: "radial-gradient(120% 120% at 70% 20%, #1a5a52 0%, #103b38 55%, #07201d 100%)" } as React.CSSProperties}></div>
+                  <div className="workcard__media" style={{ background: "url(/assets/images/work/case-asap.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #1e5a6e 0%, #123f4a 55%, #08222a 100%)" } as React.CSSProperties}></div>
                   <div className="workcard__scrim"></div>
                   <span className="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                   <div className="workcard__meta">
-                    <span><span className="workcard__niche">Healthcare</span><span className="workcard__name">MedFlow</span></span>
-                    <span className="workcard__year">2024</span>
+                    <span><span className="workcard__niche">E-commerce</span><span className="workcard__name">ASAP</span></span>
+                    <span className="workcard__year">2026</span>
                   </div>
                 </div>
               </a>
 
-              <a className="workcard reveal" href="/work/luxe-marketplace" data-niche="ecommerce" aria-label="Luxe Marketplace, e-commerce case study">
+              <a className="workcard reveal" href="/work/azaq" data-niche="enterprise" aria-label="AZAQ, Enterprise case study">
                 <div className="workcard__cover">
-                  <div className="workcard__media" style={{ background: "radial-gradient(120% 120% at 70% 20%, #b3702f 0%, #5a3010 55%, #2a1606 100%)" } as React.CSSProperties}></div>
+                  <div className="workcard__media" style={{ background: "url(/assets/images/work/case-azaq.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #33465e 0%, #1e2b3a 55%, #0c1420 100%)" } as React.CSSProperties}></div>
                   <div className="workcard__scrim"></div>
                   <span className="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                   <div className="workcard__meta">
-                    <span><span className="workcard__niche">E-commerce</span><span className="workcard__name">Luxe Marketplace</span></span>
-                    <span className="workcard__year">2023</span>
+                    <span><span className="workcard__niche">Enterprise</span><span className="workcard__name">AZAQ</span></span>
+                    <span className="workcard__year">2025</span>
                   </div>
                 </div>
               </a>
 
-              <a className="workcard reveal" href="/work/datapulse" data-niche="saas" aria-label="DataPulse, SaaS case study">
+              <a className="workcard reveal" href="/work/workeasy" data-niche="workforce" aria-label="WorkEasy, Workforce case study">
                 <div className="workcard__cover">
-                  <div className="workcard__media" style={{ background: "radial-gradient(120% 120% at 70% 20%, #3a3a6e 0%, #1f1f44 55%, #0c0c20 100%)" } as React.CSSProperties}></div>
+                  <div className="workcard__media" style={{ background: "url(/assets/images/work/case-workeasy.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #1a5a3a 0%, #103b28 55%, #072016 100%)" } as React.CSSProperties}></div>
                   <div className="workcard__scrim"></div>
                   <span className="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                   <div className="workcard__meta">
-                    <span><span className="workcard__niche">SaaS</span><span className="workcard__name">DataPulse</span></span>
-                    <span className="workcard__year">2023</span>
+                    <span><span className="workcard__niche">Workforce</span><span className="workcard__name">WorkEasy</span></span>
+                    <span className="workcard__year">2025</span>
                   </div>
                 </div>
               </a>
 
-              <a className="workcard reveal" href="/work/zenith-digital" data-niche="banking" aria-label="Zenith Digital, banking case study">
+              <a className="workcard reveal" href="/work/azoria" data-niche="hospitality" aria-label="Azoria, Hospitality case study">
                 <div className="workcard__cover">
-                  <div className="workcard__media" style={{ background: "radial-gradient(120% 120% at 70% 20%, #5a2a55 0%, #34203a 55%, #170c1a 100%)" } as React.CSSProperties}></div>
+                  <div className="workcard__media" style={{ background: "url(/assets/images/work/case-azoria.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #a86a3a 0%, #5a3418 55%, #2a1808 100%)" } as React.CSSProperties}></div>
                   <div className="workcard__scrim"></div>
                   <span className="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                   <div className="workcard__meta">
-                    <span><span className="workcard__niche">Banking</span><span className="workcard__name">Zenith Digital</span></span>
-                    <span className="workcard__year">2022</span>
+                    <span><span className="workcard__niche">Hospitality</span><span className="workcard__name">Azoria</span></span>
+                    <span className="workcard__year">2026</span>
                   </div>
                 </div>
               </a>
 
-              <a className="workcard reveal" href="/work/foodhub" data-niche="food" aria-label="FoodHub, food and drink case study">
+              <a className="workcard reveal" href="/work/phlex65" data-niche="healthcare" aria-label="Phlex65, Healthcare case study">
                 <div className="workcard__cover">
-                  <div className="workcard__media" style={{ background: "radial-gradient(120% 120% at 70% 20%, #b58a2f 0%, #5a3a0a 55%, #2a1c04 100%)" } as React.CSSProperties}></div>
+                  <div className="workcard__media" style={{ background: "url(/assets/images/work/case-phlex65.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #4a2f6e 0%, #281a44 55%, #100a20 100%)" } as React.CSSProperties}></div>
                   <div className="workcard__scrim"></div>
                   <span className="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                   <div className="workcard__meta">
-                    <span><span className="workcard__niche">Food &amp; Drink</span><span className="workcard__name">FoodHub</span></span>
-                    <span className="workcard__year">2022</span>
+                    <span><span className="workcard__niche">Healthcare</span><span className="workcard__name">Phlex65</span></span>
+                    <span className="workcard__year">2025</span>
                   </div>
                 </div>
               </a>

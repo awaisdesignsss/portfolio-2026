@@ -588,10 +588,10 @@ export default function HomeContent() {
                   <div className="work__cover">
                     <div className="work__media" style={{ backgroundImage: "url(/assets/images/work/work-01.jpg)" }}></div>
                     <div className="work__scrim"></div>
-                    <a className="work__cardlink" href="/work/paywise-dashboard" aria-label="View Paywise Dashboard case study"></a>
+                    <a className="work__cardlink" href="/work/currency-gram" aria-label="View Currency Gram case study"></a>
                     <div className="work__caption">
                       <div className="work__line"><span className="work__niche">Fintech</span></div>
-                      <div className="work__line"><h3 className="work__name">Paywise Dashboard</h3></div>
+                      <div className="work__line"><h3 className="work__name">Currency Gram</h3></div>
                     </div>
                   </div>
                 </article>
@@ -600,10 +600,10 @@ export default function HomeContent() {
                   <div className="work__cover">
                     <div className="work__media" style={{ backgroundImage: "url(/assets/images/work/work-02.jpg)" }}></div>
                     <div className="work__scrim"></div>
-                    <a className="work__cardlink" href="/work/medflow" aria-label="View MedFlow case study"></a>
+                    <a className="work__cardlink" href="/work/asap" aria-label="View ASAP case study"></a>
                     <div className="work__caption">
-                      <div className="work__line"><span className="work__niche">Healthcare</span></div>
-                      <div className="work__line"><h3 className="work__name">MedFlow</h3></div>
+                      <div className="work__line"><span className="work__niche">E-commerce</span></div>
+                      <div className="work__line"><h3 className="work__name">ASAP</h3></div>
                     </div>
                   </div>
                 </article>
@@ -612,10 +612,10 @@ export default function HomeContent() {
                   <div className="work__cover">
                     <div className="work__media" style={{ backgroundImage: "url(/assets/images/work/work-03.jpg)" }}></div>
                     <div className="work__scrim"></div>
-                    <a className="work__cardlink" href="/work/luxe-marketplace" aria-label="View Luxe Marketplace case study"></a>
+                    <a className="work__cardlink" href="/work/azaq" aria-label="View AZAQ case study"></a>
                     <div className="work__caption">
-                      <div className="work__line"><span className="work__niche">E-commerce</span></div>
-                      <div className="work__line"><h3 className="work__name">Luxe Marketplace</h3></div>
+                      <div className="work__line"><span className="work__niche">Enterprise</span></div>
+                      <div className="work__line"><h3 className="work__name">AZAQ</h3></div>
                     </div>
                   </div>
                 </article>
@@ -624,10 +624,10 @@ export default function HomeContent() {
                   <div className="work__cover">
                     <div className="work__media" style={{ backgroundImage: "url(/assets/images/work/work-04.jpg)" }}></div>
                     <div className="work__scrim"></div>
-                    <a className="work__cardlink" href="/work/datapulse" aria-label="View DataPulse case study"></a>
+                    <a className="work__cardlink" href="/work/workeasy" aria-label="View WorkEasy case study"></a>
                     <div className="work__caption">
-                      <div className="work__line"><span className="work__niche">SaaS</span></div>
-                      <div className="work__line"><h3 className="work__name">DataPulse</h3></div>
+                      <div className="work__line"><span className="work__niche">Workforce</span></div>
+                      <div className="work__line"><h3 className="work__name">WorkEasy</h3></div>
                     </div>
                   </div>
                 </article>
@@ -636,10 +636,10 @@ export default function HomeContent() {
                   <div className="work__cover">
                     <div className="work__media" style={{ backgroundImage: "url(/assets/images/work/work-05.jpg)" }}></div>
                     <div className="work__scrim"></div>
-                    <a className="work__cardlink" href="/work/zenith-digital" aria-label="View Zenith Digital case study"></a>
+                    <a className="work__cardlink" href="/work/azoria" aria-label="View Azoria case study"></a>
                     <div className="work__caption">
-                      <div className="work__line"><span className="work__niche">Banking</span></div>
-                      <div className="work__line"><h3 className="work__name">Zenith Digital</h3></div>
+                      <div className="work__line"><span className="work__niche">Hospitality</span></div>
+                      <div className="work__line"><h3 className="work__name">Azoria</h3></div>
                     </div>
                   </div>
                 </article>
@@ -648,10 +648,10 @@ export default function HomeContent() {
                   <div className="work__cover">
                     <div className="work__media" style={{ backgroundImage: "url(/assets/images/work/work-06.jpg)" }}></div>
                     <div className="work__scrim"></div>
-                    <a className="work__cardlink" href="/work/foodhub" aria-label="View FoodHub case study"></a>
+                    <a className="work__cardlink" href="/work/phlex65" aria-label="View Phlex65 case study"></a>
                     <div className="work__caption">
-                      <div className="work__line"><span className="work__niche">Food &amp; Drink</span></div>
-                      <div className="work__line"><h3 className="work__name">FoodHub</h3></div>
+                      <div className="work__line"><span className="work__niche">Healthcare</span></div>
+                      <div className="work__line"><h3 className="work__name">Phlex65</h3></div>
                     </div>
                   </div>
                 </article>
