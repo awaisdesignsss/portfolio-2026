@@ -3051,7 +3051,7 @@ textarea:focus-visible {
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
-.cs-gallery__item--wide { grid-column: 1 / -1; aspect-ratio: 16 / 7; }
+.cs-gallery__item--wide { grid-column: 1 / -1; aspect-ratio: 1600 / 1200; }
 
 /* Prev / next */
 .cs-pager {
