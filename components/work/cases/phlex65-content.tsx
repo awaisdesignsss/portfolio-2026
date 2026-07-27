@@ -105,8 +105,8 @@ export default function Phlex65Content() {
                 <h2 className="cs-block__title">Design for the people first, then for scale.</h2>
                 <div className="prose"><p>I started with the two people at the heart of it. Care receivers who need a service near them, and caregivers who accept the work and show up. I designed the mobile experience around that reality, then worked out how the model stretches to many agencies at once. A business analyst and I mapped how an agency signs up, brings its caregivers, and operates without ever touching another agency's data, while the client sits above all of them as super admin.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 30% 30%, #4a2f6e 0%, #281a44 55%, #100a20 100%)" } as React.CSSProperties}></div>
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 80% 60%, #4a2f6e 0%, #281a44 55%, #100a20 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/phlex65-1.jpg) center/cover no-repeat, radial-gradient(120% 120% at 30% 30%, #4a2f6e 0%, #281a44 55%, #100a20 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/phlex65-2.jpg) center/cover no-repeat, radial-gradient(120% 120% at 80% 60%, #4a2f6e 0%, #281a44 55%, #100a20 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
@@ -119,7 +119,7 @@ export default function Phlex65Content() {
                 <h2 className="cs-block__title">Search nearby, request, done.</h2>
                 <div className="prose"><p>The move that pulls people off the phone is search. A care receiver finds nearby caregivers offering the service they need on a map, sends a request for the job, and the caregiver accepts and arrives at the set time. Both sides have a job portal built into the app. Above the apps sit two panels: an agency admin scoped to each agency that signs up, and a super admin for the client, with a lifted dashboard that brings analytics, stats, and cleaner navigation into one view.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "radial-gradient(120% 120% at 50% 25%, #4a2f6e 0%, #281a44 55%, #100a20 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "url(/assets/images/work/gallery/phlex65-3.jpg) center/cover no-repeat, radial-gradient(120% 120% at 50% 25%, #4a2f6e 0%, #281a44 55%, #100a20 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>

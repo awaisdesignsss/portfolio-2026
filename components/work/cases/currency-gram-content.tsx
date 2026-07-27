@@ -105,8 +105,8 @@ export default function CurrencyGramContent() {
                 <h2 className="cs-block__title">Three weeks of questions before a single screen.</h2>
                 <div className="prose"><p>Before I opened Figma, I spent three weeks mapping the problem. I analyzed session recordings, ran interviews, audited support tickets, and tore down Wise, Revolut, and Payoneer to see how they earn trust. That led to a signed problem brief and a ranked list of trust failure points. From there I sketched eight flow concepts, shortlisted two, gut-checked them with users, then built a full design system and ran two rounds of moderated testing, logging fourteen iterations before handoff.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 30% 30%, #14564e 0%, #0c3833 55%, #05201c 100%)" } as React.CSSProperties}></div>
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 80% 60%, #14564e 0%, #0c3833 55%, #05201c 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/currency-gram-1.jpg) center/cover no-repeat, radial-gradient(120% 120% at 30% 30%, #14564e 0%, #0c3833 55%, #05201c 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/currency-gram-2.jpg) center/cover no-repeat, radial-gradient(120% 120% at 80% 60%, #14564e 0%, #0c3833 55%, #05201c 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
@@ -119,7 +119,7 @@ export default function CurrencyGramContent() {
                 <h2 className="cs-block__title">Lead with transparency, not fine print.</h2>
                 <div className="prose"><p>The redesign made four structural shifts. Fee disclosure moved up to the amount entry screen, before any commitment, so the full cost is always clear. The transfer flow compressed from seven steps to three, built around one mental model: who, how much, done. A live status layer replaced 'processing' with real-time progress, estimated arrival, and plain language for every state. And beneficiary profiles were rebuilt to surface context, the last transfer, the preferred method, a quick-send shortcut, turning a cold list into something that feels like a relationship. It did not add features. It removed every reason to hesitate.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "radial-gradient(120% 120% at 50% 25%, #14564e 0%, #0c3833 55%, #05201c 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "url(/assets/images/work/gallery/currency-gram-3.jpg) center/cover no-repeat, radial-gradient(120% 120% at 50% 25%, #14564e 0%, #0c3833 55%, #05201c 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>

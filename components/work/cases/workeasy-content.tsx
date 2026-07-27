@@ -105,8 +105,8 @@ export default function WorkeasyContent() {
                 <h2 className="cs-block__title">Design around the job, not the menu.</h2>
                 <div className="prose"><p>I carried forward the design system my predecessor had started and focused the whole redesign on clear goals and clean navigation. For each side I mapped the handful of things people really do. Employees clock in and out, check their shifts, request time off, and review their time and pay. Managers build shifts, manage attendance, and approve or reject requests. Every screen was shaped so those tasks are obvious and quick, instead of hidden three levels deep.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 30% 30%, #1a5a3a 0%, #103b28 55%, #072016 100%)" } as React.CSSProperties}></div>
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 80% 60%, #1a5a3a 0%, #103b28 55%, #072016 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/workeasy-1.jpg) center/cover no-repeat, radial-gradient(120% 120% at 30% 30%, #1a5a3a 0%, #103b28 55%, #072016 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/workeasy-2.jpg) center/cover no-repeat, radial-gradient(120% 120% at 80% 60%, #1a5a3a 0%, #103b28 55%, #072016 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
@@ -119,7 +119,7 @@ export default function WorkeasyContent() {
                 <h2 className="cs-block__title">The dashboard does the work.</h2>
                 <div className="prose"><p>The biggest shift was putting action on the dashboard itself. Managers get widgets that show what's happening with their team so they can approve or reject on the spot. Employees get a clock in and clock out widget right on the home screen, so the most common task takes one tap. The old app had no widgets at all. With clear navigation and the right things surfaced first, people can finish their work on the phone, which is exactly what they couldn't do before.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "radial-gradient(120% 120% at 50% 25%, #1a5a3a 0%, #103b28 55%, #072016 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "url(/assets/images/work/gallery/workeasy-3.jpg) center/cover no-repeat, radial-gradient(120% 120% at 50% 25%, #1a5a3a 0%, #103b28 55%, #072016 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>

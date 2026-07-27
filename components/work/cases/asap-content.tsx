@@ -105,8 +105,8 @@ export default function AsapContent() {
                 <h2 className="cs-block__title">Themes by vertical, custom for the few that mattered.</h2>
                 <div className="prose"><p>I grouped the 658 sites by vertical and designed a small set of themes, then mapped each site to the template that fit it. For the top ten sites, the ones that carried the most weight, I designed custom experiences. Everything else ran on shared theming, which is what made the scale manageable. Along the way I introduced JSON-based components so we could design new components at runtime with Claude and drop them straight into a site, which kept the team fast as the migration ramped up.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 30% 30%, #1e5a6e 0%, #123f4a 55%, #08222a 100%)" } as React.CSSProperties}></div>
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 80% 60%, #1e5a6e 0%, #123f4a 55%, #08222a 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/asap-1.jpg) center/cover no-repeat, radial-gradient(120% 120% at 30% 30%, #1e5a6e 0%, #123f4a 55%, #08222a 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/asap-2.jpg) center/cover no-repeat, radial-gradient(120% 120% at 80% 60%, #1e5a6e 0%, #123f4a 55%, #08222a 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
@@ -119,7 +119,7 @@ export default function AsapContent() {
                 <h2 className="cs-block__title">A builder, plus one dashboard over everything.</h2>
                 <div className="prose"><p>The CMS is a drag-and-drop website builder with a library of components and ready-made templates. Each site has its own admin controls inside the CMS, scoped to that site, while a master dashboard sits above all of them with network-wide insight. Shared SEO controls at the site level finally let the teams work in step, and are a big part of why RFQs went up. Around forty people now run the entire network from one place.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "radial-gradient(120% 120% at 50% 25%, #1e5a6e 0%, #123f4a 55%, #08222a 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "url(/assets/images/work/gallery/asap-3.jpg) center/cover no-repeat, radial-gradient(120% 120% at 50% 25%, #1e5a6e 0%, #123f4a 55%, #08222a 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>

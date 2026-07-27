@@ -105,8 +105,8 @@ export default function AzaqContent() {
                 <h2 className="cs-block__title">Map the chain, then make it flow.</h2>
                 <div className="prose"><p>The heart of both modules is an approval workflow that runs from the Salesman to the Clerk to the Account Representative to the Manager. I designed for each of those roles and the moments where things used to break down, so a request moves forward on its own instead of by hand. Trade Spending covers a lot of ground here, from activity proposals and business development agreements between the two parties to promotional activities and claims, so it needed structure that could hold all of it clearly.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 30% 30%, #33465e 0%, #1e2b3a 55%, #0c1420 100%)" } as React.CSSProperties}></div>
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 80% 60%, #33465e 0%, #1e2b3a 55%, #0c1420 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/azaq-1.jpg) center/cover no-repeat, radial-gradient(120% 120% at 30% 30%, #33465e 0%, #1e2b3a 55%, #0c1420 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/azaq-2.jpg) center/cover no-repeat, radial-gradient(120% 120% at 80% 60%, #33465e 0%, #1e2b3a 55%, #0c1420 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
@@ -119,7 +119,7 @@ export default function AzaqContent() {
                 <h2 className="cs-block__title">A web platform, made for the people who use it.</h2>
                 <div className="prose"><p>The client asked for a mobile app. I pushed for web instead, and the reason was practical. Salesmen work from tablets, where an optimized web view sits comfortably, and the clerks, account reps, and managers all work on larger screens where a proper web interface is far easier than a phone. So the platform reads well on a tablet in the field and on a desktop in the office, and everyone in the approval chain gets a view that fits how they actually work.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "radial-gradient(120% 120% at 50% 25%, #33465e 0%, #1e2b3a 55%, #0c1420 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "url(/assets/images/work/gallery/azaq-3.jpg) center/cover no-repeat, radial-gradient(120% 120% at 50% 25%, #33465e 0%, #1e2b3a 55%, #0c1420 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>

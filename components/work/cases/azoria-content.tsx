@@ -105,8 +105,8 @@ export default function AzoriaContent() {
                 <h2 className="cs-block__title">I pushed for one app, not four.</h2>
                 <div className="prose"><p>The client's first instinct was to build four separate apps, one per service, sitting on a shared admin. I pushed back. I argued that the whole system should be synchronized, with all four services living inside a single app, so a guest moves between staying, playing, and working without ever leaving. I designed it that way and walked him through it, and by the end he was glad he'd listened. That decision shaped everything else.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 30% 30%, #a86a3a 0%, #5a3418 55%, #2a1808 100%)" } as React.CSSProperties}></div>
-                  <div className="cs-gallery__item reveal" style={{ background: "radial-gradient(120% 120% at 80% 60%, #a86a3a 0%, #5a3418 55%, #2a1808 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/azoria-1.jpg) center/cover no-repeat, radial-gradient(120% 120% at 30% 30%, #a86a3a 0%, #5a3418 55%, #2a1808 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/azoria-2.jpg) center/cover no-repeat, radial-gradient(120% 120% at 80% 60%, #a86a3a 0%, #5a3418 55%, #2a1808 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
@@ -119,7 +119,7 @@ export default function AzoriaContent() {
                 <h2 className="cs-block__title">A super-app, and an admin that runs the place.</h2>
                 <div className="prose"><p>The app carries four core modules. Living to book resorts and apartments, Padel to book courts and play with friends, Fitness to book the gym and pilates classes, and Workspace to book co-working space. Behind it sits a web admin that manages all of it, fully customizable, with roles and permissions and facility-level access so any department at any location gets exactly the control it needs. A design system and brand guidelines hold the whole thing together.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "radial-gradient(120% 120% at 50% 25%, #a86a3a 0%, #5a3418 55%, #2a1808 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "url(/assets/images/work/gallery/azoria-3.jpg) center/cover no-repeat, radial-gradient(120% 120% at 50% 25%, #a86a3a 0%, #5a3418 55%, #2a1808 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
