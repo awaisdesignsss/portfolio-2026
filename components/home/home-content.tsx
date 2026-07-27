@@ -779,10 +779,10 @@ export default function HomeContent() {
                   </a>
                   <div className="reasons__social">
                     <div className="reasons__avatars">
-                      <span className="reasons__avatar" style={{ background: "linear-gradient(135deg, #3a4a6e, #1a2233)" } as React.CSSProperties}></span>
-                      <span className="reasons__avatar" style={{ background: "linear-gradient(135deg, #1a5a52, #07201d)" } as React.CSSProperties}></span>
-                      <span className="reasons__avatar" style={{ background: "linear-gradient(135deg, #b3702f, #5a3010)" } as React.CSSProperties}></span>
-                      <span className="reasons__avatar" style={{ background: "linear-gradient(135deg, #5a2a55, #170c1a)" } as React.CSSProperties}></span>
+                      <span className="reasons__avatar" style={{ background: "url(/assets/images/avatars/avatar-1.jpg) center/cover no-repeat, linear-gradient(135deg, #3a4a6e, #1a2233)" } as React.CSSProperties}></span>
+                      <span className="reasons__avatar" style={{ background: "url(/assets/images/avatars/avatar-2.jpg) center/cover no-repeat, linear-gradient(135deg, #1a5a52, #07201d)" } as React.CSSProperties}></span>
+                      <span className="reasons__avatar" style={{ background: "url(/assets/images/avatars/avatar-3.jpg) center/cover no-repeat, linear-gradient(135deg, #b3702f, #5a3010)" } as React.CSSProperties}></span>
+                      <span className="reasons__avatar" style={{ background: "url(/assets/images/avatars/avatar-4.jpg) center/cover no-repeat, linear-gradient(135deg, #5a2a55, #170c1a)" } as React.CSSProperties}></span>
                       <span className="reasons__avatar reasons__avatar--more">+81</span>
                     </div>
                     <span className="reasons__trust">Trusted by founders and product leads I&rsquo;ve worked with</span>
