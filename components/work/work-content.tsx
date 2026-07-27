@@ -131,13 +131,13 @@ export default function WorkContent() {
                 </div>
               </a>
 
-              <a className="workcard reveal" href="/work/azaq" data-niche="enterprise" aria-label="AZAQ, Enterprise case study">
+              <a className="workcard reveal" href="/work/azaq" data-niche="enterprise" aria-label="AZAQ - Relia, Enterprise case study">
                 <div className="workcard__cover">
                   <div className="workcard__media" style={{ background: "url(/assets/images/work/case-azaq.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #33465e 0%, #1e2b3a 55%, #0c1420 100%)" } as React.CSSProperties}></div>
                   <div className="workcard__scrim"></div>
                   <span className="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                   <div className="workcard__meta">
-                    <span><span className="workcard__niche">Enterprise</span><span className="workcard__name">AZAQ</span></span>
+                    <span><span className="workcard__niche">Enterprise</span><span className="workcard__name">AZAQ - Relia</span></span>
                     <span className="workcard__year">2025</span>
                   </div>
                 </div>

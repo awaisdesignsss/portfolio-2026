@@ -128,7 +128,7 @@ export default function WorkeasyContent() {
           <nav className="cs-pager" aria-label="More projects">
             <a className="cs-pager__link cs-pager__link--prev" href="/work/azaq">
               <span className="cs-pager__dir">Previous</span>
-              <span className="cs-pager__name">AZAQ</span>
+              <span className="cs-pager__name">AZAQ - Relia</span>
             </a>
             <a className="cs-pager__link cs-pager__link--next" href="/work/azoria">
               <span className="cs-pager__dir">Next</span>

@@ -58,7 +58,7 @@ export default function AzaqContent() {
               All work
             </a>
             <p className="cs-hero__niche">Enterprise · Digital Transformation</p>
-            <h1 className="cs-hero__title">AZAQ</h1>
+            <h1 className="cs-hero__title">AZAQ - Relia</h1>
             <p className="cs-hero__summary">Relia, an FMCG arm of a major Saudi group, moved off D365 and paper onto a web platform that turns Customer Onboarding and Trade Spending into tracked, digital approvals.</p>
             <dl className="cs-facts">
               <div><dt className="cs-facts__k">Role</dt><dd className="cs-facts__v">Sole Product Designer</dd></div>
@@ -69,7 +69,7 @@ export default function AzaqContent() {
           </section>
 
           <div className="cs-cover">
-            <div className="cs-cover__media reveal" style={{ background: "url(/assets/images/work/case-azaq.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #33465e 0%, #1e2b3a 55%, #0c1420 100%)" } as React.CSSProperties} role="img" aria-label="AZAQ cover artwork"></div>
+            <div className="cs-cover__media reveal" style={{ background: "url(/assets/images/work/case-azaq.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #33465e 0%, #1e2b3a 55%, #0c1420 100%)" } as React.CSSProperties} role="img" aria-label="AZAQ - Relia cover artwork"></div>
           </div>
 
           <section className="section cs-overview">

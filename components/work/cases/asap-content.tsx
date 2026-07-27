@@ -132,7 +132,7 @@ export default function AsapContent() {
             </a>
             <a className="cs-pager__link cs-pager__link--next" href="/work/azaq">
               <span className="cs-pager__dir">Next</span>
-              <span className="cs-pager__name">AZAQ</span>
+              <span className="cs-pager__name">AZAQ - Relia</span>
             </a>
           </nav>
 

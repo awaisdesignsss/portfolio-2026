@@ -612,10 +612,10 @@ export default function HomeContent() {
                   <div className="work__cover">
                     <div className="work__media" style={{ backgroundImage: "url(/assets/images/work/work-03.jpg)" }}></div>
                     <div className="work__scrim"></div>
-                    <a className="work__cardlink" href="/work/azaq" aria-label="View AZAQ case study"></a>
+                    <a className="work__cardlink" href="/work/azaq" aria-label="View AZAQ - Relia case study"></a>
                     <div className="work__caption">
                       <div className="work__line"><span className="work__niche">Enterprise</span></div>
-                      <div className="work__line"><h3 className="work__name">AZAQ</h3></div>
+                      <div className="work__line"><h3 className="work__name">AZAQ - Relia</h3></div>
                     </div>
                   </div>
                 </article>
