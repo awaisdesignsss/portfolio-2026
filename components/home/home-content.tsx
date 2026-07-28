@@ -386,8 +386,7 @@ export default function HomeContent() {
             <div className="hero__lead">
               <div className="hero__content">
                 <div className="hero__info">
-                  <p className="hero__eyebrow">Google &amp; IBM Certified</p>
-                  <h2 className="hero__subtitle">Senior Product Designer</h2>
+                  <h2 className="hero__subtitle">Google &amp; IBM Certified</h2>
                   <p className="hero__description">I take complicated products and make them feel obvious. Fewer &ldquo;wait, where do I click&rdquo; moments, and more people getting what they came for on a screen that&rsquo;s easy on the eyes.</p>
                 </div>
                 <div className="hero__actions">
