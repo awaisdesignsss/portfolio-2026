@@ -38,7 +38,7 @@ const CLIENTS: Client[] = [
       kind: "role",
       label: "What I did",
       detail: "Led design on enterprise dashboards and a shared design system across teams.",
-      meta: "2021–2023 · Enterprise SaaS",
+      meta: "2025 to Now · Enterprise SaaS",
     },
   },
   {
@@ -49,7 +49,7 @@ const CLIENTS: Client[] = [
       kind: "impact",
       label: "Impact",
       detail: "40% faster onboarding after the redesign.",
-      meta: "2019–2021 · Web & Product",
+      meta: "2023 to 2024 · Web & Product",
     },
   },
   {
@@ -60,7 +60,7 @@ const CLIENTS: Client[] = [
       kind: "review",
       label: "Review",
       detail: "“Awais turns messy requirements into interfaces our clients get instantly.”",
-      attribution: "Design Lead · 2018–2019",
+      attribution: "Design Lead · 2024 to 2025",
     },
   },
   {
@@ -93,7 +93,7 @@ const CLIENTS: Client[] = [
     reveal: {
       kind: "review",
       label: "Review",
-      detail: "“Clear, fast, and genuinely strategic — he gets the business, not just the pixels.”",
+      detail: "“Clear, fast, and genuinely strategic, he gets the business, not just the pixels.”",
       attribution: "Founder · 2022",
     },
   },

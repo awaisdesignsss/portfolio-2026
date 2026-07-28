@@ -8,8 +8,9 @@ import "./globals.css";
 import "@/styles.css";
 
 export const metadata: Metadata = {
-  title: "M. Awais — UX/UI & Product Designer",
-  description: "Portfolio 2026",
+  title: "M. Awais · Senior Product Designer",
+  description:
+    "Senior Product Designer with six years turning complex products across fintech, healthcare, hospitality, and SaaS into experiences people understand on the first try.",
 };
 
 export default function RootLayout({

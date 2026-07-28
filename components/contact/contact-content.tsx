@@ -38,7 +38,7 @@ export default function ContactContent() {
             <a href="/about" className="nav__link">About</a>
             <a href="/contact" className="nav__link" aria-current="page">Contact</a>
           </div>
-          <a href="mailto:hello@awais.design" className="nav__cta">Email me</a>
+          <a href="mailto:awais.designsss@gmail.com" className="nav__cta">Email me</a>
           <button className="nav__toggle" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -52,43 +52,59 @@ export default function ContactContent() {
               Contact
             </span>
             <h1 className="pagehead__title" data-wordfx>Let's talk.</h1>
-            <p className="pagehead__lead">A new product from scratch, or a redesign that&rsquo;s been sitting on your list too long — either way, a quick message is the fastest way to reach me. Drop me an email or WhatsApp, and I&rsquo;ll come back with honest first thoughts, no sales pitch.</p>
+            <p className="pagehead__lead">Have a product to build, or a redesign that&rsquo;s been sitting on your list too long? Or just want to talk through a design problem? A quick message is the fastest way to reach me, and I&rsquo;ll come back with honest first thoughts, no sales pitch.</p>
           </section>
 
           <section className="section contact">
             <div className="contact__top">
-              <p className="contact__status"><span className="contact__dot" aria-hidden="true"></span>Available for new projects</p>
-              <span className="contact__reply">I read and reply to every message myself, usually within a day or two</span>
+              <p className="contact__status"><span className="contact__dot" aria-hidden="true"></span>Always open to a good design problem</p>
+              <span className="contact__reply">I read and reply to every message myself, usually within a day or two.</span>
             </div>
 
             <div className="contactgrid">
-              <a className="contactmethod" href="mailto:hello@awais.design">
+              <a className="contactmethod" href="mailto:awais.designsss@gmail.com">
                 <span className="contactmethod__head">
                   <span className="contactmethod__label">Email</span>
                   <svg className="contactmethod__arrow" width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </span>
-                <span className="contactmethod__value">hello@awais.design</span>
+                <span className="contactmethod__value">awais.designsss@gmail.com</span>
               </a>
 
-              <a className="contactmethod" href="https://wa.me/923417039563" target="_blank" rel="noopener noreferrer">
+              <a className="contactmethod" href="https://wa.me/923027778210" target="_blank" rel="noopener noreferrer">
                 <span className="contactmethod__head">
                   <span className="contactmethod__label">WhatsApp</span>
                   <svg className="contactmethod__arrow" width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </span>
-                <span className="contactmethod__value">+92 341 7039563</span>
+                <span className="contactmethod__value">+92 302 7778210</span>
               </a>
 
-              <a className="contactmethod" href="https://www.linkedin.com/in/mawais" target="_blank" rel="noopener noreferrer">
+              <a className="contactmethod" href="https://www.linkedin.com/in/awaisdesigns" target="_blank" rel="noopener noreferrer">
                 <span className="contactmethod__head">
                   <span className="contactmethod__label">LinkedIn</span>
                   <svg className="contactmethod__arrow" width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </span>
-                <span className="contactmethod__value">linkedin.com/in/mawais</span>
+                <span className="contactmethod__value">linkedin.com/in/awaisdesigns</span>
+              </a>
+
+              <a className="contactmethod" href="https://dribbble.com/awaisdesigns" target="_blank" rel="noopener noreferrer">
+                <span className="contactmethod__head">
+                  <span className="contactmethod__label">Dribbble</span>
+                  <svg className="contactmethod__arrow" width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </span>
+                <span className="contactmethod__value">dribbble.com/awaisdesigns</span>
+              </a>
+
+              <a className="contactmethod" href="https://www.behance.net/awais_designs" target="_blank" rel="noopener noreferrer">
+                <span className="contactmethod__head">
+                  <span className="contactmethod__label">Behance</span>
+                  <svg className="contactmethod__arrow" width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </span>
+                <span className="contactmethod__value">behance.net/awais_designs</span>
               </a>
 
               <div className="contactmethod">
                 <span className="contactmethod__head">
-                  <span className="contactmethod__label">Address</span>
+                  <span className="contactmethod__label">Location</span>
                 </span>
                 <span className="contactmethod__value">Lahore, Pakistan</span>
               </div>
@@ -108,7 +124,7 @@ export default function ContactContent() {
             </div>
             <div className="footer__contact-title">
               <h2 className="footer__cta-heading" data-wordfx>Get in touch</h2>
-              <a href="mailto:hello@awais.design" className="btn footer__cta-btn">
+              <a href="mailto:awais.designsss@gmail.com" className="btn footer__cta-btn">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 Let's talk
               </a>
@@ -126,14 +142,14 @@ export default function ContactContent() {
             <div className="footer__left">
               <h3 className="footer__tagline" data-wordfx>Calm, clear design for products people love to use.</h3>
               <div className="footer__contacts">
-                <a href="mailto:hello@awais.design" className="footer__contact-link">
+                <a href="mailto:awais.designsss@gmail.com" className="footer__contact-link">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  hello@awais.design
+                  awais.designsss@gmail.com
                 </a>
                 <div className="footer__contact-row">
-                  <a href="tel:+923417039563" className="footer__contact-link">
+                  <a href="tel:+923027778210" className="footer__contact-link">
                     <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    +92 341 7039563
+                    +92 302 7778210
                   </a>
                   <span className="footer__copy">© 2026 M. Awais</span>
                 </div>

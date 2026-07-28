@@ -171,7 +171,7 @@ export default function AboutContent() {
             <a href="/about" className="nav__link" aria-current="page">About</a>
             <a href="/contact" className="nav__link">Contact</a>
           </div>
-          <a href="mailto:hello@awais.design" className="nav__cta">Email me</a>
+          <a href="mailto:awais.designsss@gmail.com" className="nav__cta">Email me</a>
           <button className="nav__toggle" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -185,21 +185,21 @@ export default function AboutContent() {
               About
             </span>
             <h1 className="pagehead__title" data-wordfx>Designer set on clarity, not decoration.</h1>
-            <p className="pagehead__lead">I&rsquo;m M. Awais. For about eight years I&rsquo;ve helped teams take dense, technical products and turn them into something people understand on the first try — across fintech, healthcare, SaaS, and commerce.</p>
+            <p className="pagehead__lead">I&rsquo;m M. Awais, a Senior Product Designer based in Lahore. For the last six years I&rsquo;ve helped teams take dense, technical products and turn them into something people understand on the first try, across fintech, healthcare, hospitality, SaaS, and enterprise. I started out freelancing in 2020, spent a few years sharpening the craft inside product teams, and today I design end to end: research, structure, interface, and the design systems that keep it all consistent. Along the way I picked up UX certifications from Google and IBM, though the portfolio says more than the badges do.</p>
 
             <div className="about-showcase">
               <div className="about-showcase__stats">
                 <div className="about-stat">
-                  <span className="about-stat__num">8<span className="about-stat__affix">yrs</span></span>
+                  <span className="about-stat__num">6<span className="about-stat__affix">yrs</span></span>
                   <span className="about-stat__label">Designing products end to end</span>
                 </div>
                 <div className="about-stat">
-                  <span className="about-stat__num">40<span className="about-stat__affix">+</span></span>
-                  <span className="about-stat__label">Products &amp; features I&rsquo;ve shipped</span>
+                  <span className="about-stat__num">25<span className="about-stat__affix">+</span></span>
+                  <span className="about-stat__label">Products &amp; features shipped</span>
                 </div>
                 <div className="about-stat">
-                  <span className="about-stat__num">4<span className="about-stat__affix">ind.</span></span>
-                  <span className="about-stat__label">Fintech, health, commerce, SaaS</span>
+                  <span className="about-stat__num">6<span className="about-stat__affix">ind.</span></span>
+                  <span className="about-stat__label">Fintech, healthcare, hospitality, SaaS, enterprise</span>
                 </div>
               </div>
             </div>
@@ -211,7 +211,7 @@ export default function AboutContent() {
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>
                 Experience
               </h2>
-              <span className="rulebar__aside">2018 — Now</span>
+              <span className="rulebar__aside">2020 to Now</span>
             </div>
 
             <div className="ledger" data-ledger>
@@ -223,53 +223,79 @@ export default function AboutContent() {
                 <li className="ledger__row reveal" data-current style={{ "--i": 0 } as React.CSSProperties}>
                   <span className="ledger__marker" aria-hidden="true"></span>
                   <span className="ledger__period">
-                    <span className="ledger__from">2023</span>
+                    <span className="ledger__from">Feb 2025</span>
                     <em className="ledger__now"><span className="ledger__pulse" aria-hidden="true"></span>Now</em>
                   </span>
                   <div className="ledger__main">
                     <h3 className="ledger__role" data-wordfx>Product Designer</h3>
-                    <span className="ledger__org">Independent · Freelance</span>
+                    <span className="ledger__org">Tkxel</span>
                   </div>
-                  <p className="ledger__note">Designing products end to end for founders across fintech, SaaS, and commerce.</p>
+                  <p className="ledger__note">Leading product design end to end, from research to high-fidelity, turning business and user needs into clear flows and interfaces, and mentoring the designers around me.</p>
                 </li>
 
                 <li className="ledger__row reveal" style={{ "--i": 1 } as React.CSSProperties}>
                   <span className="ledger__marker" aria-hidden="true"></span>
                   <span className="ledger__period">
-                    <span className="ledger__from">2021</span>
-                    <span className="ledger__to">2023</span>
+                    <span className="ledger__from">Oct 2024</span>
+                    <span className="ledger__to">Feb 2025</span>
                   </span>
                   <div className="ledger__main">
-                    <h3 className="ledger__role" data-wordfx>Senior Product Designer</h3>
-                    <span className="ledger__org">tkxel</span>
+                    <h3 className="ledger__role" data-wordfx>Senior UX/UI Designer</h3>
+                    <span className="ledger__org">Code District &middot; Contract</span>
                   </div>
-                  <p className="ledger__note">Led design on enterprise dashboards and a shared design system used across teams.</p>
+                  <p className="ledger__note">Ran discovery with clients and owned end-to-end project workflows, from user research and usability testing to modern, trend-driven design.</p>
                 </li>
 
                 <li className="ledger__row reveal" style={{ "--i": 2 } as React.CSSProperties}>
                   <span className="ledger__marker" aria-hidden="true"></span>
                   <span className="ledger__period">
-                    <span className="ledger__from">2019</span>
-                    <span className="ledger__to">2021</span>
+                    <span className="ledger__from">May 2023</span>
+                    <span className="ledger__to">Sep 2024</span>
                   </span>
                   <div className="ledger__main">
-                    <h3 className="ledger__role" data-wordfx>Product Designer</h3>
+                    <h3 className="ledger__role" data-wordfx>Senior UX/UI Designer</h3>
                     <span className="ledger__org">OptimusFox</span>
                   </div>
-                  <p className="ledger__note">UX and UI for web and mobile products across a range of client projects.</p>
+                  <p className="ledger__note">Built and maintained a design system across fintech, blockchain, NFT, and real-estate products, grounded in real user research.</p>
                 </li>
 
                 <li className="ledger__row reveal" style={{ "--i": 3 } as React.CSSProperties}>
                   <span className="ledger__marker" aria-hidden="true"></span>
                   <span className="ledger__period">
-                    <span className="ledger__from">2018</span>
-                    <span className="ledger__to">2019</span>
+                    <span className="ledger__from">Oct 2021</span>
+                    <span className="ledger__to">May 2023</span>
                   </span>
                   <div className="ledger__main">
-                    <h3 className="ledger__role" data-wordfx>UI Designer</h3>
-                    <span className="ledger__org">Code District</span>
+                    <h3 className="ledger__role" data-wordfx>UX/UI Designer</h3>
+                    <span className="ledger__org">Orcalo Holdings</span>
                   </div>
-                  <p className="ledger__note">Marketing sites and first design systems for early-stage startups.</p>
+                  <p className="ledger__note">Designed products end to end with a user-centric approach, working closely with developers and building the design systems that kept everything consistent.</p>
+                </li>
+
+                <li className="ledger__row reveal" style={{ "--i": 4 } as React.CSSProperties}>
+                  <span className="ledger__marker" aria-hidden="true"></span>
+                  <span className="ledger__period">
+                    <span className="ledger__from">Feb 2021</span>
+                    <span className="ledger__to">Oct 2021</span>
+                  </span>
+                  <div className="ledger__main">
+                    <h3 className="ledger__role" data-wordfx>UX/UI Designer</h3>
+                    <span className="ledger__org">Karewise &middot; Remote, Contract</span>
+                  </div>
+                  <p className="ledger__note">Researched the product from the idea up and designed the full experience across website, web app, and mobile, with clean developer handoff.</p>
+                </li>
+
+                <li className="ledger__row reveal" style={{ "--i": 5 } as React.CSSProperties}>
+                  <span className="ledger__marker" aria-hidden="true"></span>
+                  <span className="ledger__period">
+                    <span className="ledger__from">2020</span>
+                    <span className="ledger__to">2021</span>
+                  </span>
+                  <div className="ledger__main">
+                    <h3 className="ledger__role" data-wordfx>Freelance Designer</h3>
+                    <span className="ledger__org">Independent</span>
+                  </div>
+                  <p className="ledger__note">Where it started: 100+ small projects, fast turnarounds, and the habit of listening before designing.</p>
                 </li>
               </ol>
             </div>
@@ -285,7 +311,9 @@ export default function AboutContent() {
                 <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Interaction Design</li>
                 <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Design Systems</li>
                 <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Prototyping</li>
-                <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Motion</li>
+                <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Usability Testing</li>
+                <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Branding</li>
+                <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>AI-Native Design</li>
                 <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Accessibility</li>
                 <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Figma</li>
                 <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>HTML &amp; CSS</li>
@@ -296,7 +324,9 @@ export default function AboutContent() {
                 <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Interaction Design</li>
                 <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Design Systems</li>
                 <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Prototyping</li>
-                <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Motion</li>
+                <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Usability Testing</li>
+                <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Branding</li>
+                <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>AI-Native Design</li>
                 <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Accessibility</li>
                 <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>Figma</li>
                 <li className="marquee__item"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 0v12M0 6h12" stroke="currentColor" strokeWidth="1.4"/></svg>HTML &amp; CSS</li>
@@ -315,8 +345,8 @@ export default function AboutContent() {
                   </span>
                   <svg className="reasons__arrowdown" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v10M2.5 7.5L7 12l4.5-4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </div>
-                <h2 className="reasons__heading" data-wordfx>Better design,<br />simplified.</h2>
-                <p className="reasons__lead">Think of it as design on tap. Senior-level work whenever you need it, refined until it&rsquo;s right, and shaped around your brand — never pulled off a template.</p>
+                <h2 className="reasons__heading" data-wordfx>Senior design,<br />thought through.</h2>
+                <p className="reasons__lead">Senior-level design, thought through properly and shaped around your product, never pulled off a template. Here is what that looks like in practice.</p>
                 <div className="reasons__cta">
                   <a href="/contact" className="btn reasons__btn">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -341,8 +371,8 @@ export default function AboutContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-1.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title" data-wordfx>Predictable Pricing</h3>
-                      <p className="reasons__card-desc">One flat monthly rate. No surprise invoices, no scope-creep math — just steady design work you can plan your budget around.</p>
+                      <h3 className="reasons__card-title" data-wordfx>Senior Craft, Hands-On</h3>
+                      <p className="reasons__card-desc">You work with someone who has shipped real products across fintech, healthcare, and SaaS, doing the actual design, not passing it to a junior.</p>
                     </div>
                   </article>
                 </div>
@@ -351,8 +381,8 @@ export default function AboutContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-2.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title" data-wordfx>Limitless Requests</h3>
-                      <p className="reasons__card-desc">Send over as many requests as you like. I&rsquo;ll keep tweaking and refining until it matches the picture in your head.</p>
+                      <h3 className="reasons__card-title" data-wordfx>Problem First, Pixels Later</h3>
+                      <p className="reasons__card-desc">I start with research and a clearly framed problem, so the work solves the right thing instead of just looking good.</p>
                     </div>
                   </article>
                 </div>
@@ -361,8 +391,8 @@ export default function AboutContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-3.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title" data-wordfx>Fast Delivery</h3>
-                      <p className="reasons__card-desc">Most requests land in a few days, not a few weeks. Quick to turn around — but never rushed where it counts.</p>
+                      <h3 className="reasons__card-title" data-wordfx>Systems That Scale</h3>
+                      <p className="reasons__card-desc">Clean design systems and dev-ready specs, so the design holds together and ships without friction.</p>
                     </div>
                   </article>
                 </div>
@@ -371,8 +401,8 @@ export default function AboutContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-4.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title" data-wordfx>Senior Design Craft</h3>
-                      <p className="reasons__card-desc">You work directly with me — someone who&rsquo;s shipped real products — not a junior learning the ropes on your budget.</p>
+                      <h3 className="reasons__card-title" data-wordfx>Clear Collaboration</h3>
+                      <p className="reasons__card-desc">Straight talk and simple updates. You always know exactly where things stand, no chasing.</p>
                     </div>
                   </article>
                 </div>
@@ -381,8 +411,8 @@ export default function AboutContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-5.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title" data-wordfx>Clear Collaboration</h3>
-                      <p className="reasons__card-desc">Straight talk and simple updates, so you&rsquo;re never chasing me for status. You always know exactly where things stand.</p>
+                      <h3 className="reasons__card-title" data-wordfx>In It Through Ship</h3>
+                      <p className="reasons__card-desc">I don&rsquo;t vanish at handoff. I stay through build and QA until it works in the real world.</p>
                     </div>
                   </article>
                 </div>
@@ -423,14 +453,14 @@ export default function AboutContent() {
             <div className="footer__left">
               <h3 className="footer__tagline" data-wordfx>Calm, clear design for products people love to use.</h3>
               <div className="footer__contacts">
-                <a href="mailto:hello@awais.design" className="footer__contact-link">
+                <a href="mailto:awais.designsss@gmail.com" className="footer__contact-link">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  hello@awais.design
+                  awais.designsss@gmail.com
                 </a>
                 <div className="footer__contact-row">
-                  <a href="tel:+923417039563" className="footer__contact-link">
+                  <a href="tel:+923027778210" className="footer__contact-link">
                     <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    +92 341 7039563
+                    +92 302 7778210
                   </a>
                   <span className="footer__copy">© 2026 M. Awais</span>
                 </div>

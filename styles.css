@@ -491,6 +491,17 @@ img {
   gap: var(--space-4);
 }
 
+.hero__eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-amber);
+  /* Pull the eyebrow tight to the subtitle: hero__info's gap is space-4. */
+  margin-bottom: calc(var(--space-2) - var(--space-4));
+}
+
 .hero__subtitle {
   font-size: var(--text-2xl);
   font-weight: 400;
@@ -2684,6 +2695,7 @@ textarea:focus-visible {
 .ledger__period {
   display: flex;
   align-items: baseline;
+  flex-wrap: wrap;
   gap: 0.5ch;
   font-size: var(--text-base);
   color: var(--ink-muted);

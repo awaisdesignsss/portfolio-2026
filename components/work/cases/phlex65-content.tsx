@@ -44,7 +44,7 @@ export default function Phlex65Content() {
             <a href="/about" className="nav__link">About</a>
             <a href="/contact" className="nav__link">Contact</a>
           </div>
-          <a href="mailto:hello@awais.design" className="nav__cta">Email me</a>
+          <a href="mailto:awais.designsss@gmail.com" className="nav__cta">Email me</a>
           <button className="nav__toggle" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -163,16 +163,16 @@ export default function Phlex65Content() {
           </div>
           <div className="footer__main">
             <div className="footer__left">
-              <h3 className="footer__tagline">Strategic design for brands that matter.</h3>
+              <h3 className="footer__tagline">Calm, clear design for products people love to use.</h3>
               <div className="footer__contacts">
-                <a href="mailto:hello@awais.design" className="footer__contact-link">
+                <a href="mailto:awais.designsss@gmail.com" className="footer__contact-link">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  hello@awais.design
+                  awais.designsss@gmail.com
                 </a>
                 <div className="footer__contact-row">
-                  <a href="tel:+923417039563" className="footer__contact-link">
+                  <a href="tel:+923027778210" className="footer__contact-link">
                     <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    +92 341 7039563
+                    +92 302 7778210
                   </a>
                   <span className="footer__copy">© 2026 M. Awais</span>
                 </div>

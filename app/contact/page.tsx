@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import ContactContent from "@/components/contact/contact-content";
 
 export const metadata: Metadata = {
-  title: "Contact — M. Awais, UX/UI & Product Designer",
+  title: "Contact · M. Awais, Senior Product Designer",
   description:
-    "Start a project with M. Awais. Tell me what you're building, or reach out directly by email or phone.",
+    "Have a product to build, a redesign to revisit, or a design problem to talk through? A quick message is the fastest way to reach me.",
 };
 
 export default function ContactPage() {

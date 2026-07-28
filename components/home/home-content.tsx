@@ -365,7 +365,7 @@ export default function HomeContent() {
             <a href="/about" className="nav__link">About</a>
             <a href="/contact" className="nav__link">Contact</a>
           </div>
-          <a href="mailto:hello@awais.design" className="nav__cta">Email me</a>
+          <a href="mailto:awais.designsss@gmail.com" className="nav__cta">Email me</a>
           <button className="nav__toggle" aria-label="Menu" aria-expanded="false">
             <span></span>
             <span></span>
@@ -375,7 +375,7 @@ export default function HomeContent() {
 
         <main>
 
-          <h1 className="sr-only">M. Awais — UX/UI &amp; Product Designer</h1>
+          <h1 className="sr-only">M. Awais, Senior Product Designer</h1>
 
           <section className="hero">
             <img src="/assets/images/hero-bg.jpg" alt="M. Awais portrait with warm amber spotlight" className="hero__bg" />
@@ -386,8 +386,9 @@ export default function HomeContent() {
             <div className="hero__lead">
               <div className="hero__content">
                 <div className="hero__info">
-                  <h2 className="hero__subtitle">Certified Product Designer</h2>
-                  <p className="hero__description">I take complicated products and make them feel obvious. Fewer &ldquo;wait, where do I click?&rdquo; moments — more people getting what they came for, on a screen that&rsquo;s easy on the eyes.</p>
+                  <p className="hero__eyebrow">Google &amp; IBM Certified</p>
+                  <h2 className="hero__subtitle">Senior Product Designer</h2>
+                  <p className="hero__description">I take complicated products and make them feel obvious. Fewer &ldquo;wait, where do I click&rdquo; moments, and more people getting what they came for on a screen that&rsquo;s easy on the eyes.</p>
                 </div>
                 <div className="hero__actions">
                   <a href="#work" className="hero__btn">View Work</a>
@@ -403,13 +404,13 @@ export default function HomeContent() {
               <p className="hero__name">Awais</p>
             </div>
 
-            <p className="hero__intro">I'm M. Awais — a UX/UI &amp; Product Designer who makes complex things feel simple.</p>
+            <p className="hero__intro">I&rsquo;m M. Awais, a Senior Product Designer who makes complex things feel simple.</p>
 
-            <p className="hero__available"><span className="hero__bullet"></span>Open for one new project this quarter</p>
+            <p className="hero__available"><span className="hero__bullet"></span>Always open to a good design problem</p>
 
             <ul className="hero__menu">
               <li className="hero__menu-item">
-                <a className="hero__menu-link" href="https://www.linkedin.com/in/m-awais" target="_blank" rel="noopener noreferrer">
+                <a className="hero__menu-link" href="https://www.linkedin.com/in/awaisdesigns" target="_blank" rel="noopener noreferrer">
                   <span className="hero__menu-label">
                     <svg className="hero__menu-icon" viewBox="0 0 24 24" aria-hidden="true"><g fill="currentColor"><path fillRule="evenodd" d="M12.51 8.796v1.697a3.74 3.74 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766c-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483a1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.6 1.6 0 0 1 1.6 1.606" clipRule="evenodd"/><path d="M7.2 8.809H4V19.5h3.2z"/></g></svg>
                     LinkedIn
@@ -421,7 +422,7 @@ export default function HomeContent() {
                 </a>
               </li>
               <li className="hero__menu-item">
-                <a className="hero__menu-link" href="https://dribbble.com/mawais" target="_blank" rel="noopener noreferrer">
+                <a className="hero__menu-link" href="https://dribbble.com/awaisdesigns" target="_blank" rel="noopener noreferrer">
                   <span className="hero__menu-label">
                     <svg className="hero__menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m1.617 11.984A12.02 12.02 0 0 0 7.28 18.46A7.96 7.96 0 0 0 12 20a8 8 0 0 0 3.028-.593a33 33 0 0 0-1.411-5.424Zm1.978-.403c.532 1.543.96 3.135 1.274 4.768a8 8 0 0 0 2.922-4.523a12.1 12.1 0 0 0-4.196-.245m-3.244-2.669a19.1 19.1 0 0 1-8.35.984L4 12c0 1.927.682 3.695 1.817 5.076a14.02 14.02 0 0 1 7.072-4.963a33 33 0 0 0-.538-1.2Zm6.137-3.593a19 19 0 0 1-4.288 2.825q.351.75.668 1.517c1.7-.26 3.45-.206 5.13.161a7.96 7.96 0 0 0-1.51-4.503M8.574 4.77a8.02 8.02 0 0 0-4.298 5.145a17.1 17.1 0 0 0 7.157-.8A33 33 0 0 0 8.574 4.77M12 4q-.721 0-1.405.123a35 35 0 0 1 2.703 4.235a17 17 0 0 0 3.826-2.502A7.97 7.97 0 0 0 12 4"/></svg>
                     Dribbble
@@ -433,7 +434,7 @@ export default function HomeContent() {
                 </a>
               </li>
               <li className="hero__menu-item">
-                <a className="hero__menu-link" href="https://www.behance.net/mawais" target="_blank" rel="noopener noreferrer">
+                <a className="hero__menu-link" href="https://www.behance.net/awais_designs" target="_blank" rel="noopener noreferrer">
                   <span className="hero__menu-label">
                     <svg className="hero__menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5a4 4 0 0 1 2.646 7A4 4 0 0 1 8 19H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm9.5 4c2.607 0 4.5 2.368 4.5 5a1 1 0 0 1-.883.993L21 15h-5.86c.358 1.224 1.353 2 2.36 2c1.08 0 1.692-.511 2.24-1.15a1 1 0 1 1 1.52 1.3l-.107.122l-.229.246C20.202 18.26 19.146 19 17.5 19c-2.607 0-4.5-2.368-4.5-5s1.893-5 4.5-5M8 13H4v4h4a2 2 0 0 0 .15-3.995zm9.5-2c-1.007 0-2.002.776-2.36 2h4.72c-.358-1.224-1.353-2-2.36-2M8 7H4v4h4a2 2 0 1 0 0-4m11-1a1 1 0 1 1 0 2h-3a1 1 0 1 1 0-2z"/></svg>
                     Behance
@@ -445,7 +446,7 @@ export default function HomeContent() {
                 </a>
               </li>
               <li className="hero__menu-item">
-                <a className="hero__menu-link" href="https://wa.me/923417039563" target="_blank" rel="noopener noreferrer">
+                <a className="hero__menu-link" href="https://wa.me/923027778210" target="_blank" rel="noopener noreferrer">
                   <span className="hero__menu-label">
                     <svg className="hero__menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01m-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18l-3.12.82l.83-3.04l-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24c2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81c-.23-.08-.39-.12-.56.12c-.17.25-.64.81-.78.97c-.14.17-.29.19-.54.06c-.25-.12-1.05-.39-1.99-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.14-.25-.02-.38.11-.51c.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31c-.22.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74c.59.26 1.05.41 1.41.52c.59.19 1.13.16 1.56.1c.48-.07 1.47-.6 1.67-1.18c.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28"/></svg>
                     Whatsapp
@@ -525,7 +526,7 @@ export default function HomeContent() {
                         <span className="process__tag">Design Process</span>
                         <span className="process__counter">02 / 04</span>
                       </div>
-                      <p className="process__desc" data-wordfx>Then I frame the real problem. Flows, structure, and one clear goal everyone agrees on — so we&rsquo;re not quietly redesigning things halfway through.</p>
+                      <p className="process__desc" data-wordfx>Then I frame the real problem. Flows, structure, and one clear goal everyone agrees on, so we&rsquo;re not quietly redesigning things halfway through.</p>
                       <div className="process__cta">
                         <a href="#contact" className="process__cta-btn">Get started</a>
                         <a href="#contact" className="process__cta-icon" aria-label="Get started">
@@ -679,7 +680,7 @@ export default function HomeContent() {
                 <a href="#contact" className="services__row">
                   <span className="services__num">(01)</span>
                   <h3 className="services__name" data-wordfx>Web Design</h3>
-                  <p className="services__desc">Responsive sites built from scratch — quick to load, easy to read, and made to turn visitors into customers.</p>
+                  <p className="services__desc">Responsive sites built from scratch: quick to load, easy to read, and made to turn visitors into customers.</p>
                   <span className="services__thumb" style={{ backgroundImage: "url(/assets/images/services/web-design.jpg), radial-gradient(120% 120% at 60% 25%, #2a3a5a 0%, #1a2233 55%, #0d1320 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
@@ -688,7 +689,7 @@ export default function HomeContent() {
 
                 <a href="#contact" className="services__row">
                   <span className="services__num">(02)</span>
-                  <h3 className="services__name" data-wordfx>UI UX Design</h3>
+                  <h3 className="services__name" data-wordfx>UI/UX Design</h3>
                   <p className="services__desc">Flows and screens that feel obvious to use, with just enough personality to stick in memory.</p>
                   <span className="services__thumb" style={{ backgroundImage: "url(/assets/images/services/ui-ux-design.jpg), radial-gradient(120% 120% at 60% 25%, #1a5a52 0%, #103b38 55%, #07201d 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
@@ -699,7 +700,7 @@ export default function HomeContent() {
                 <a href="#contact" className="services__row">
                   <span className="services__num">(03)</span>
                   <h3 className="services__name" data-wordfx>Product Design</h3>
-                  <p className="services__desc">The whole journey — strategy, research, and design — turned into something you can actually ship.</p>
+                  <p className="services__desc">The whole journey, from strategy and research to design, turned into something you can actually ship.</p>
                   <span className="services__thumb" style={{ backgroundImage: "url(/assets/images/services/product-design.jpg), radial-gradient(120% 120% at 60% 25%, #b3702f 0%, #5a3010 55%, #2a1606 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
@@ -709,7 +710,7 @@ export default function HomeContent() {
                 <a href="#contact" className="services__row">
                   <span className="services__num">(04)</span>
                   <h3 className="services__name" data-wordfx>Branding</h3>
-                  <p className="services__desc">A visual identity that actually looks like you — and tells people who you are before they read a word.</p>
+                  <p className="services__desc">A visual identity that actually looks like you, and tells people who you are before they read a word.</p>
                   <span className="services__thumb" style={{ backgroundImage: "url(/assets/images/services/branding.jpg), radial-gradient(120% 120% at 60% 25%, #5a2a55 0%, #34203a 55%, #170c1a 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
@@ -719,7 +720,7 @@ export default function HomeContent() {
                 <a href="#contact" className="services__row">
                   <span className="services__num">(05)</span>
                   <h3 className="services__name" data-wordfx>UX Audit</h3>
-                  <p className="services__desc">A close look at where people get stuck, and a plain list of fixes — ranked by what&rsquo;ll move the needle most.</p>
+                  <p className="services__desc">A close look at where people get stuck, and a plain list of fixes, ranked by what will move the needle most.</p>
                   <span className="services__thumb" style={{ backgroundImage: "url(/assets/images/services/ux-audit.jpg), radial-gradient(120% 120% at 60% 25%, #3a3a6e 0%, #1f1f44 55%, #0c0c20 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
@@ -728,8 +729,8 @@ export default function HomeContent() {
 
                 <a href="#contact" className="services__row">
                   <span className="services__num">(06)</span>
-                  <h3 className="services__name" data-wordfx>AI Native Design</h3>
-                  <p className="services__desc">AI-powered experiences that quietly do the heavy lifting — less busywork for your team, lower costs for you.</p>
+                  <h3 className="services__name" data-wordfx>AI-Native Design</h3>
+                  <p className="services__desc">AI-powered experiences that quietly do the heavy lifting, so there&rsquo;s less busywork for your team.</p>
                   <span className="services__thumb" style={{ backgroundImage: "url(/assets/images/services/ai-native-design.jpg), radial-gradient(120% 120% at 60% 25%, #b58a2f 0%, #5a3a0a 55%, #2a1c04 100%)" } as React.CSSProperties}></span>
                   <span className="services__plus" aria-hidden="true">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1.3"/></svg>
@@ -744,16 +745,16 @@ export default function HomeContent() {
             <div className="container">
               <div className="metrics__grid">
                 <div className="metrics__item">
-                  <p className="metrics__number"><span className="metrics__affix">$</span>12M</p>
-                  <p className="metrics__label">In revenue my work has helped move</p>
+                  <p className="metrics__number">6<span className="metrics__affix">yrs</span></p>
+                  <p className="metrics__label">Designing products end to end</p>
                 </div>
                 <div className="metrics__item">
-                  <p className="metrics__number">40<span className="metrics__affix">+</span></p>
+                  <p className="metrics__number">25<span className="metrics__affix">+</span></p>
                   <p className="metrics__label">Products and features I&rsquo;ve shipped</p>
                 </div>
                 <div className="metrics__item">
-                  <p className="metrics__number">8<span className="metrics__affix">yrs</span></p>
-                  <p className="metrics__label">Designing for real teams and users</p>
+                  <p className="metrics__number">6</p>
+                  <p className="metrics__label">Industries shipped in</p>
                 </div>
               </div>
             </div>
@@ -770,8 +771,8 @@ export default function HomeContent() {
                   </span>
                   <svg className="reasons__arrowdown" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v10M2.5 7.5L7 12l4.5-4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </div>
-                <h2 className="reasons__heading" data-wordfx>Better design,<br />simplified.</h2>
-                <p className="reasons__lead">Think of it as design on tap. Senior-level work whenever you need it, refined until it&rsquo;s right, and shaped around your brand — never pulled off a template.</p>
+                <h2 className="reasons__heading" data-wordfx>Senior design,<br />thought through.</h2>
+                <p className="reasons__lead">Senior-level design, thought through properly and shaped around your product, never pulled off a template. Here is what that looks like in practice.</p>
                 <div className="reasons__cta">
                   <a href="#contact" className="btn reasons__btn">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -796,8 +797,8 @@ export default function HomeContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-1.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title" data-wordfx>Predictable Pricing</h3>
-                      <p className="reasons__card-desc">One flat monthly rate. No surprise invoices, no scope-creep math — just steady design work you can plan your budget around.</p>
+                      <h3 className="reasons__card-title" data-wordfx>Senior Craft, Hands-On</h3>
+                      <p className="reasons__card-desc">You work with someone who has shipped real products across fintech, healthcare, and SaaS, doing the actual design, not passing it to a junior.</p>
                     </div>
                   </article>
                 </div>
@@ -806,8 +807,8 @@ export default function HomeContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-2.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title" data-wordfx>Limitless Requests</h3>
-                      <p className="reasons__card-desc">Send over as many requests as you like. I&rsquo;ll keep tweaking and refining until it matches the picture in your head.</p>
+                      <h3 className="reasons__card-title" data-wordfx>Problem First, Pixels Later</h3>
+                      <p className="reasons__card-desc">I start with research and a clearly framed problem, so the work solves the right thing instead of just looking good.</p>
                     </div>
                   </article>
                 </div>
@@ -816,8 +817,8 @@ export default function HomeContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-3.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title" data-wordfx>Fast Delivery</h3>
-                      <p className="reasons__card-desc">Most requests land in a few days, not a few weeks. Quick to turn around — but never rushed where it counts.</p>
+                      <h3 className="reasons__card-title" data-wordfx>Systems That Scale</h3>
+                      <p className="reasons__card-desc">Clean design systems and dev-ready specs, so the design holds together and ships without friction.</p>
                     </div>
                   </article>
                 </div>
@@ -826,8 +827,8 @@ export default function HomeContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-4.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title" data-wordfx>Senior Design Craft</h3>
-                      <p className="reasons__card-desc">You work directly with me — someone who&rsquo;s shipped real products — not a junior learning the ropes on your budget.</p>
+                      <h3 className="reasons__card-title" data-wordfx>Clear Collaboration</h3>
+                      <p className="reasons__card-desc">Straight talk and simple updates. You always know exactly where things stand, no chasing.</p>
                     </div>
                   </article>
                 </div>
@@ -836,8 +837,8 @@ export default function HomeContent() {
                   <article className="reasons__card">
                     <span className="reasons__icon"><img src="/assets/images/reasons/icon-5.png" alt="" /></span>
                     <div className="reasons__card-body">
-                      <h3 className="reasons__card-title" data-wordfx>Clear Collaboration</h3>
-                      <p className="reasons__card-desc">Straight talk and simple updates, so you&rsquo;re never chasing me for status. You always know exactly where things stand.</p>
+                      <h3 className="reasons__card-title" data-wordfx>In It Through Ship</h3>
+                      <p className="reasons__card-desc">I don&rsquo;t vanish at handoff. I stay through build and QA until it works in the real world.</p>
                     </div>
                   </article>
                 </div>
@@ -861,7 +862,7 @@ export default function HomeContent() {
             </div>
             <div className="footer__contact-title">
               <h2 className="footer__cta-heading" data-wordfx>Get in touch</h2>
-              <a href="mailto:hello@awais.design" className="btn footer__cta-btn">
+              <a href="mailto:awais.designsss@gmail.com" className="btn footer__cta-btn">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 Let's talk
               </a>
@@ -879,14 +880,14 @@ export default function HomeContent() {
             <div className="footer__left">
               <h3 className="footer__tagline" data-wordfx>Calm, clear design for products people love to use.</h3>
               <div className="footer__contacts">
-                <a href="mailto:hello@awais.design" className="footer__contact-link">
+                <a href="mailto:awais.designsss@gmail.com" className="footer__contact-link">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  hello@awais.design
+                  awais.designsss@gmail.com
                 </a>
                 <div className="footer__contact-row">
-                  <a href="tel:+923417039563" className="footer__contact-link">
+                  <a href="tel:+923027778210" className="footer__contact-link">
                     <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    +92 341 7039563
+                    +92 302 7778210
                   </a>
                   <span className="footer__copy">© 2026 M. Awais</span>
                 </div>
