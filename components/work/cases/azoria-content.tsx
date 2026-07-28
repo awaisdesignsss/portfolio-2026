@@ -62,7 +62,7 @@ export default function AzoriaContent() {
             <p className="cs-hero__summary">A luxury resort in Bali, freed from Airbnb and a patchwork of third-party tools, with one app for staying, playing padel, training, and working, all run from a single admin.</p>
             <dl className="cs-facts">
               <div><dt className="cs-facts__k">Role</dt><dd className="cs-facts__v">Sole Product Designer</dd></div>
-              <div><dt className="cs-facts__k">Timeline</dt><dd className="cs-facts__v">6 months · 2025 to 2026</dd></div>
+              <div><dt className="cs-facts__k">Timeline</dt><dd className="cs-facts__v">6 months</dd></div>
               <div><dt className="cs-facts__k">Industry</dt><dd className="cs-facts__v">Hospitality</dd></div>
             </dl>
           </section>
