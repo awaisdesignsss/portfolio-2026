@@ -2,6 +2,7 @@
 
 import React from "react";
 import Wordmark from "@/components/ui/wordmark";
+import NavWhatsapp from "@/components/ui/nav-whatsapp";
 
 /** Case study "workeasy", authored to match the repo's case-study structure. */
 export default function WorkeasyContent() {
@@ -44,7 +45,10 @@ export default function WorkeasyContent() {
             <a href="/about" className="nav__link">About</a>
             <a href="/contact" className="nav__link">Contact</a>
           </div>
-          <a href="mailto:awais.designsss@gmail.com" className="nav__cta">Email me</a>
+          <div className="nav__actions">
+            <NavWhatsapp />
+            <a href="mailto:awais.designsss@gmail.com" className="nav__cta">Email me</a>
+          </div>
           <button className="nav__toggle" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -170,7 +174,7 @@ export default function WorkeasyContent() {
                   awais.designsss@gmail.com
                 </a>
                 <div className="footer__contact-row">
-                  <a href="tel:+923027778210" className="footer__contact-link">
+                  <a href="https://wa.me/923027778210" target="_blank" rel="noopener noreferrer" className="footer__contact-link">
                     <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     +92 302 7778210
                   </a>

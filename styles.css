@@ -359,6 +359,39 @@ img {
   background: #333;
 }
 
+/* Right-hand cluster: WhatsApp shortcut + email CTA. Grouping them keeps
+   the bar a three-part flex (logo | menu | actions), so adding the icon
+   doesn't shift the centred menu. */
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.nav__wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  color: var(--brand-ink);
+  flex-shrink: 0;
+  transition: background var(--duration-base) var(--ease-out),
+              color var(--duration-base) var(--ease-out);
+}
+
+.nav__wa svg {
+  width: 20px;
+  height: 20px;
+}
+
+.nav__wa:hover {
+  background: rgba(18, 18, 18, 0.08);
+  color: #25d366;
+}
+
 /* Mobile nav toggle (hidden on desktop) */
 .nav__toggle {
   display: none;
@@ -2075,9 +2108,15 @@ img {
     justify-self: center;
   }
 
-  .nav__cta {
+  .nav__actions {
     grid-area: 1 / 3;
     justify-self: end;
+  }
+
+  /* Keep the three-up bar evenly weighted: the hero and contact page both
+     surface WhatsApp on mobile, so the bar only carries the email CTA. */
+  .nav__wa {
+    display: none;
   }
 
   .nav__menu {

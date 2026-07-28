@@ -4,7 +4,7 @@ import React from "react";
 
 /** Buttons and the header menu links magnify. For a nav link the whole
  *  `.nav__menu` is cloned so the sliding pill shows inside the loupe too. */
-const ZOOM_TARGET = 'button, [role="button"], .nav__cta, .nav__link, [class*="btn"]';
+const ZOOM_TARGET = 'button, [role="button"], .nav__cta, .nav__wa, .nav__link, [class*="btn"]';
 
 const LENS_R = 48; // lens radius (px) — matches the hover ring in CSS
 const ZOOM = 1.2; // magnification factor (20% larger)
