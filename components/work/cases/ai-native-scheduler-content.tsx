@@ -4,8 +4,8 @@ import React from "react";
 import Wordmark from "@/components/ui/wordmark";
 import NavWhatsapp from "@/components/ui/nav-whatsapp";
 
-/** Case study "asap", authored to match the repo's case-study structure. */
-export default function AsapContent() {
+/** Case study "ai-native-scheduler", authored to match the repo's case-study structure. */
+export default function AiNativeSchedulerContent() {
 
   React.useEffect(() => {
     const cleanups: Array<() => void> = [];
@@ -61,34 +61,34 @@ export default function AsapContent() {
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M10.5 3.5L3.5 10.5M3.5 10.5H9M3.5 10.5V5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               All work
             </a>
-            <p className="cs-hero__niche">E-commerce · CMS Platform</p>
-            <h1 className="cs-hero__title">ASAP</h1>
-            <p className="cs-hero__summary">A parts distribution company running 658 separate .NET websites, rebuilt as one Next.js CMS, with a site for every vertical and a single place to manage them all.</p>
+            <p className="cs-hero__niche">WorkEasy · AI & Workforce</p>
+            <h1 className="cs-hero__title">Worky - AI Native Scheduler</h1>
+            <p className="cs-hero__summary">An agentic scheduler for WorkEasy that builds a manager's shifts from their own rules, then hands back a draft they can question, edit, and approve. A vision piece designed to make AI scheduling something managers actually trust.</p>
             <dl className="cs-facts">
-              <div><dt className="cs-facts__k">Role</dt><dd className="cs-facts__v">Lead Product Designer</dd></div>
-              <div><dt className="cs-facts__k">Timeline</dt><dd className="cs-facts__v">Late 2025 to 2026</dd></div>
-              <div><dt className="cs-facts__k">Year</dt><dd className="cs-facts__v">2026</dd></div>
-              <div><dt className="cs-facts__k">Industry</dt><dd className="cs-facts__v">E-commerce · CMS</dd></div>
+              <div><dt className="cs-facts__k">Role</dt><dd className="cs-facts__v">Sole Product Designer</dd></div>
+              <div><dt className="cs-facts__k">Timeline</dt><dd className="cs-facts__v">2 months · part-time</dd></div>
+              <div><dt className="cs-facts__k">Year</dt><dd className="cs-facts__v">2025</dd></div>
+              <div><dt className="cs-facts__k">Industry</dt><dd className="cs-facts__v">AI · Workforce Management</dd></div>
             </dl>
           </section>
 
           <div className="cs-cover">
-            <div className="cs-cover__media reveal" style={{ background: "url(/assets/images/work/case-asap.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #1e5a6e 0%, #123f4a 55%, #08222a 100%)" } as React.CSSProperties} role="img" aria-label="ASAP cover artwork"></div>
+            <div className="cs-cover__media reveal" style={{ background: "url(/assets/images/work/case-ai-native-scheduler.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #35408f 0%, #1e2450 55%, #0c0f26 100%)" } as React.CSSProperties} role="img" aria-label="Worky - AI Native Scheduler cover artwork"></div>
           </div>
 
           <section className="section cs-overview">
             <div className="cs-overview__grid">
-              <div className="cs-overview__col reveal"><h2>The problem</h2><p>658 websites, each stuck on aging .NET, each with its own admin panel. Infrastructure ran about $85K a month, and with no central platform, the SEO and content teams couldn't stay in sync across sites.</p></div>
-              <div className="cs-overview__col reveal"><h2>My role</h2><p>I led a team of four designers. I designed the CMS and its full component system, then guided the team as we rebuilt every site through it, working alongside a separate engineering lead.</p></div>
-              <div className="cs-overview__col reveal"><h2>The outcome</h2><p>One Next.js CMS running all 658 sites. Infrastructure dropped to about $32K a month, RFQs rose 10%, and every site is now managed from a single dashboard.</p></div>
+              <div className="cs-overview__col reveal"><h2>The problem</h2><p>Building a shift schedule by hand is one of the most draining parts of a manager's week. Availability, skills, overtime caps, and shifting demand all have to be held in one head at once, every week, and a single wrong call ripples straight into payroll and morale.</p></div>
+              <div className="cs-overview__col reveal"><h2>My role</h2><p>I designed the concept end to end as the sole designer, guided by my manager, over two months of part-time work. It was built to pitch to the client, so the whole thing is a vision piece: a working design for how agentic scheduling could live inside WorkEasy.</p></div>
+              <div className="cs-overview__col reveal"><h2>The outcome</h2><p>A scheduler that does the heavy lifting and hands the manager a draft to approve, not a black box to obey. Every AI decision arrives with a plain-language reason, so trust is designed in from the first screen.</p></div>
             </div>
           </section>
 
           <section className="section cs-metrics">
             <div className="cs-metrics__grid">
-              <div className="cs-metric reveal"><p className="cs-metric__num">62%<span> less</span></p><p className="cs-metric__label">Monthly infrastructure cost, from $85K down to $32K</p></div>
-              <div className="cs-metric reveal"><p className="cs-metric__num">658<span> → 1</span></p><p className="cs-metric__label">Legacy .NET sites unified into one Next.js CMS</p></div>
-              <div className="cs-metric reveal"><p className="cs-metric__num">+10%<span></span></p><p className="cs-metric__label">Increase in RFQs across the network of sites</p></div>
+              <div className="cs-metric reveal"><p className="cs-metric__num">90%<span> less</span></p><p className="cs-metric__label">Projected time to build a schedule, from hours to minutes</p></div>
+              <div className="cs-metric reveal"><p className="cs-metric__num">5<span></span></p><p className="cs-metric__label">Scheduling jobs the agent handles, from forecasting to filling gaps</p></div>
+              <div className="cs-metric reveal"><p className="cs-metric__num">0<span> black boxes</span></p><p className="cs-metric__label">Every AI decision shown with a reason the manager can read</p></div>
             </div>
           </section>
 
@@ -96,8 +96,8 @@ export default function AsapContent() {
             <div className="cs-block__inner">
               <p className="cs-block__kicker">Challenge</p>
               <div>
-                <h2 className="cs-block__title">658 sites, one system.</h2>
-                <div className="prose"><p>The hard part was never a single screen. It was scale. Designing 658 sites by hand was impossible, and letting each one drift on its own was exactly the mess we were leaving behind. I had to build a system flexible enough to fit very different verticals, yet consistent enough that one team could run all of it. On top of that, the old setup gave every site its own admin, so the people handling SEO and content were working blind across the network.</p></div>
+                <h2 className="cs-block__title">AI that managers will actually trust.</h2>
+                <div className="prose"><p>The promise of AI scheduling is easy to say and hard to earn. A manager will not hand their week to a system that produces a schedule with no explanation, because when it gets one shift wrong, cleaning it up is their problem. So the real challenge was never the automation. It was trust. The design had to let the agent do the heavy lifting while keeping the manager firmly in control, and it had to explain itself well enough that a manager would believe it before relying on it.</p></div>
               </div>
             </div>
           </section>
@@ -106,11 +106,11 @@ export default function AsapContent() {
             <div className="cs-block__inner">
               <p className="cs-block__kicker">Process</p>
               <div>
-                <h2 className="cs-block__title">Themes by vertical, custom for the few that mattered.</h2>
-                <div className="prose"><p>I grouped the 658 sites by vertical and designed a small set of themes, then mapped each site to the template that fit it. For the top ten sites, the ones that carried the most weight, I designed custom experiences. Everything else ran on shared theming, which is what made the scale manageable. Along the way I introduced JSON-based components so we could design new components at runtime with Claude and drop them straight into a site, which kept the team fast as the migration ramped up.</p></div>
+                <h2 className="cs-block__title">Teach the agent, then keep the human in charge.</h2>
+                <div className="prose"><p>I designed the flow in two halves. First the manager teaches the agent the rules that matter to them: maximum hours and overtime caps, the skills or certifications each shift needs, who is available, and the coverage they have to hit. The agent draws on a knowledge base of past schedules, employee profiles, and historical demand to make its picks. Then it drafts. For the week or month the manager set, the agent produces a full list of shifts, choosing people based on their history, and hands it back. The manager stays the decision-maker at every step, free to edit a shift, reject it, or ask the agent to try again, and nothing is final until they say so.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/asap-1.jpg) center/cover no-repeat, radial-gradient(120% 120% at 30% 30%, #1e5a6e 0%, #123f4a 55%, #08222a 100%)" } as React.CSSProperties}></div>
-                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/asap-2.jpg) center/cover no-repeat, radial-gradient(120% 120% at 80% 60%, #1e5a6e 0%, #123f4a 55%, #08222a 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/ai-native-scheduler-1.jpg) center/cover no-repeat, radial-gradient(120% 120% at 30% 30%, #35408f 0%, #1e2450 55%, #0c0f26 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item reveal" style={{ background: "url(/assets/images/work/gallery/ai-native-scheduler-2.jpg) center/cover no-repeat, radial-gradient(120% 120% at 80% 60%, #35408f 0%, #1e2450 55%, #0c0f26 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
@@ -120,23 +120,23 @@ export default function AsapContent() {
             <div className="cs-block__inner">
               <p className="cs-block__kicker">Solution</p>
               <div>
-                <h2 className="cs-block__title">A builder, plus one dashboard over everything.</h2>
-                <div className="prose"><p>The CMS is a drag-and-drop website builder with a library of components and ready-made templates. Each site has its own admin controls inside the CMS, scoped to that site, while a master dashboard sits above all of them with network-wide insight. Shared SEO controls at the site level finally let the teams work in step, and are a big part of why RFQs went up. Around forty people now run the entire network from one place.</p></div>
+                <h2 className="cs-block__title">A draft you can question, not an order you follow.</h2>
+                <div className="prose"><p>The finished concept is an agentic scheduler that feels like a capable assistant rather than an autopilot. It generates the full schedule from the manager's rules, forecasts how many people a period needs, fills gaps, and resolves time-off clashes on its own. Every suggestion carries its reasoning in plain words, so the manager sees exactly why the agent picked someone, reasons like available, qualified, and under the overtime cap. Around the scheduler sit the supporting AI moments I also designed: smart timesheet corrections, automatic time-off decisions, attendance anomaly detection, and shift-swap matching, each following the same rule, do the work, then show why. It is a vision for AI in workforce management that earns its place by being transparent, not only fast.</p></div>
                 <div className="cs-gallery">
-                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "url(/assets/images/work/gallery/asap-3.jpg) center/cover no-repeat, radial-gradient(120% 120% at 50% 25%, #1e5a6e 0%, #123f4a 55%, #08222a 100%)" } as React.CSSProperties}></div>
+                  <div className="cs-gallery__item cs-gallery__item--wide reveal" style={{ background: "url(/assets/images/work/gallery/ai-native-scheduler-3.jpg) center/cover no-repeat, radial-gradient(120% 120% at 50% 25%, #35408f 0%, #1e2450 55%, #0c0f26 100%)" } as React.CSSProperties}></div>
                 </div>
               </div>
             </div>
           </section>
 
           <nav className="cs-pager" aria-label="More projects">
-            <a className="cs-pager__link cs-pager__link--prev" href="/work/currency-gram">
+            <a className="cs-pager__link cs-pager__link--prev" href="/work/asap">
               <span className="cs-pager__dir">Previous</span>
-              <span className="cs-pager__name">Currency Gram</span>
+              <span className="cs-pager__name">ASAP</span>
             </a>
-            <a className="cs-pager__link cs-pager__link--next" href="/work/ai-native-scheduler">
+            <a className="cs-pager__link cs-pager__link--next" href="/work/azaq">
               <span className="cs-pager__dir">Next</span>
-              <span className="cs-pager__name">Worky - AI Native Scheduler</span>
+              <span className="cs-pager__name">AZAQ - Relia</span>
             </a>
           </nav>
 

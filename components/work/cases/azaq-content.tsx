@@ -130,9 +130,9 @@ export default function AzaqContent() {
           </section>
 
           <nav className="cs-pager" aria-label="More projects">
-            <a className="cs-pager__link cs-pager__link--prev" href="/work/asap">
+            <a className="cs-pager__link cs-pager__link--prev" href="/work/ai-native-scheduler">
               <span className="cs-pager__dir">Previous</span>
-              <span className="cs-pager__name">ASAP</span>
+              <span className="cs-pager__name">Worky - AI Native Scheduler</span>
             </a>
             <a className="cs-pager__link cs-pager__link--next" href="/work/workeasy">
               <span className="cs-pager__dir">Next</span>

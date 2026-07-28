@@ -614,6 +614,18 @@ export default function HomeContent() {
 
                 <article className="work__project">
                   <div className="work__cover">
+                    <div className="work__media" style={{ backgroundImage: "url(/assets/images/work/work-07.jpg)" }}></div>
+                    <div className="work__scrim"></div>
+                    <a className="work__cardlink" href="/work/ai-native-scheduler" aria-label="View Worky - AI Native Scheduler case study"></a>
+                    <div className="work__caption">
+                      <div className="work__line"><span className="work__niche">AI &amp; Workforce</span></div>
+                      <div className="work__line"><h3 className="work__name">Worky - AI Native Scheduler</h3></div>
+                    </div>
+                  </div>
+                </article>
+
+                <article className="work__project">
+                  <div className="work__cover">
                     <div className="work__media" style={{ backgroundImage: "url(/assets/images/work/work-03.jpg)" }}></div>
                     <div className="work__scrim"></div>
                     <a className="work__cardlink" href="/work/azaq" aria-label="View AZAQ - Relia case study"></a>

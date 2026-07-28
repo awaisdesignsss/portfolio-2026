@@ -7,7 +7,7 @@ import NavWhatsapp from "@/components/ui/nav-whatsapp";
 
 /**
  * Work index page. Same structure as the repo's work-content.tsx,
- * updated to list the six real case studies with matching filter chips.
+ * updated to list the seven real case studies with matching filter chips.
  */
 export default function WorkContent() {
 
@@ -95,7 +95,7 @@ export default function WorkContent() {
               Selected Work
             </span>
             <h1 className="pagehead__title" data-wordfx>Products built to be understood.</h1>
-            <p className="pagehead__lead">Six products across fintech, healthcare, hospitality, workforce, enterprise, and commerce. Each one began as a tangled operational problem and ended as an interface that quietly gets out of the way.</p>
+            <p className="pagehead__lead">Seven products across fintech, healthcare, hospitality, workforce, enterprise, AI, and commerce. Each one began as a tangled operational problem and ended as an interface that quietly gets out of the way.</p>
           </section>
 
           <section className="section workindex section--light">
@@ -103,6 +103,7 @@ export default function WorkContent() {
               <button className="workfilter__chip" data-filter="all" aria-pressed="true">All</button>
               <button className="workfilter__chip" data-filter="ecommerce" aria-pressed="false">E-commerce</button>
               <button className="workfilter__chip" data-filter="workforce" aria-pressed="false">Workforce</button>
+              <button className="workfilter__chip" data-filter="ai" aria-pressed="false">AI</button>
               <button className="workfilter__chip" data-filter="hospitality" aria-pressed="false">Hospitality</button>
               <button className="workfilter__chip" data-filter="healthcare" aria-pressed="false">Healthcare</button>
               <button className="workfilter__chip" data-filter="enterprise" aria-pressed="false">Enterprise</button>
@@ -131,6 +132,18 @@ export default function WorkContent() {
                   <div className="workcard__meta">
                     <span><span className="workcard__niche">E-commerce</span><span className="workcard__name">ASAP</span></span>
                     <span className="workcard__year">2026</span>
+                  </div>
+                </div>
+              </a>
+
+              <a className="workcard reveal" href="/work/ai-native-scheduler" data-niche="ai" aria-label="Worky - AI Native Scheduler, AI and Workforce case study">
+                <div className="workcard__cover">
+                  <div className="workcard__media" style={{ background: "url(/assets/images/work/case-ai-native-scheduler.jpg) center/cover no-repeat, radial-gradient(120% 120% at 70% 20%, #35408f 0%, #1e2450 55%, #0c0f26 100%)" } as React.CSSProperties}></div>
+                  <div className="workcard__scrim"></div>
+                  <span className="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
+                  <div className="workcard__meta">
+                    <span><span className="workcard__niche">AI &amp; Workforce</span><span className="workcard__name">Worky - AI Native Scheduler</span></span>
+                    <span className="workcard__year">2025</span>
                   </div>
                 </div>
               </a>
