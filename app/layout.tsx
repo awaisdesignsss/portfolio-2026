@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import PointerFX from "@/components/pointer-fx";
 import NavPill from "@/components/nav-pill";
 import SmoothScroll from "@/components/smooth-scroll";
@@ -11,6 +11,61 @@ export const metadata: Metadata = {
   title: "M. Awais · Senior Product Designer",
   description:
     "Senior Product Designer with six years turning complex products across fintech, healthcare, hospitality, and SaaS into experiences people understand on the first try.",
+  applicationName: "M. Awais · Senior Product Designer",
+  authors: [{ name: "awais" }],
+  referrer: "origin-when-cross-origin",
+  creator: "awais",
+  publisher: "awaisdesigns",
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  metadataBase: new URL("https://awaisdesigns.com/"),
+  openGraph: {
+    title: "M. Awais · Senior Product Designer",
+    description:
+      "Senior Product Designer with six years turning complex products across fintech, healthcare, hospitality, and SaaS into experiences people understand on the first try.",
+    url: "https://awaisdesigns.com/",
+    siteName: "M. Awais · Senior Product Designer",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "M. Awais · Senior Product Designer",
+      },
+    ],
+    locale: "en-US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "M. Awais · Senior Product Designer",
+    description:
+      "Senior Product Designer with six years turning complex products across fintech, healthcare, hospitality, and SaaS into experiences people understand on the first try.",
+    creator: "awais",
+    images: {
+      url: "/og-image.png",
+      alt: "M. Awais · Senior Product Designer",
+    },
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  colorScheme: "dark",
+  themeColor: "#0a0a0a",
 };
 
 export default function RootLayout({
