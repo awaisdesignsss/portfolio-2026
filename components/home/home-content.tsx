@@ -83,6 +83,7 @@ export default function HomeContent() {
           bg: (media && media.getAttribute("style")) || "",
           niche: p.querySelector<HTMLElement>(".work__niche"),
           name: p.querySelector<HTMLElement>(".work__name"),
+          stats: Array.from(p.querySelectorAll<HTMLElement>(".work__stat")),
         };
       });
       const hudCur = section.querySelector<HTMLElement>(".work__count-cur");
@@ -100,6 +101,7 @@ export default function HomeContent() {
         if (l.media) l.media.style.cssText = l.bg;
         if (l.niche) l.niche.style.transform = "";
         if (l.name) l.name.style.transform = "";
+        l.stats.forEach((st) => { st.style.transform = ""; });
       }
       function apply() {
         ticking = false;
@@ -146,6 +148,7 @@ export default function HomeContent() {
               l.bg + ";transform:scale(" + (1 + inv * KEN).toFixed(4) + ") translateY(" + (inv * -3).toFixed(2) + "%)";
             if (l.niche) l.niche.style.transform = "translateY(" + ((1 - ease(clamp01(r * 1.25))) * 110).toFixed(2) + "%)";
             if (l.name) l.name.style.transform = "translateY(" + ((1 - ease(clamp01(r * 1.25 - 0.18))) * 115).toFixed(2) + "%)";
+            l.stats.forEach((st, si) => { st.style.transform = "translateY(" + ((1 - ease(clamp01(r * 1.25 - 0.3 - si * 0.09))) * 120).toFixed(2) + "%)"; });
           } else {
             const f2 = clamp01(s);
             const e = ease(f2);
@@ -159,6 +162,7 @@ export default function HomeContent() {
               l.bg + ";transform:scale(" + (1 + e * 0.05).toFixed(4) + ");filter:blur(" + (e * PASS_BLUR).toFixed(2) + "px) brightness(" + (1 - e * 0.5).toFixed(3) + ")";
             if (l.niche) l.niche.style.transform = "translateY(0%)";
             if (l.name) l.name.style.transform = "translateY(0%)";
+            l.stats.forEach((st) => { st.style.transform = "translateY(0%)"; });
           }
         }
       }
@@ -597,6 +601,10 @@ export default function HomeContent() {
                       <div className="work__line"><span className="work__niche">Fintech</span></div>
                       <div className="work__line"><h3 className="work__name">Currency Gram</h3></div>
                     </div>
+                    <div className="work__stats" aria-hidden="true">
+                      <div className="work__line"><p className="work__stat"><span className="work__stat-num">-38%</span><span className="work__stat-label">Faster transfers</span></p></div>
+                      <div className="work__line"><p className="work__stat"><span className="work__stat-num">+41</span><span className="work__stat-label">NPS gain</span></p></div>
+                    </div>
                   </div>
                 </article>
 
@@ -608,6 +616,10 @@ export default function HomeContent() {
                     <div className="work__caption">
                       <div className="work__line"><span className="work__niche">E-commerce</span></div>
                       <div className="work__line"><h3 className="work__name">ASAP</h3></div>
+                    </div>
+                    <div className="work__stats" aria-hidden="true">
+                      <div className="work__line"><p className="work__stat"><span className="work__stat-num">62% less</span><span className="work__stat-label">Infra cost</span></p></div>
+                      <div className="work__line"><p className="work__stat"><span className="work__stat-num">658 → 1</span><span className="work__stat-label">Sites unified</span></p></div>
                     </div>
                   </div>
                 </article>
@@ -621,6 +633,10 @@ export default function HomeContent() {
                       <div className="work__line"><span className="work__niche">AI &amp; Workforce</span></div>
                       <div className="work__line"><h3 className="work__name">Worky - AI Native Scheduler</h3></div>
                     </div>
+                    <div className="work__stats" aria-hidden="true">
+                      <div className="work__line"><p className="work__stat"><span className="work__stat-num">90% less</span><span className="work__stat-label">Time to schedule</span></p></div>
+                      <div className="work__line"><p className="work__stat"><span className="work__stat-num">5</span><span className="work__stat-label">Jobs automated</span></p></div>
+                    </div>
                   </div>
                 </article>
 
@@ -632,6 +648,10 @@ export default function HomeContent() {
                     <div className="work__caption">
                       <div className="work__line"><span className="work__niche">Enterprise</span></div>
                       <div className="work__line"><h3 className="work__name">AZAQ - Relia</h3></div>
+                    </div>
+                    <div className="work__stats" aria-hidden="true">
+                      <div className="work__line"><p className="work__stat"><span className="work__stat-num">4-stage</span><span className="work__stat-label">Approval chain</span></p></div>
+                      <div className="work__line"><p className="work__stat"><span className="work__stat-num">0</span><span className="work__stat-label">Hand-offs left</span></p></div>
                     </div>
                   </div>
                 </article>
@@ -645,6 +665,10 @@ export default function HomeContent() {
                       <div className="work__line"><span className="work__niche">Workforce</span></div>
                       <div className="work__line"><h3 className="work__name">WorkEasy</h3></div>
                     </div>
+                    <div className="work__stats" aria-hidden="true">
+                      <div className="work__line"><p className="work__stat"><span className="work__stat-num">4</span><span className="work__stat-label">Modules rebuilt</span></p></div>
+                      <div className="work__line"><p className="work__stat"><span className="work__stat-num">1 tap</span><span className="work__stat-label">To clock in</span></p></div>
+                    </div>
                   </div>
                 </article>
 
@@ -657,6 +681,10 @@ export default function HomeContent() {
                       <div className="work__line"><span className="work__niche">Hospitality</span></div>
                       <div className="work__line"><h3 className="work__name">Azoria</h3></div>
                     </div>
+                    <div className="work__stats" aria-hidden="true">
+                      <div className="work__line"><p className="work__stat"><span className="work__stat-num">4-in-1</span><span className="work__stat-label">Super app</span></p></div>
+                      <div className="work__line"><p className="work__stat"><span className="work__stat-num">1</span><span className="work__stat-label">Admin panel</span></p></div>
+                    </div>
                   </div>
                 </article>
 
@@ -668,6 +696,10 @@ export default function HomeContent() {
                     <div className="work__caption">
                       <div className="work__line"><span className="work__niche">Healthcare</span></div>
                       <div className="work__line"><h3 className="work__name">Phlex65</h3></div>
+                    </div>
+                    <div className="work__stats" aria-hidden="true">
+                      <div className="work__line"><p className="work__stat"><span className="work__stat-num">1 → many</span><span className="work__stat-label">Multi-tenant SaaS</span></p></div>
+                      <div className="work__line"><p className="work__stat"><span className="work__stat-num">2</span><span className="work__stat-label">Apps shipped</span></p></div>
                     </div>
                   </div>
                 </article>

@@ -90,8 +90,17 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        {/* Body copy stays on swap so text is readable straight away. The
+            script wordmark is requested separately with display=block: its
+            fallback (generic cursive) has wildly different metrics, and
+            swapping it in after first paint threw the absolutely-positioned,
+            nowrap "Awais" out of alignment until a reload warmed the cache. */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200;400;500;600;700&family=Kolker+Brush&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Kolker+Brush&display=block"
           rel="stylesheet"
         />
       </head>

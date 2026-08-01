@@ -1359,6 +1359,42 @@ img {
   will-change: transform;
 }
 
+/* Results cluster, mirrored opposite the caption. Each stat sits inside a
+   .work__line so it rises from behind the same mask as the title. */
+.work__stats {
+  position: absolute;
+  right: var(--space-12);
+  bottom: var(--space-12);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-3);
+  text-align: right;
+}
+
+.work__stat {
+  display: block;
+  will-change: transform;
+}
+
+.work__stat-num {
+  display: block;
+  font-size: clamp(var(--text-xl), 2.2vw, var(--text-3xl));
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--brand-white);
+}
+
+.work__stat-label {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-tight);
+  color: rgba(255, 255, 255, 0.72);
+}
+
 /* ─── HUD: live counter + progress rail ─── */
 .work__hud {
   position: absolute;
@@ -2065,6 +2101,12 @@ img {
     bottom: var(--space-8);
   }
 
+  .work__stats {
+    right: var(--space-8);
+    bottom: var(--space-8);
+    gap: var(--space-2);
+  }
+
   /* Tablet: Metrics */
   .metrics__grid {
     grid-template-columns: repeat(3, 1fr);
@@ -2300,6 +2342,12 @@ img {
   .work__caption {
     left: var(--space-6);
     bottom: var(--space-6);
+  }
+
+  /* The title already fills a phone-width card, so the results cluster
+     would collide with it. The case study carries the same numbers. */
+  .work__stats {
+    display: none;
   }
 
   /* Mobile: Services — descriptions shown inline, no hover thumb */
@@ -2959,6 +3007,19 @@ textarea:focus-visible {
 .workcard__niche { display: block; font-size: var(--text-base); font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: var(--space-2); }
 .workcard__name { font-size: clamp(var(--text-2xl), 3vw, var(--text-4xl)); font-weight: 400; letter-spacing: -0.03em; color: #fff; line-height: 1.05; }
 .workcard__year { font-size: var(--text-base); color: rgba(255,255,255,0.7); font-variant-numeric: tabular-nums; }
+
+/* Year sits above the results cluster, both right-aligned in the corner. */
+.workcard__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-3);
+  text-align: right;
+  flex-shrink: 0;
+}
+.workcard__stats { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-2); }
+.workcard__stat-num { display: block; font-size: var(--text-lg); font-weight: 600; line-height: 1.05; letter-spacing: -0.02em; color: #fff; }
+.workcard__stat-label { display: block; font-size: var(--text-xs); color: rgba(255,255,255,0.78); }
 .workcard__go {
   position: absolute;
   top: var(--space-6);

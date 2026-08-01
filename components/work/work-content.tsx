@@ -119,7 +119,7 @@ export default function WorkContent() {
                   <span className="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                   <div className="workcard__meta">
                     <span><span className="workcard__niche">Fintech</span><span className="workcard__name">Currency Gram</span></span>
-                    <span className="workcard__year">2025</span>
+                    <span className="workcard__aside"><span className="workcard__year">2025</span><span className="workcard__stats" aria-hidden="true"><span className="workcard__stat"><span className="workcard__stat-num">-38%</span><span className="workcard__stat-label">Faster transfers</span></span><span className="workcard__stat"><span className="workcard__stat-num">+41</span><span className="workcard__stat-label">NPS gain</span></span></span></span>
                   </div>
                 </div>
               </a>
@@ -131,7 +131,7 @@ export default function WorkContent() {
                   <span className="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                   <div className="workcard__meta">
                     <span><span className="workcard__niche">E-commerce</span><span className="workcard__name">ASAP</span></span>
-                    <span className="workcard__year">2026</span>
+                    <span className="workcard__aside"><span className="workcard__year">2026</span><span className="workcard__stats" aria-hidden="true"><span className="workcard__stat"><span className="workcard__stat-num">62% less</span><span className="workcard__stat-label">Infra cost</span></span><span className="workcard__stat"><span className="workcard__stat-num">658 → 1</span><span className="workcard__stat-label">Sites unified</span></span></span></span>
                   </div>
                 </div>
               </a>
@@ -143,7 +143,7 @@ export default function WorkContent() {
                   <span className="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                   <div className="workcard__meta">
                     <span><span className="workcard__niche">AI &amp; Workforce</span><span className="workcard__name">Worky - AI Native Scheduler</span></span>
-                    <span className="workcard__year">2025</span>
+                    <span className="workcard__aside"><span className="workcard__year">2025</span><span className="workcard__stats" aria-hidden="true"><span className="workcard__stat"><span className="workcard__stat-num">90% less</span><span className="workcard__stat-label">Time to schedule</span></span><span className="workcard__stat"><span className="workcard__stat-num">5</span><span className="workcard__stat-label">Jobs automated</span></span></span></span>
                   </div>
                 </div>
               </a>
@@ -155,7 +155,7 @@ export default function WorkContent() {
                   <span className="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                   <div className="workcard__meta">
                     <span><span className="workcard__niche">Enterprise</span><span className="workcard__name">AZAQ - Relia</span></span>
-                    <span className="workcard__year">2025</span>
+                    <span className="workcard__aside"><span className="workcard__year">2025</span><span className="workcard__stats" aria-hidden="true"><span className="workcard__stat"><span className="workcard__stat-num">4-stage</span><span className="workcard__stat-label">Approval chain</span></span><span className="workcard__stat"><span className="workcard__stat-num">0</span><span className="workcard__stat-label">Hand-offs left</span></span></span></span>
                   </div>
                 </div>
               </a>
@@ -167,7 +167,7 @@ export default function WorkContent() {
                   <span className="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                   <div className="workcard__meta">
                     <span><span className="workcard__niche">Workforce</span><span className="workcard__name">WorkEasy</span></span>
-                    <span className="workcard__year">2025</span>
+                    <span className="workcard__aside"><span className="workcard__year">2025</span><span className="workcard__stats" aria-hidden="true"><span className="workcard__stat"><span className="workcard__stat-num">4</span><span className="workcard__stat-label">Modules rebuilt</span></span><span className="workcard__stat"><span className="workcard__stat-num">1 tap</span><span className="workcard__stat-label">To clock in</span></span></span></span>
                   </div>
                 </div>
               </a>
@@ -179,7 +179,7 @@ export default function WorkContent() {
                   <span className="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                   <div className="workcard__meta">
                     <span><span className="workcard__niche">Hospitality</span><span className="workcard__name">Azoria</span></span>
-                    <span className="workcard__year">2026</span>
+                    <span className="workcard__aside"><span className="workcard__year">2026</span><span className="workcard__stats" aria-hidden="true"><span className="workcard__stat"><span className="workcard__stat-num">4-in-1</span><span className="workcard__stat-label">Super app</span></span><span className="workcard__stat"><span className="workcard__stat-num">1</span><span className="workcard__stat-label">Admin panel</span></span></span></span>
                   </div>
                 </div>
               </a>
@@ -191,7 +191,7 @@ export default function WorkContent() {
                   <span className="workcard__go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                   <div className="workcard__meta">
                     <span><span className="workcard__niche">Healthcare</span><span className="workcard__name">Phlex65</span></span>
-                    <span className="workcard__year">2025</span>
+                    <span className="workcard__aside"><span className="workcard__year">2025</span><span className="workcard__stats" aria-hidden="true"><span className="workcard__stat"><span className="workcard__stat-num">1 → many</span><span className="workcard__stat-label">Multi-tenant SaaS</span></span><span className="workcard__stat"><span className="workcard__stat-num">2</span><span className="workcard__stat-label">Apps shipped</span></span></span></span>
                   </div>
                 </div>
               </a>
