@@ -273,6 +273,18 @@
   }
 }
 
+/* Scroll-driven sibling of .wordfx — same per-word choreography, but the
+   cursor is replaced by scroll position (components/word-reveal). JS eases
+   --wfx from 1 to 0 as each word lands, so the word arrives in brand amber
+   and settles into the surrounding ink, rolling the highlight through the
+   sentence. currentColor here is the inherited paragraph colour, so the
+   settled state always matches whatever section the block sits in. */
+.word-reveal__word {
+  display: inline-block;
+  transform-origin: 50% 85%;
+  color: color-mix(in srgb, var(--brand-amber) calc(var(--wfx, 0) * 100%), currentColor);
+}
+
 /* ═══════════════════════════════════════════════════════════
    RESET & BASE
    ═══════════════════════════════════════════════════════════ */
@@ -3682,3 +3694,116 @@ html.splash-seen .splash { display: none; }
   }
 }
 
+/* ═══════════════════════════════════════════════════════════
+   PRINT / PDF EXPORT
+   Case studies are exported to PDF straight from these pages
+   (scripts/export-case-pdfs.mjs drives headless Chrome), so the
+   document and the live page stay one source of truth. The rules
+   below strip the site chrome, undo the scroll choreography that
+   never runs in a paged render, and re-cut the vertical rhythm so
+   each movement of the story lands on its own sheet.
+   ═══════════════════════════════════════════════════════════ */
+
+@page {
+  /* Landscape keeps the desktop composition — the three-up grids and
+     16:9 cover — instead of collapsing to the tablet breakpoint. */
+  size: A4 landscape;
+  margin: 0;
+}
+
+@media print {
+  /* Print the design, not a bleached approximation of it. */
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html, body {
+    background: var(--dark-bg);
+    /* Smooth scroll leaves the document sized for a viewport. */
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Site chrome has no place in an exported document. */
+  .nav,
+  .footer,
+  .cs-pager,
+  .cursor,
+  .hero-reveal,
+  .cs-hero__back {
+    display: none !important;
+  }
+
+  /* Reveals are scroll-triggered; a paged render never scrolls. */
+  .reveal,
+  .js .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* Tighter margins than the web page — a sheet is not a scroll. */
+  :root { --section-pad-y: 16mm; }
+
+  .pagehead {
+    /* The web value clears the fixed nav, which is gone here. */
+    padding-top: 22mm;
+  }
+
+  /* One movement per sheet. */
+  .cs-cover,
+  .cs-overview,
+  .cs-metrics,
+  .cs-block,
+  .cs-gallery {
+    break-before: page;
+  }
+
+  .cs-facts,
+  .cs-metric,
+  .cs-overview__col,
+  .cs-block__inner,
+  .cs-gallery__item {
+    break-inside: avoid;
+  }
+
+  /* A section paints its background only as far as its content reaches,
+     which on a light sheet leaves the rest of the page showing the dark
+     body behind it. Sizing each section to whole sheets makes the colour
+     run edge to edge — so the height here is deliberate, not a minimum:
+     it has to land exactly on a page boundary. */
+  .cs-hero,
+  .cs-cover,
+  .cs-overview,
+  .cs-metrics,
+  .cs-block {
+    box-sizing: border-box;
+    height: 210mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Galleries take the sheet after their block, so those blocks are two
+     sheets tall rather than one. */
+  .cs-block:has(.cs-gallery) { height: 420mm; justify-content: flex-start; }
+
+  .cs-cover { justify-content: center; padding-top: var(--section-pad-y); }
+  .cs-cover__media { width: 100%; }
+
+  /* Media is scaled to the sheet rather than the column, and always at its
+     native ratio — nothing gets cropped the way a `cover` box would. */
+  .cs-gallery {
+    height: 178mm;
+    align-content: center;
+    margin-top: 0;
+  }
+
+  .cs-gallery__item--wide {
+    width: auto;
+    height: 165mm;
+    justify-self: center;
+  }
+}

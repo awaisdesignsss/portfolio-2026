@@ -2,7 +2,7 @@
 
 import React from "react";
 import { applyWordfx } from "@/lib/wordfx";
-import ClientLogos from "@/components/ui/client-logos";
+import ClientLogos from "@/components/client-logos";
 import Wordmark from "@/components/ui/wordmark";
 import NavWhatsapp from "@/components/ui/nav-whatsapp";
 

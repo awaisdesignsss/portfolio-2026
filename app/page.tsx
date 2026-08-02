@@ -1,11 +1,11 @@
 import SplashScreen from "@/components/splash-screen";
-import HomeContent from "@/components/home/home-content";
+import { Home } from "@/features";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <SplashScreen />
-      <HomeContent />
+      <Home />
     </>
   );
 }

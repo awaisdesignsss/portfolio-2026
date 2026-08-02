@@ -1,0 +1,10 @@
+export { default as ArrowDownIcon } from "./arrow-down-icon";
+export { default as ArrowRightIcon } from "./arrow-right-icon";
+export { default as ArrowUpRightIcon } from "./arrow-up-right-icon";
+export { default as BehanceIcon } from "./behance-icon";
+export { default as DribbbleIcon } from "./dribbble-icon";
+export { default as LinkArrowIcon } from "./link-arrow-icon";
+export { default as LinkedinIcon } from "./linkedin-icon";
+export { default as PlusIcon } from "./plus-icon";
+export { default as StarIcon } from "./star-icon";
+export { default as WhatsappIcon } from "./whatsapp-icon";

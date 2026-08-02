@@ -15,3 +15,6 @@ next-env.d.ts
 # Build / debug
 *.tsbuildinfo
 npm-debug.log*
+
+# Generated case-study PDFs — rebuild with scripts/export-case-pdfs.mjs
+/exports/
