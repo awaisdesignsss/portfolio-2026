@@ -90,18 +90,34 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        {/* Body copy stays on swap so text is readable straight away. The
-            script wordmark is requested separately with display=block: its
-            fallback (generic cursive) has wildly different metrics, and
-            swapping it in after first paint threw the absolutely-positioned,
-            nowrap "Awais" out of alignment until a reload warmed the cache. */}
+        {/* Body copy stays on swap so text is readable straight away. */}
         <link
           href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200;400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        {/* The script face is self-hosted (see the @font-face at the top of
+            styles.css) and preloaded, so it lands in the same connection as
+            the document instead of behind two hops to Google. Fonts are
+            always fetched in CORS mode, hence crossOrigin even same-origin. */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Kolker+Brush&display=block"
-          rel="stylesheet"
+          rel="preload"
+          href="/fonts/kolker-brush-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        {/* Hold the signature until the face is really in hand. display=block
+            alone was not enough: its ~3s block period expires on a slow mobile
+            first load, after which the browser paints the cursive fallback and
+            the wordmark jumps off the edge until the font arrives. Loading the
+            face explicitly makes the reveal deterministic rather than timed.
+            Runs before paint so nothing flashes; the timeout guarantees the
+            text appears even if the font never resolves. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var d=document,r=d.documentElement;if(!d.fonts||typeof FontFace!=='function')return;r.classList.add('fonts-pending');var done=false,go=function(){if(done)return;done=true;r.classList.remove('fonts-pending')};setTimeout(go,3000);var f=new FontFace('Kolker Brush','url(/fonts/kolker-brush-latin.woff2)',{style:'normal',weight:'400',display:'block'});f.load().then(function(ff){d.fonts.add(ff);go()}).catch(go)}catch(e){try{document.documentElement.classList.remove('fonts-pending')}catch(_){}}})()",
+          }}
         />
       </head>
       <body>
