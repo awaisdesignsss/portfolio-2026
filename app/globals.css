@@ -103,22 +103,30 @@ html.splashing {
   opacity: 0;
 }
 
-/* The pill: nav-sized, centred, positioned by transform. Exact size and
-   the dock offset are set inline once the real nav is measured. */
+/* The loader: a slim bar at nav width, centred and positioned by transform.
+   It fills in place at the centre, then rises to the nav, then grows to the
+   nav's height — both the width and that final height are measured off the
+   real nav and applied inline. Because the element is centred with
+   translate(-50%, -50%), growing the height expands it about its own middle,
+   so it opens into the nav's footprint rather than drifting off it. */
 .intro__pill {
   position: absolute;
   top: 50%;
   left: 50%;
   z-index: 1;
   width: min(938px, calc(100% - 3rem));
-  height: 60px;
+  height: 8px;
   transform: translate(-50%, -50%);
   border-radius: var(--radius-nav);
   border: 1.5px solid rgba(255, 255, 255, 0.92);
   background: transparent;
   overflow: hidden;
-  will-change: transform, opacity;
-  transition: transform 600ms var(--intro-ease), opacity 380ms ease;
+  will-change: transform, height, opacity;
+  /* Fill, rise and grow are three separate beats; these match the
+     RISE / GROW constants in components/splash-screen. */
+  transition: transform 600ms var(--intro-ease),
+              height 520ms var(--intro-ease),
+              opacity 380ms ease;
 }
 .intro__fill {
   position: absolute;
