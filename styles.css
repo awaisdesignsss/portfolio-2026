@@ -455,7 +455,28 @@ img {
   height: 2px;
   background: var(--brand-ink);
   border-radius: 2px;
-  transition: transform var(--duration-base) var(--ease-out);
+  transition: transform var(--duration-base) var(--ease-out),
+              opacity var(--duration-base) var(--ease-out);
+}
+
+/* The open mobile sheet covers the viewport, so hold the page still behind
+   it. Lenis is told to stop separately (components/smooth-scroll); this
+   catches native and touch scrolling, which Lenis leaves alone.
+   Set by the header component. */
+html.nav-open,
+html.nav-open body {
+  overflow: hidden;
+}
+
+/* Same lock, driven off the markup rather than the component. The pages
+   that still render their own nav (work / about / contact / case studies)
+   share this stylesheet, so they get the full-height sheet without the
+   class above — without this they would scroll behind their own menu.
+   Kept as its own rule: an unsupported :has() invalidates the whole
+   selector list it appears in, which would take the fallback with it. */
+html:has(.nav.is-open),
+html:has(.nav.is-open) body {
+  overflow: hidden;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -2214,20 +2235,75 @@ img {
     display: none;
   }
 
-  /* Mobile menu open state — the links drop to a full-width row below. */
+  /* Mobile menu open state — the bar grows into a full-height sheet running
+     from the header down to the same inset it sits at up top, so the links
+     get the whole screen instead of a cramped drawer. The nav keeps its own
+     padding, which is what lines the links up with the bar above them. */
   .nav.is-open {
+    height: calc(100svh - var(--space-6) * 2);
     border-radius: var(--radius-xl);
-    row-gap: var(--space-4);
+    grid-template-rows: auto 1fr;
+    row-gap: var(--space-3);
+    overflow: hidden;
+    /* The bar's 0.85 glass reads fine as a small pill, but across a whole
+       screen of hero photo it leaves the labels fighting the portrait. */
+    background: rgba(255, 255, 255, 0.96);
   }
 
   .nav.is-open .nav__menu {
     display: flex;
     flex-direction: column;
     grid-column: 1 / -1;
+    grid-row: 2;
+    /* The bar's own align-items:center would leave this at its natural
+       height in the middle of the sheet, and shrink-wrap each link to its
+       label instead of giving it a full-width band. */
+    align-self: stretch;
+    align-items: stretch;
+    min-height: 0;
     width: 100%;
-    gap: var(--space-2);
-    padding: var(--space-4) 0 0;
+    gap: 0;
+    padding: 0;
     border-top: 1px solid var(--light-border);
+  }
+
+  /* Equal vertical bands — each link claims the same slice of the sheet, so
+     the set stays balanced regardless of how long the labels are. */
+  .nav.is-open .nav__link {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    /* Centred to sit under the centred wordmark in the bar above. The band
+       still spans the full width, so the dividers run edge to edge. */
+    justify-content: center;
+    text-align: center;
+    font-size: clamp(2rem, 9vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: var(--tracking-tight);
+  }
+
+  .nav.is-open .nav__link + .nav__link {
+    border-top: 1px solid var(--light-border);
+  }
+
+  /* The sliding pill is measured against the inline desktop menu and has
+     nothing to sit under in the sheet. */
+  .nav.is-open .nav__pill {
+    display: none;
+  }
+
+  /* Hamburger folds into a close mark while the sheet is open. */
+  .nav.is-open .nav__toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav.is-open .nav__toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav.is-open .nav__toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
   }
 
   .hero {

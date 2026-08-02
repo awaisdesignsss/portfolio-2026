@@ -7,7 +7,7 @@ import { useSiteHeader } from "./use-site-header";
 import type { ISiteHeaderProps } from "./site-header.interface";
 
 export default function SiteHeader({ activeHref = "/" }: ISiteHeaderProps) {
-  const { isOpen, toggle, navClassName } = useSiteHeader();
+  const { isOpen, toggle, toggleLabel, navClassName } = useSiteHeader();
 
   return (
     <nav className={navClassName}>
@@ -32,7 +32,12 @@ export default function SiteHeader({ activeHref = "/" }: ISiteHeaderProps) {
         <NavWhatsapp />
         <a href={EMAIL_HREF} className="nav__cta">Email me</a>
       </div>
-      <button className="nav__toggle" aria-label="Menu" aria-expanded={isOpen} onClick={toggle}>
+      <button
+        className="nav__toggle"
+        aria-label={toggleLabel}
+        aria-expanded={isOpen}
+        onClick={toggle}
+      >
         <span></span>
         <span></span>
         <span></span>

@@ -10,8 +10,9 @@ import Lenis from "lenis";
  * on a weighted momentum curve instead of snapping.
  *
  * - Disabled entirely under prefers-reduced-motion (plain native scroll).
- * - Paused while the intro splash is up (`.splashing` on <html>), resumed the
- *   moment it clears, via a class MutationObserver.
+ * - Paused while the intro splash is up (`.splashing` on <html>) or the mobile
+ *   nav sheet is open (`.nav-open`), resumed the moment both clear, via a
+ *   class MutationObserver.
  * - In-page anchor links (#work, etc.) glide to target through Lenis.
  * Touch is left native so mobile keeps its own momentum.
  */
@@ -32,13 +33,24 @@ export default function SmoothScroll() {
     };
     raf = requestAnimationFrame(loop);
 
-    // Hold scroll during the intro splash; release when it clears.
+    // Hold scroll during the intro splash and while the mobile nav sheet
+    // covers the viewport; release when both clear.
+    //
+    // The sheet is detected two ways on purpose: `.nav-open` on <html> from
+    // the header component, and `.is-open` on the nav itself for the pages
+    // that still render their own nav markup. CSS overflow alone can't hold
+    // these — Lenis scrolls programmatically and drives straight through it.
     const html = document.documentElement;
-    const sync = () =>
-      html.classList.contains("splashing") ? lenis.stop() : lenis.start();
+    const nav = document.querySelector(".nav");
+    const shouldHold = () =>
+      html.classList.contains("splashing") ||
+      html.classList.contains("nav-open") ||
+      !!document.querySelector(".nav.is-open");
+    const sync = () => (shouldHold() ? lenis.stop() : lenis.start());
     sync();
     const mo = new MutationObserver(sync);
     mo.observe(html, { attributes: true, attributeFilter: ["class"] });
+    if (nav) mo.observe(nav, { attributes: true, attributeFilter: ["class"] });
 
     // Smooth in-page anchor navigation, clearing the fixed nav.
     const onClick = (e: MouseEvent) => {
