@@ -3,10 +3,10 @@ import type { IAvatar, IReason } from "./reasons.interface";
 export const REASONS_EYEBROW = "Why work with me";
 
 /** Two heading lines — rendered with a <br /> between them, like the original markup. */
-export const REASONS_HEADING = ["Senior design,", "thought through."];
+export const REASONS_HEADING = ["Opinions,", "with reasons attached."];
 
 export const REASONS_LEAD =
-  "Senior-level design, thought through properly and shaped around your product, never pulled off a template. Here is what that looks like in practice.";
+  "Five things that tend to matter more than a nice-looking mockup. Here’s what each one looks like in practice.";
 
 export const REASONS_CTA_LABEL = "Contact me";
 
