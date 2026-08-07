@@ -41,7 +41,7 @@ export default function ContactContent() {
           </div>
           <div className="nav__actions">
             <NavWhatsapp />
-            <a href="mailto:awais.designsss@gmail.com" className="nav__cta">Email me</a>
+            <a href="mailto:hello@awaisdesigns.com" className="nav__cta">Email me</a>
           </div>
           <button className="nav__toggle" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -66,12 +66,12 @@ export default function ContactContent() {
             </div>
 
             <div className="contactgrid">
-              <a className="contactmethod" href="mailto:awais.designsss@gmail.com">
+              <a className="contactmethod" href="mailto:hello@awaisdesigns.com">
                 <span className="contactmethod__head">
                   <span className="contactmethod__label">Email</span>
                   <svg className="contactmethod__arrow" width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </span>
-                <span className="contactmethod__value">awais.designsss@gmail.com</span>
+                <span className="contactmethod__value">hello@awaisdesigns.com</span>
               </a>
 
               <a className="contactmethod" href="https://wa.me/923027778210" target="_blank" rel="noopener noreferrer">
@@ -128,7 +128,7 @@ export default function ContactContent() {
             </div>
             <div className="footer__contact-title">
               <h2 className="footer__cta-heading" data-wordfx>Get in touch</h2>
-              <a href="mailto:awais.designsss@gmail.com" className="btn footer__cta-btn">
+              <a href="mailto:hello@awaisdesigns.com" className="btn footer__cta-btn">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 10.5L10.5 3.5M10.5 3.5H5M10.5 3.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 Let's talk
               </a>
@@ -146,9 +146,9 @@ export default function ContactContent() {
             <div className="footer__left">
               <h3 className="footer__tagline" data-wordfx>Calm, clear design for products people love to use.</h3>
               <div className="footer__contacts">
-                <a href="mailto:awais.designsss@gmail.com" className="footer__contact-link">
+                <a href="mailto:hello@awaisdesigns.com" className="footer__contact-link">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1 8L8 1M8 1H2M8 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  awais.designsss@gmail.com
+                  hello@awaisdesigns.com
                 </a>
                 <div className="footer__contact-row">
                   <a href="https://wa.me/923027778210" target="_blank" rel="noopener noreferrer" className="footer__contact-link">

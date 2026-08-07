@@ -1,6 +1,6 @@
 import { BehanceIcon, DribbbleIcon, LinkedinIcon, WhatsappIcon } from "@/assets/icons";
 
-export const SITE_EMAIL = "awais.designsss@gmail.com";
+export const SITE_EMAIL = "hello@awaisdesigns.com";
 export const EMAIL_HREF = `mailto:${SITE_EMAIL}`;
 export const WHATSAPP_HREF = "https://wa.me/923027778210";
 export const PHONE_DISPLAY = "+92 302 7778210";
